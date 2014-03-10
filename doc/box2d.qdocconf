@@ -1,25 +1,22 @@
 project                 = Box2D
 description             =  Box2D Documentation
 #url                     = http://qt-project.org/doc/qt-$QT_VER/Box2D
-version                 = 1.0
+version                 = 1.1
 
 # The following parameters are for creating a qhp file, the qhelpgenerator
 # program can convert the qhp file into a qch file which can be opened in
 # Qt Assistant and/or Qt Creator.
 
-
 include($QT_INSTALL_DOCS/global/qt-html-templates-offline.qdocconf)
-
-
 
 # Defines the name of the project. You cannot use operators (+, =, -) in
 # the name. Properties for this project are set using a qhp.<projectname>.property
 # format.
 qhp.projects = Box2D
 qhp.Box2D.file = box2d.qhp
-qhp.Box2D.namespace = org.Box2D.1.0
+qhp.Box2D.namespace = org.Box2D.1.1
 qhp.Box2D.indexTitle = Box2D
-qhp.Box2D.virtualFolder  = sqldatamodel
+qhp.Box2D.virtualFolder  = box2d
 
 # For listing child nodes in Qt Creator or Assistant.
 qhp.Box2D.subprojects = classes qmltypes

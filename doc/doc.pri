@@ -38,8 +38,28 @@ QHP_FILE = $$HTML_DOC_PATH/box2d.qhp
 QCH_FILE = $$OUT_PWD/doc/box2d.qch
 
 HELP_DEP_FILES = $$PWD/src/qml-box2d.qdoc \
-                 $$PWD/src/box2d-example.qdoc \
-                 $$PWD/src/box2d.qdoc \
+            $$PWD/src/box2d-example.qdoc \
+            $$PWD/src/box2d.qdoc \
+            $$PWD/src/box.qdoc \
+            $$PWD/src/body.qdoc \
+            $$PWD/src/circle.qdoc \
+            $$PWD/src/debugdraw.qdoc \
+            $$PWD/src/edge.qdoc \
+            $$PWD/src/fixture.qdoc \
+            $$PWD/src/friction-joint.qdoc \
+            $$PWD/src/gear-joint.qdoc \
+            $$PWD/src/joint.qdoc \
+            $$PWD/src/motor-joint.qdoc \
+            $$PWD/src/mouse-joint.qdoc \
+            $$PWD/src/polygon.qdoc \
+            $$PWD/src/prosmatic-joint.qdoc \
+            $$PWD/src/pully-joint.qdoc \
+            $$PWD/src/revolute-joint.qdoc \
+            $$PWD/src/rope-joint.qdoc \
+            $$PWD/src/weld-joint.qdoc \
+            $$PWD/src/wheel-joint.qdoc \
+            $$PWD/src/world.qdoc
+
                  $$QDOC_MAINFILE
 
 html_docs.commands = $$QDOC $$QDOC_MAINFILE
@@ -64,8 +84,17 @@ QMAKE_EXTRA_TARGETS += install_docs
 docs.depends = qch_docs
 QMAKE_EXTRA_TARGETS += html_docs qch_docs docs
 
-fixnavi.commands = \
-    cd $$targetPath($$PWD) && \
-    perl fixnavi.pl -Dqcmanual -Dqtquick \
+
+unix:{
+        fixnavi.commands = \
+         cd $$targetPath($$PWD) && \
+        perl fixnavi.pl -Dqcmanual -Dqtquick \
         box2d.qdoc
+}
+win32:{
+        fixnavi.commands = \
+        dir $$targetPath($$PWD) && \
+        perl fixnavi.pl -Dqcmanual -Dqtquick \
+        box2d.qdoc
+}
 QMAKE_EXTRA_TARGETS += fixnavi

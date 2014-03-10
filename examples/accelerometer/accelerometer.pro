@@ -13,7 +13,7 @@ EXAMPLE_FILES =  accelerometer.qml \
 
 target.path = $$[QT_INSTALL_EXAMPLES]/quick/box2d/accelerometer
 
-INSTALLS = target qml
+INSTALLS = target
 
 SOURCES += main.cpp
 

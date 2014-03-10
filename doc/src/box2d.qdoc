@@ -4,38 +4,72 @@
 \brief A set of APIs for working with Databases.
 \nextpage qml-box2d.html
 
- Box2D Uses the QtSql modual and Provides support for Qml
-Based applications. Box2D is used to connect to a Database's
-and query them
+ About
+Box2D is an open source C++ engine for simulating rigid bodies in 2D. Box2D is developed by Erin Catto and has the zlib license.
+While the zlib license does not require acknowledgement, we encourage you to give credit to Box2D in your product.
 
-\section1 Features
+Box2D Features
 
-Here are some examples of what can be done with Box2D APIs:
-
+COLLISION
 \list
-\li Connect to databases
-\li querydatabases
-\li create models from a query
-\endlist
-
-\section1  Components
-
- Box2D APIs are categorized into two main components.  More
-information (including background information and class references) is
-available here:
-
-\list
-\li SqlConnection Overview
-\li SqlModel Overview
+\li Continuous collision detection
+\li Contact callbacks: begin, end, pre-solve, post-solve
+\li Convex polyons and circles.
+\li Multiple shapes per body
+\li One-shot contact manifolds
+\li Dynamic tree broadphase
+\li Efficient pair management
+\li Fast broadphase AABB queries
+\li Collision groups and categories
 \endlist
 
 
-\section1 Reference Documentation
+PHYSICS
+\list
+\li Continuous physics with time of impact solver
+\li Persistent body-joint-contact graph
+\li Island solution and sleep management
+\li Contact, friction, and restitution
+\li Stable stacking with a linear-time solver
+\li Revolute, prismatic, distance, pulley, gear, mouse joint, and other joint types
+\li Joint limits, motors, and friction
+\li Momentum decoupled position correction
+\li Fairly accurate reaction forces/impulses
+\endlist
+
+SYSTEM
+\list
+\li Small block and stack allocators
+\li Centralized tuning parameters
+\li Highly portable C++ with no use of STL containers
+\endlist
+
+TESTBED
+\list
+\li OpenGL with Freeglut
+\li Graphical user interface with GLUI
+\li Easily switch between tests using GUI
+\li Test framework for easily adding new tests
+\li Mouse picking and the bomb!
+\li CMake build system files
+\endlist
+
+DOCUMENTATION
+
+\list
+\li User manual
+\li Doxygen document with code comments
+\li Active user forum
+\endlist
+
+Qt/Qml Bindings
+
+\section1 Qml Documentation
 
 \section2 QML Types
 The QML types are accessed by using:
 \code
-import Box2D 1.0
+import Box2D 1.1
 \endcode
 \annotatedlist box2d_qml
 */
