@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/impulse">
+        <file>impulse.pro</file>
+        <file>impulse.qml</file>
+        <file>Wall.qml</file>
+        <file>Ball.qml</file>
+    </qresource>
+</RCC>

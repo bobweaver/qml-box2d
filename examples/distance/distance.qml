@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Box2D 1.1
-
+import "qrc:/distance"
 Item {
     id: screen
     width: 800

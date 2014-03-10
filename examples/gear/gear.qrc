@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/gear">
+        <file>gear.pro</file>
+        <file>gear.qml</file>
+        <file>Wall.qml</file>
+        <file>images/wall.jpg</file>
+    </qresource>
+</RCC>

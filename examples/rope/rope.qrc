@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/rope">
+        <file>rope.pro</file>
+        <file>rope.qml</file>
+        <file>Wall.qml</file>
+        <file>images/wall.jpg</file>
+    </qresource>
+</RCC>

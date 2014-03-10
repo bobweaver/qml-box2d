@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/prismatic">
+        <file>prismatic.pro</file>
+        <file>prismatic.qml</file>
+        <file>Wall.qml</file>
+	<file>Ball.qml</file>
+        <file>Square.qml</file>
+    </qresource>
+</RCC>

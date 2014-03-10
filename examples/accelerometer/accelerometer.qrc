@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/accelerometer">
+        <file>accelerometer.pro</file>
+        <file>background.png</file>
+        <file>woodenbox.png</file>
+        <file>accelerometer.qml</file>
+        <file>Wall.qml</file>
+        <file>WoodenBox.qml</file>
+        <file>main.cpp</file>
+        <file>tableview.qmlproject</file>
+    </qresource>
+</RCC>

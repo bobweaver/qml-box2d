@@ -1,5 +1,5 @@
 # Box2D sources
-INCLUDEPATH += $$PWD
+INCLUDEPATH += .
 SOURCES += \
     $$PWD/Collision/Shapes/b2PolygonShape.cpp \
     $$PWD/Collision/Shapes/b2EdgeShape.cpp \
@@ -49,7 +49,7 @@ SOURCES += \
     $$PWD/Dynamics/Joints/b2MotorJoint.cpp
 
 HEADERS += \
-        $$PWD/Box2D.h \
+    $$PWD/Box2D.h \
     $$PWD/Collision/Shapes/b2Shape.h \
     $$PWD/Collision/Shapes/b2PolygonShape.h \
     $$PWD/Collision/Shapes/b2EdgeShape.h \

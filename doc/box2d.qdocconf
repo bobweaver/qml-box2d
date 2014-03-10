@@ -1,0 +1,53 @@
+project                 = Box2D
+description             =  Box2D Documentation
+#url                     = http://qt-project.org/doc/qt-$QT_VER/Box2D
+version                 = 1.0
+
+# The following parameters are for creating a qhp file, the qhelpgenerator
+# program can convert the qhp file into a qch file which can be opened in
+# Qt Assistant and/or Qt Creator.
+
+
+include($QT_INSTALL_DOCS/global/qt-html-templates-offline.qdocconf)
+
+
+
+# Defines the name of the project. You cannot use operators (+, =, -) in
+# the name. Properties for this project are set using a qhp.<projectname>.property
+# format.
+qhp.projects = Box2D
+qhp.Box2D.file = box2d.qhp
+qhp.Box2D.namespace = org.Box2D.1.0
+qhp.Box2D.indexTitle = Box2D
+qhp.Box2D.virtualFolder  = sqldatamodel
+
+# For listing child nodes in Qt Creator or Assistant.
+qhp.Box2D.subprojects = classes qmltypes
+qhp.Box2D.subprojects.classes.title = C++ Classes
+qhp.Box2D.subprojects.classes.indexTitle = Box2D C++ Classes
+qhp.Box2D.subprojects.classes.selectors = class fake:headerfile
+qhp.Box2D.subprojects.classes.sortPages = true
+qhp.Box2D.subprojects.qmltypes.title = QML Types
+qhp.Box2D.subprojects.qmltypes.indexTitle = Qt Box2D QML Types
+qhp.Box2D.subprojects.qmltypes.selectors = fake:qmlclass
+qhp.Box2D.subprojects.qmltypes.sortPages = true
+
+exampledirs += ../examples \
+            snippets
+
+# Specify example install dir under
+examplesinstallpath = ../examples/
+
+headerdirs += ../box2d
+
+imagedirs += images
+
+sourcedirs += ../box2d
+
+excludedirs += ../../
+
+sources.fileextensions  = "*.qdoc"
+
+outputdir = $OUTDIR
+
+depends                 += qtcore qtdoc qtquick qtqml qsql

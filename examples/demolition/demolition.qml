@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Box2D 1.1
-
+import "qrc:/demolition"
 Image {
     id: screen;
     width: 640; height: 360

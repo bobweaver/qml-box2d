@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/movingBox">
+        <file>movingBox.pro</file>
+        <file>MovableBox.qml</file>
+	<file>movingBox.qml</file>        
+	<file>Wall.qml</file>
+        <file>WoodenBox.qml</file>
+    </qresource>
+</RCC>

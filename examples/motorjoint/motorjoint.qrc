@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/motorjoint">
+        <file>motorjoint.pro</file>
+        <file>motorjoint.qml</file>
+        <file>wave.png</file>
+        <file>boat.png</file>
+    </qresource>
+</RCC>

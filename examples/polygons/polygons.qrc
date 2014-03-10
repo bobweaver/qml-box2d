@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/polygons">
+        <file>polygons.pro</file>
+        <file>polygons.qml</file>
+        <file>Wall.qml</file>
+        <file>Trapezoid.qml</file>
+    </qresource>
+</RCC>

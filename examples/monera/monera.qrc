@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/monera">
+        <file>monera.pro</file>
+        <file>monera.qml</file>
+        <file>Wall.qml</file>
+        <file>SpeciesInfo.qml</file>
+	<file>SpeciesModel.qml</file>
+	<file>coral2.png</file>
+	<file>coral.png</file>
+	<file>fungus.png</file>
+	<file>hexa.png</file>
+	<file>monera.png</file>
+	<file>shell2.png</file>
+	<file>shell.png</file>
+	<file>spikes.png</file>
+    </qresource>
+</RCC>

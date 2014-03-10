@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/distance">
+        <file>distance.pro</file>
+        <file>distance.qml</file>
+        <file>Wall.qml</file>
+        <file>Ball.qml</file>
+        <file>Square.qml</file>
+    </qresource>
+</RCC>

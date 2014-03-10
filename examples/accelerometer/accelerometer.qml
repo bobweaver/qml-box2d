@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Box2D 1.1
 import QtMobility.sensors 1.1
-
+import "qrc:/accelerometer"
 Image {
     id: screen;
     width: 640;

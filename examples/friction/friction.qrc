@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/friction">
+        <file>friction.pro</file>
+        <file>friction.qml</file>
+        <file>Wall.qml</file>
+        <file>images/wall.jpg</file>
+    </qresource>
+</RCC>

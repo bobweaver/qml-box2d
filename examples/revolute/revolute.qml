@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Box2D 1.1
+import "qrc:/revolute"
 
 Item {
     id: screen

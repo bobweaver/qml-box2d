@@ -1,0 +1,41 @@
+/*!
+\page overview.html
+\title Box2D
+\brief A set of APIs for working with Databases.
+\nextpage qml-box2d.html
+
+ Box2D Uses the QtSql modual and Provides support for Qml
+Based applications. Box2D is used to connect to a Database's
+and query them
+
+\section1 Features
+
+Here are some examples of what can be done with Box2D APIs:
+
+\list
+\li Connect to databases
+\li querydatabases
+\li create models from a query
+\endlist
+
+\section1  Components
+
+ Box2D APIs are categorized into two main components.  More
+information (including background information and class references) is
+available here:
+
+\list
+\li SqlConnection Overview
+\li SqlModel Overview
+\endlist
+
+
+\section1 Reference Documentation
+
+\section2 QML Types
+The QML types are accessed by using:
+\code
+import Box2D 1.0
+\endcode
+\annotatedlist box2d_qml
+*/

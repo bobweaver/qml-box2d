@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/weld">
+        <file>weld.pro</file>
+        <file>weld.qml</file>
+        <file>Wall.qml</file>
+        <file>images/wall.jpg</file>
+    </qresource>
+</RCC>

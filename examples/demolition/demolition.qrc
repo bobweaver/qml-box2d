@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/demolition">
+        <file>demolition.pro</file>
+        <file>images/background.png</file>
+        <file>images/brickwall.png</file>
+        <file>images/plate.png</file>
+        <file>images/skyline.png</file>
+        <file>images/wheel.png</file>
+        <file>images/woodenbox.png</file>        
+        <file>demolition.qml</file>
+        <file>Wall.qml</file>
+        <file>Building.qml</file>
+        <file>WoodenBox.qml</file>
+    </qresource>
+</RCC>
