@@ -3,5 +3,14 @@
     \page world.html
     \title World
 
+
+
+    Q_PROPERTY(bool running READ isRunning WRITE setRunning NOTIFY runningChanged)
+    Q_PROPERTY(float timeStep READ timeStep WRITE setTimeStep)
+    Q_PROPERTY(int velocityIterations READ velocityIterations WRITE setVelocityIterations)
+    Q_PROPERTY(int positionIterations READ positionIterations WRITE setPositionIterations)
+    Q_PROPERTY(int frameTime READ frameTime WRITE setFrameTime)
+    Q_PROPERTY(QPointF gravity READ gravity WRITE setGravity NOTIFY gravityChanged)
+
 \annotatedlist box2d_qml
 */

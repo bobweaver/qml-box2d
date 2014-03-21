@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+    <namespace>org.Box2D.1.1</namespace>
+    <virtualFolder>box2d</virtualFolder>
+    <filterSection>
+        <toc>
+            <section ref="overview.html" title="Box2D">
+                <section ref="" title="C++ Classes"/>
+                <section ref="" title="QML Types"/>
+            </section>
+        </toc>
+        <keywords>
+            <keyword name="Box2D" id="Box2D" ref="overview.html"/>
+            <keyword name="Box2D Examples" id="Box2D Examples" ref="box2d-examples.html"/>
+            <keyword name="Wheel Joint" id="Wheel Joint" ref="qml-box2d.html"/>
+        </keywords>
+        <files>
+            <file>overview.html</file>
+            <file>qml-box2d.html</file>
+            <file>box2d-examples.html</file>
+            <file>style/offline.css</file>
+            <file>images/ico_note.png</file>
+            <file>images/home.png</file>
+            <file>images/ico_note_attention.png</file>
+            <file>images/bgrContent.png</file>
+            <file>images/ico_out.png</file>
+            <file>images/btn_next.png</file>
+            <file>images/logo.png</file>
+            <file>images/btn_prev.png</file>
+            <file>images/arrow_bc.png</file>
+            <file>images/bullet_sq.png</file>
+            <file>images/bullet_dn.png</file>
+        </files>
+    </filterSection>
+</QtHelpProject>

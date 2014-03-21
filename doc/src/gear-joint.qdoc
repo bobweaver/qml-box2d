@@ -2,9 +2,11 @@
     \group qml-box2d
     \title 
     \page gear-joint.html
-    \previouspage .html
-    \nextpage .html
+
     
+    Q_PROPERTY(Box2DJoint * joint1 READ joint1 WRITE setJoint1 NOTIFY joint1Changed)
+    Q_PROPERTY(Box2DJoint * joint2 READ joint2 WRITE setJoint2 NOTIFY joint2Changed)
+    Q_PROPERTY(float ratio READ ratio WRITE setRatio NOTIFY ratioChanged)
 
 
 \annotatedlist box2d_qml

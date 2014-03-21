@@ -5,6 +5,13 @@
     \previouspage .html
     \nextpage .html
     
+    Q_PROPERTY(float density READ density WRITE setDensity NOTIFY densityChanged)
+    Q_PROPERTY(float friction READ friction WRITE setFriction NOTIFY frictionChanged)
+    Q_PROPERTY(float restitution READ restitution WRITE setRestitution NOTIFY restitutionChanged)
+    Q_PROPERTY(bool sensor READ isSensor WRITE setSensor NOTIFY sensorChanged)
+    Q_PROPERTY(CategoryFlags categories READ categories WRITE setCategories NOTIFY categoriesChanged)
+    Q_PROPERTY(CategoryFlags collidesWith READ collidesWith WRITE setCollidesWith NOTIFY collidesWithChanged)
+    Q_PROPERTY(int groupIndex READ groupIndex WRITE setGroupIndex NOTIFY groupIndexChanged)
 
 
 \annotatedlist box2d_qml

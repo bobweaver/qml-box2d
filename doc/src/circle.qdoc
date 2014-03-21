@@ -2,10 +2,10 @@
     \group qml-box2d
     \title 
     \page circle.html
-    \previouspage .html
-    \nextpage .html
+
     
 
+    Q_PROPERTY(float radius READ radius WRITE setRadius NOTIFY radiusChanged)
 
 \annotatedlist box2d_qml
 */

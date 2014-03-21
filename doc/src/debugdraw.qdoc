@@ -1,10 +1,10 @@
 /*!
     \group qml-box2d
-    \title 
+    \title DebugDraw
     \page debug-draw.html
-    \previouspage .html
-    \nextpage .html
-    
+
+    Q_PROPERTY(Box2DWorld *world READ world WRITE setWorld)
+
 
 
 \annotatedlist box2d_qml

@@ -21,9 +21,9 @@ defineTest(minQtVersion) {
     return(false)
 }
 
-!minQtVersion(5, 0, 0) {
+!minQtVersion(5, 2, 0) {
     message("Cannot build qbs with Qt version $${QT_VERSION}.")
-    error("Use at least Qt 5.0.0.  There is a older version of box2d located \n Here \n git@gitorious.org:qml-box2d/qml-box2d.git ")
+    error("Use at least Qt 5.2.0.  There is a older version of box2d located \n Here \n git@gitorious.org:qml-box2d/qml-box2d.git ")
 }
 
 TEMPLATE = subdirs

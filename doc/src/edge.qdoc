@@ -1,10 +1,13 @@
 /*!
-    \group qml-box2d
-    \title 
+    \class Edge
+    \title  Edge
     \page edge.html
     \previouspage .html
     \nextpage .html
     
+inherint of    vertices
+
+Q_PROPERTY(QVariantList vertices READ vertices WRITE setVertices NOTIFY verticesChanged)
 
 
 \annotatedlist box2d_qml

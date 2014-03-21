@@ -1,10 +1,40 @@
 /*!
     \group qml-box2d
-    \title 
+    \title Body
     \page body.html
-    \previouspage .html
-    \nextpage .html
     
+    \section1 Description
+     binding's for a colidable Item
+
+     \table
+     \row \li import statement  \li import Box2d 1.1
+     \endtable
+
+
+    properties
+
+    Q_PROPERTY(qreal linearDamping READ linearDamping WRITE setLinearDamping NOTIFY linearDampingChanged)
+    Q_PROPERTY(qreal angularDamping READ angularDamping WRITE setAngularDamping NOTIFY angularDampingChanged)
+    Q_PROPERTY(BodyType bodyType READ bodyType WRITE setBodyType NOTIFY bodyTypeChanged)
+    Q_PROPERTY(bool bullet READ isBullet WRITE setBullet NOTIFY bulletChanged)
+    Q_PROPERTY(bool sleepingAllowed READ sleepingAllowed WRITE setSleepingAllowed NOTIFY sleepingAllowedChanged)
+    Q_PROPERTY(bool fixedRotation READ fixedRotation WRITE setFixedRotation NOTIFY fixedRotationChanged)
+    Q_PROPERTY(bool active READ active WRITE setActive)
+    Q_PROPERTY(bool awake READ awake WRITE setAwake)
+    Q_PROPERTY(QPointF linearVelocity READ linearVelocity WRITE setLinearVelocity NOTIFY linearVelocityChanged)
+    Q_PROPERTY(QQmlListProperty<Box2DFixture> fixtures READ fixtures)
+    Q_PROPERTY(qreal gravityScale READ gravityScale WRITE setGravityScale NOTIFY gravityScaleChanged)
+
+    Enum
+
+public:
+    enum BodyType
+        Static = 0,
+        Kinematic,
+        Dynamic
+
+
+        Signals
 
 
 \annotatedlist box2d_qml
