@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 defineTest(minQtVersion) {
     maj = $$1
     min = $$2
@@ -102,4 +101,3 @@ HEADERS += \
     box2dmousejoint.h \
     box2dgearjoint.h \
     box2dropejoint.h
->>>>>>> 2f7a17ca3776b3111bbfbbd7801dcf8424f88376
