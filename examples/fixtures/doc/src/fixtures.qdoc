@@ -26,11 +26,11 @@
 ****************************************************************************/
 
 /*!
-    \title Box2D - MovingBox Example
-    \example movingbox
-    \brief This example show how to use Box2D for colision  with moving boxes.
+    \title Box2D -  Fixture Example
+    \example fixtures
+    \brief This example shows how to use Box2D element Fixtures
 
-    \image movingbox.png
+    \image fixture.png
 
 
 */

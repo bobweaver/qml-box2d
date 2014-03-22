@@ -1,13 +1,6 @@
 /*!
-    \class Rope Joint
-    \title Rope joint
-    \page rope-joint.html
-
-    
-    Q_PROPERTY(float maxLength READ maxLength WRITE setMaxLength NOTIFY maxLengthChanged)
-    Q_PROPERTY(QPointF localAnchorA READ localAnchorA WRITE setLocalAnchorA NOTIFY localAnchorAChanged)
-    Q_PROPERTY(QPointF localAnchorB READ localAnchorB WRITE setLocalAnchorB NOTIFY localAnchorBChanged)
-
-
-\annotatedlist box2d_qml
+ \qmlclass Box2DRopeJoint
+    \inqmlmodule Box2D 1.1
+    \instantiates Box2DRopeJoint
+    \inherits Item
 */

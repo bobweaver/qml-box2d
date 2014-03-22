@@ -1,40 +1,4 @@
 /*!
-    \class Circle
-    \title Circle
-    \page circle.html
-
-    
-    The Circle Element is much like the Box element. But you may add a radius to the
-    Circle element
-
-
-    example of a Circle
-
-import QtQuick 2.0
-import Box2D 1.1
-
-Body {
-    bodyType: Body.Static
-    fixtures: Circle{
-                id:  circle
-                 anchors.fill: parent
-                 radius: 180
-                onRadiusChanged: console.log(circle.radius)
-        }
-}
-
-
-   PROPERTY
-
-radius (float)
-
-The over all radius of the circle This property is inherent from float
-
-Signals
-
-radiusChanged
-
-Used when changing the radius of the circle.
-
-\annotatedlist box2d_qml
+ \qmlclass Box2DCircle
+    \inqmlmodule Box2D 1.1
 */

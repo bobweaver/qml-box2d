@@ -1,18 +1,5 @@
 /*!
-    \class PulleyJoint
-    \title PulleyJoint
-    \page pully-joint.html
-
-
-    Q_PROPERTY(float lengthA READ lengthA WRITE setLengthA NOTIFY lengthAChanged)
-    Q_PROPERTY(float lengthB READ lengthB WRITE setLengthB NOTIFY lengthBChanged)
-    Q_PROPERTY(float ratio READ ratio WRITE setRatio NOTIFY ratioChanged)
-    Q_PROPERTY(QPointF groundAnchorA READ groundAnchorA WRITE setGroundAnchorA NOTIFY groundAnchorAChanged)
-    Q_PROPERTY(QPointF groundAnchorB READ groundAnchorB WRITE setGroundAnchorB NOTIFY groundAnchorBChanged)
-    Q_PROPERTY(QPointF localAnchorA READ localAnchorA WRITE setLocalAnchorA NOTIFY localAnchorAChanged)
-    Q_PROPERTY(QPointF localAnchorB READ localAnchorB WRITE setLocalAnchorB NOTIFY localAnchorBChanged)
-
-
-
-\annotatedlist box2d_qml
+    \qmlclass Box2DPulleyJoint
+    \inqmlmodule Box2D 1.1
+     \instantiates Box2DPulleyJoint
 */

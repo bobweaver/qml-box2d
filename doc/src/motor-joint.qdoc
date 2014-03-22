@@ -1,9 +1,4 @@
 /*!
-    \class MotorJoint
-    \title MotorJoint
-    \page motor-joint.html
-
-
-
-\annotatedlist box2d_qml
+ \qmlclass Box2DMotorJoint
+    \inqmlmodule Box2D 1.1
 */

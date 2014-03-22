@@ -1,14 +1,4 @@
 /*!
-    \class FrictionJoint
-    \title FrictionJoint
-    \page friction-joint.html
-
-    Q_PROPERTY(float maxForce READ maxForce WRITE setMaxForce NOTIFY maxForceChanged)
-    Q_PROPERTY(float maxTorque READ maxTorque WRITE setMaxTorque NOTIFY maxTorqueChanged)
-    Q_PROPERTY(QPointF localAnchorA READ localAnchorA WRITE setLocalAnchorA NOTIFY localAnchorAChanged)
-    Q_PROPERTY(QPointF localAnchorB READ localAnchorB WRITE setLocalAnchorB NOTIFY localAnchorBChanged)
-
-public:
-
-\annotatedlist box2d_qml
+    \qmlclass Box2DFrictionJoint
+    \inqmlmodule Box2D 1.1
 */

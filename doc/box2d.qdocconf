@@ -35,17 +35,24 @@ exampledirs += ../examples \
 # Specify example install dir under
 examplesinstallpath = ../examples/
 
-headerdirs += ..
+headerdirs += . \
+                            ../src \
+                            ../box2d
 
 imagedirs += images
 
-sourcedirs += ../
-sources.fileextensions  = *.qdoc\
-                                                  *.cpp \
-                                                  *.h
+sourcedirs += . \
+                            ../src \
+                            ../box2d
 
+excludedirs += ../../
+
+   sources.fileextensions = "*.cpp *.qdoc *.mm *.qml"
+    headers.fileextensions = "*.h *.ch *.h++ *.hh *.hpp *.hxx"
+    examples.fileextensions = "*.cpp *.h *.js *.xq *.svg *.xml *.ui *.qhp *.qhcp *.qml"
+    examples.imageextensions = "*.png *.jpeg *.jpg *.gif *.mng"
 
 
 outputdir = $OUTDIR
 
-depends                 += qtcore qtdoc qtquick qtqml qsql
+depends                 += qtcore qtdoc qtquick qtqml

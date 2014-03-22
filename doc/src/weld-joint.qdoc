@@ -1,14 +1,6 @@
 /*!
-  \class Weild Joint
-    \title  weild joint
-    \page weld-joint.html
-    
-    Q_PROPERTY(float referenceAngle READ referenceAngle WRITE setReferenceAngle NOTIFY referenceAngleChanged)
-    Q_PROPERTY(float frequencyHz READ frequencyHz WRITE setFrequencyHz NOTIFY frequencyHzChanged)
-    Q_PROPERTY(float dampingRatio READ dampingRatio WRITE setDampingRatio NOTIFY dampingRatioChanged)
-    Q_PROPERTY(QPointF localAnchorA READ localAnchorA WRITE setLocalAnchorA NOTIFY localAnchorAChanged)
-    Q_PROPERTY(QPointF localAnchorB READ localAnchorB WRITE setLocalAnchorB NOTIFY localAnchorBChanged)
-
-
-\annotatedlist box2d_qml
+    \qmlclass Box2DWeldJoint
+    \inqmlmodule Box2D 1.1
+    \instantiates Box2DWeldJoint
+    \inherits Item
 */

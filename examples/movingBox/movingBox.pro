@@ -6,7 +6,7 @@ OTHER_FILES = \
                     movingBox.qml \
                     Wall.qml \
                     WoodenBox.qml \
-doc/src/*.qdoc
+                    doc/src/movingBox.qdoc
 
 
 EXAMPLE_FILES = \

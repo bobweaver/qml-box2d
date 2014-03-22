@@ -1,5 +1,5 @@
 /*!
-    \qmltype Box2DWorld
+    \qmltype World
     \qmlclass Box2DWorld
     \instantiates Box2DWorld
     \inqmlmodule Box2D 1.1

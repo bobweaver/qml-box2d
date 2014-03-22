@@ -27,7 +27,7 @@
 
 /*!
     \title Box2D - Friction Example
-    \example Friction
+    \example friction
     \brief This example shows how to use Box2D to make a app that uses friction to a element
 
     \image friction.png

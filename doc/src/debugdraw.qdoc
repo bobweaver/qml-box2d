@@ -1,11 +1,4 @@
 /*!
-    \class DebugDraw
-    \title DebugDraw
-    \page debug-draw.html
-
-    Q_PROPERTY(Box2DWorld *world READ world WRITE setWorld)
-
-
-
-\annotatedlist box2d_qml
+ \qmlclass Box2DDebugDraw
+    \inqmlmodule Box2D 1.1
 */

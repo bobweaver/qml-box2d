@@ -1,9 +1,5 @@
 /*!
-    \class Polygon
-    \title Polygon
-    \page polygon.html
-
-
-
-\annotatedlist box2d_qml
+ \qmlclass Box2DPolygon
+    \inqmlmodule Box2D 1.1
+    \instantiates Box2DPolygon
 */

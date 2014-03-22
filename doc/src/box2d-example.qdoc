@@ -18,112 +18,69 @@
         \li Example Name
         \li Brief Description
     \row
-        \li \l {Accelerometer}
+        \li \l {accelerometer}
         \li This example shows how to use Box2D
              with Senonsors from the Qt Framework
     \row
-        \li \l {Distance}
-        \li This example shows how to use Box2D
-             for Distance mesurment. and how to move
-             things based on that.
+        \li \l {distance}
+        \li TThis example shows how to use Box2D for Distance mesurment. and how to move things based on that.
     \row
-        \li \l {Friction}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li \l {friction}
+        \li This example shows how to use Box2D to make a app that uses friction to a element
     \row
-        \li \l {Rope}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li \l {rope}
+        \li This example shoes how one can make a rope
+            feature with Box2d using the RopeJoint Element.
     \row
         \li \l {polygons}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use the Box2D Element Polygon.
     \row
         \li \l {monera}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use Box2D to make a Monera example
     \row
         \li \l {fixtures}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use Box2D element Fixtures
     \row
         \li \l {demolition}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shoes how to use Box2D for Demolition of objects with a wheel that falls from the sky.
     \row
         \li \l {revolute}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use the Box2D element RevoluteJoint
     \row
-        \li \l {movingBox}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li \l {movingbox}
+        \li This example show how to use Box2D for colision  with moving boxes.
     \row
         \li \l {impulse}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use Box2D to make a Impulse example. Inother words how to make a bouncing ball
     \row
         \li \l {filtering}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use Box2D for filtering objects opacity.
     \row
         \li \l {cannon}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use Box2D to make a cannon ball game.
     \row
         \li \l {wheel}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows a wheel example for box2d's Circle Element
     \row
         \li \l {pulley}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use the Box2D element PulleyJoint
     \row
         \li \l {mouse}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use Box2D with a Mouse to fling boxes around a world
     \row
         \li \l {gear}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li his example shows how to use the Box2D to make a pinball machine
     \row
         \li \l {weld}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use box2d element WeldJoint
     \row
         \li \l {boxes}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use boxes with Box2d
     \row
         \li \l {prismatic}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use the Box2D Element PrismaticJoint
     \row
         \li \l {motorjoint}
-        \li This example shows how to use Box2D
-              to make a app that uses friction to a
-              element
+        \li This example shows how to use Box2D element MotorJoint
     \endtable
-
-
-
-    \annotatedlist box2d_examples
 */

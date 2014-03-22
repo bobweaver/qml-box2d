@@ -27,7 +27,7 @@
 
 /*!
     \title Box2D -  Distance Example
-    \example Distance
+    \example distance
     \brief This example shows how to use Box2D for Distance mesurment. and how to move things based on that.
 
     \image distance.png

@@ -1,18 +1,4 @@
 /*!
-  \class RevoluteJoint
-    \title revolute-joint
-    \page revolute-joint.html
-
-    
-
-    Q_PROPERTY(float lowerAngle READ lowerAngle WRITE setLowerAngle NOTIFY lowerAngleChanged)
-    Q_PROPERTY(float upperAngle READ upperAngle WRITE setUpperAngle NOTIFY upperAngleChanged)
-    Q_PROPERTY(float maxMotorTorque READ maxMotorTorque WRITE setMaxMotorTorque NOTIFY maxMotorTorqueChanged)
-    Q_PROPERTY(float motorSpeed READ motorSpeed WRITE setMotorSpeed NOTIFY motorSpeedChanged)
-    Q_PROPERTY(bool enableLimit READ enableLimit WRITE setEnableLimit NOTIFY enableLimitChanged)
-    Q_PROPERTY(bool enableMotor READ enableMotor WRITE setEnableMotor NOTIFY enableMotorChanged)
-    Q_PROPERTY(QPointF localAnchorA READ localAnchorA WRITE setLocalAnchorA NOTIFY localAnchorAChanged)
-    Q_PROPERTY(QPointF localAnchorB READ localAnchorB WRITE setLocalAnchorB NOTIFY localAnchorBChanged)
-
-\annotatedlist box2d_qml
+ \qmlclass Box2DRevoluteJoint
+    \inqmlmodule Box2D 1.1
 */

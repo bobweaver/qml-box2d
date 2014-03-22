@@ -1,12 +1,4 @@
 /*!
-    \class Edge
-    \title  Edge
-    \page edge.html
-    
-inherint of    vertices
-
-Q_PROPERTY(QVariantList vertices READ vertices WRITE setVertices NOTIFY verticesChanged)
-
-
-\annotatedlist box2d_qml
+ \qmlclass Box2DEdge
+    \inqmlmodule Box2D 1.1
 */

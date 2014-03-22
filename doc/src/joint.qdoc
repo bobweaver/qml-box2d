@@ -1,13 +1,4 @@
 /*!
-    \class  Joint
-    \title Joint
-    \page joint.html
-
-    Q_PROPERTY(bool collideConnected READ collideConnected WRITE setCollideConnected NOTIFY collideConnectedChanged)
-    Q_PROPERTY(Box2DWorld *world READ box2DWorld WRITE setWorld NOTIFY worldChanged)
-    Q_PROPERTY(Box2DBody *bodyA READ bodyA WRITE setBodyA NOTIFY bodyAChanged)
-    Q_PROPERTY(Box2DBody *bodyB READ bodyB WRITE setBodyB NOTIFY bodyBChanged)
-
-
-\annotatedlist box2d_qml
+    \qmlclass Box2DJoint
+    \inqmlmodule Box2D 1.1
 */

@@ -26,17 +26,11 @@
 ****************************************************************************/
 
 /*!
-    \title QML Plugin Example
-    \example qmlextensionplugins
+    \title Box2D - MovingBox Example
+    \example movingBox
+    \brief This example show how to use Box2D for colision  with moving boxes.
 
-    \brief This example creates a C++ plugin extension by subclassing QQmlExtensionPlugin.
+    \image movingbox.png
 
-    \image qml-plugins-example.png
 
-    To run this example, use the following commands on the prompt:
-    \code
-     > qmake
-     > make
-     > qmlscene -I imports plugins.qml
-    \endcode
 */

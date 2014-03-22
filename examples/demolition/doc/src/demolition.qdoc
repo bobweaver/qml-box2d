@@ -27,7 +27,7 @@
 
 /*!
     \title Box2D Demolition Example
-    \example Demolition
+    \example demolition
     \brief This example shoes how to use Box2D for Demolition of objects with a wheel that falls from the sky.
 
     \image demolition.png

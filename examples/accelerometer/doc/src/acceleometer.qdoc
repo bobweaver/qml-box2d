@@ -26,7 +26,7 @@
 ****************************************************************************/
 /*!
     \title  Box2D - Acceleometer Example
-    \example Acceleometer
+    \example acceleometer
     \brief This example shows how to use Box2D with Senonsors from the Qt Framework
 
     \image acceleometer.png

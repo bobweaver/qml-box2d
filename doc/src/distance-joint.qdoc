@@ -1,14 +1,4 @@
 /*!
-    \class DistanceJoint
-    \title DistanceJoint
-    \page distance-joint.html
-    
-    Q_PROPERTY(float length READ length WRITE setLength NOTIFY lengthChanged)
-    Q_PROPERTY(float frequencyHz READ frequencyHz WRITE setFrequencyHz NOTIFY frequencyHzChanged)
-    Q_PROPERTY(float dampingRatio READ dampingRatio WRITE setDampingRatio NOTIFY dampingRatioChanged)
-    Q_PROPERTY(QPointF localAnchorA READ localAnchorA WRITE setLocalAnchorA NOTIFY localAnchorAChanged)
-    Q_PROPERTY(QPointF localAnchorB READ localAnchorB WRITE setLocalAnchorB NOTIFY localAnchorBChanged)
-
-
-\annotatedlist box2d_qml
+ \qmlclass Box2DDistanceJoint
+    \inqmlmodule Box2D 1.1
 */
