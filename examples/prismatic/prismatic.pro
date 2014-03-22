@@ -5,7 +5,9 @@ QT += qml quick gui core
 OTHER_FILES = prismatic.qml \
                     Wall.qml \
                     Ball.qml \
-                    Square.qml
+                    Square.qml \
+                    doc/src/*.qdoc
+
 
 EXAMPLE_FILES = prismatic.qml \
                     Wall.qml \

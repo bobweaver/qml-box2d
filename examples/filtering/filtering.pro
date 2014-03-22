@@ -3,7 +3,8 @@ TEMPLATE = app
 QT += qml quick gui core
 
 OTHER_FILES = filtering.qml \
-                    Wall.qml
+                    Wall.qml \
+doc/src/*.qdoc
 
 EXAMPLE_FILES = filtering.qml \
                     Wall.qml

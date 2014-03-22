@@ -5,7 +5,9 @@ OTHER_FILES = \
                     MovableBox.qml \
                     movingBox.qml \
                     Wall.qml \
-                    WoodenBox.qml
+                    WoodenBox.qml \
+doc/src/*.qdoc
+
 
 EXAMPLE_FILES = \
                     MovableBox.qml \

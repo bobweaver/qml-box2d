@@ -1,10 +1,8 @@
 /*!
   \class RevoluteJoint
-    \group qml-box2d
     \title revolute-joint
     \page revolute-joint.html
-    \previouspage .html
-    \nextpage .html
+
     
 
     Q_PROPERTY(float lowerAngle READ lowerAngle WRITE setLowerAngle NOTIFY lowerAngleChanged)

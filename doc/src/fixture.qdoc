@@ -1,9 +1,8 @@
 /*!
-    \group qml-box2d
-    \title 
+    \class Fixture
+    \title Fixture
     \page fixture.html
-    \previouspage .html
-    \nextpage .html
+
     
     Q_PROPERTY(float density READ density WRITE setDensity NOTIFY densityChanged)
     Q_PROPERTY(float friction READ friction WRITE setFriction NOTIFY frictionChanged)

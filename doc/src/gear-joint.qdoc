@@ -1,6 +1,6 @@
 /*!
-    \group qml-box2d
-    \title 
+    \class GearJoint
+    \title GearJoint
     \page gear-joint.html
 
     

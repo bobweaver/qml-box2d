@@ -35,15 +35,16 @@ exampledirs += ../examples \
 # Specify example install dir under
 examplesinstallpath = ../examples/
 
-headerdirs += ../box2d
+headerdirs += ..
 
 imagedirs += images
 
-sourcedirs += ../box2d
+sourcedirs += ../
+sources.fileextensions  = *.qdoc\
+                                                  *.cpp \
+                                                  *.h
 
-excludedirs += ../../
 
-sources.fileextensions  = "*.qdoc"
 
 outputdir = $OUTDIR
 

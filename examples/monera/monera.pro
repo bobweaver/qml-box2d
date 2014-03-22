@@ -16,7 +16,8 @@ OTHER_FILES = \
                     Wall.qml \
                     fungus.png \
                     shell2.png \
-                    SpeciesModel.qml
+                    SpeciesModel.qml \
+                    doc/src/*.qdoc
 
 EXAMPLE_FILES = \
                     monera.qml \

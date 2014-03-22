@@ -1,10 +1,8 @@
 /*!
-    \group qml-box2d
-    \title 
+    \class Polygon
+    \title Polygon
     \page polygon.html
-    \previouspage .html
-    \nextpage .html
-    
+
 
 
 \annotatedlist box2d_qml

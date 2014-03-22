@@ -2,8 +2,6 @@
     \class Edge
     \title  Edge
     \page edge.html
-    \previouspage .html
-    \nextpage .html
     
 inherint of    vertices
 

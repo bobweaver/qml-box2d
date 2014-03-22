@@ -4,7 +4,9 @@ QT += qml quick gui core
 
 OTHER_FILES = motorjoint.qml \
                     boat.png \
-                    wave.png
+                    wave.png \
+doc/src/*.qdoc
+
 
 EXAMPLE_FILES = motorjoint.qml \
                     boat.png \

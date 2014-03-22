@@ -3,7 +3,9 @@ QT += qml quick gui core
 
 OTHER_FILES = fixtures.qml \
                     Wall.qml \
-                    images/wall.jpg
+                    images/wall.jpg \
+doc/src/*.qdoc
+
 
 EXAMPLE_FILES = fixtures.qml \
                     Wall.qml \

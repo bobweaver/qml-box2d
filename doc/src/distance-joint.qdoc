@@ -1,6 +1,6 @@
 /*!
-    \group qml-box2d
-    \title 
+    \class DistanceJoint
+    \title DistanceJoint
     \page distance-joint.html
     
     Q_PROPERTY(float length READ length WRITE setLength NOTIFY lengthChanged)

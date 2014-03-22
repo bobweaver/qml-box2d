@@ -1,6 +1,6 @@
 /*!
-    \group qml-box2d
-    \title 
+    \class FrictionJoint
+    \title FrictionJoint
     \page friction-joint.html
 
     Q_PROPERTY(float maxForce READ maxForce WRITE setMaxForce NOTIFY maxForceChanged)

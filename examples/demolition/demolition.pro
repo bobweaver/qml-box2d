@@ -10,7 +10,8 @@ OTHER_FILES = demolition.qml \
                     images/plate.png \
                     images/skyline.png \
                     images/wheel.png \
-                    images/woodenbox.png
+                    images/woodenbox.png \
+                    doc/src/demolition.qdoc
 
 EXAMPLE_FILES =  demolition.qml \
                     Wall.qml \

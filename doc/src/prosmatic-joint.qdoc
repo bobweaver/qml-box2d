@@ -1,9 +1,7 @@
 /*!
-    \group qml-box2d
-    \title 
+  \class  ProsmaticJoint
+    \title  ProsmaticJoint
     \page prosmatic-joint.html
-    \previouspage .html
-    \nextpage .html
     
     Q_PROPERTY(float lowerTranslation READ lowerTranslation WRITE setLowerTranslation NOTIFY lowerTranslationChanged)
     Q_PROPERTY(float upperTranslation READ upperTranslation WRITE setUpperTranslation NOTIFY upperTranslationChanged)

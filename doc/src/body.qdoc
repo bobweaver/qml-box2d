@@ -1,5 +1,5 @@
 /*!
-    \group qml-box2d
+    \class Body
     \title Body
     \page body.html
     
@@ -10,31 +10,54 @@
      \row \li import statement  \li import Box2d 1.1
      \endtable
 
+The Body element is used to make a Body of a element.  It is often used in a Element that is made
+The Body element has many propertys.
+
+A example of Using the Body element could be
+used in a Qml file called Wall.qml
+
+
+import QtQuick 2.0
+import Box2D 1.1
+
+Body {
+    bodyType: Body.Static
+    fixtures: Box { anchors.fill: parent }
+}
+
+
 
     properties
 
-    Q_PROPERTY(qreal linearDamping READ linearDamping WRITE setLinearDamping NOTIFY linearDampingChanged)
-    Q_PROPERTY(qreal angularDamping READ angularDamping WRITE setAngularDamping NOTIFY angularDampingChanged)
-    Q_PROPERTY(BodyType bodyType READ bodyType WRITE setBodyType NOTIFY bodyTypeChanged)
-    Q_PROPERTY(bool bullet READ isBullet WRITE setBullet NOTIFY bulletChanged)
-    Q_PROPERTY(bool sleepingAllowed READ sleepingAllowed WRITE setSleepingAllowed NOTIFY sleepingAllowedChanged)
-    Q_PROPERTY(bool fixedRotation READ fixedRotation WRITE setFixedRotation NOTIFY fixedRotationChanged)
-    Q_PROPERTY(bool active READ active WRITE setActive)
-    Q_PROPERTY(bool awake READ awake WRITE setAwake)
-    Q_PROPERTY(QPointF linearVelocity READ linearVelocity WRITE setLinearVelocity NOTIFY linearVelocityChanged)
-    Q_PROPERTY(QQmlListProperty<Box2DFixture> fixtures READ fixtures)
-    Q_PROPERTY(qreal gravityScale READ gravityScale WRITE setGravityScale NOTIFY gravityScaleChanged)
+    qreal linearDamping
+    qreal angularDamping
+ enum    BodyType bodyType
+    bool bullet
+    bool sleepingAllowed
+    bool fixedRotation
+    bool active
+    bool awake
+    QPointF linearVelocity
+    QQmlListProperty<Box2DFixture> fixtures
+    qreal gravityScale
 
-    Enum
 
-public:
-    enum BodyType
-        Static = 0,
-        Kinematic,
+
+Signals
+
+linearDampingChanged
+angularDampingChanged
+ bodyTypeChanged
+bulletChanged
+sleepingAllowedChanged
+fixedRotationChanged
+linearVelocityChanged
+gravityScaleChanged
+
+  BodyTypes
+        Static
+        Kinematic
         Dynamic
-
-
-        Signals
 
 
 \annotatedlist box2d_qml

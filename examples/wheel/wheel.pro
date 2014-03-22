@@ -6,7 +6,9 @@ OTHER_FILES = wheel.qml \
                     Wall.qml \
                     images/wall.jpg \
                     images/wheel.png \
-                    images/arrow.png
+                    images/arrow.png \
+                    doc/src/*.qdoc
+
 
 EXAMPLE_FILES = wheel.qml \
                     Wall.qml \

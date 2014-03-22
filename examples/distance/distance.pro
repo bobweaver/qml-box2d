@@ -6,7 +6,8 @@ OTHER_FILES = distance.qml \
                     Ball.qml \
                     Wall.qml \
                     WoodenBox.qml \
-                    Square.qml
+                    Square.qml \
+doc/src/*.qdoc
 
 EXAMPLE_FILES = distance.qml \
                     Ball.qml \

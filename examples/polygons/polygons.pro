@@ -4,7 +4,9 @@ QT += qml quick gui core
 
 OTHER_FILES = polygons.qml \
                     Wall.qml \
-                    Trapezoid.qml
+                    Trapezoid.qml \
+doc/src/*.qdoc
+
 
 EXAMPLE_FILES = polygons.qml \
                     Wall.qml \

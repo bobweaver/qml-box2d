@@ -1,11 +1,7 @@
 /*!
-    \group qml-box2d
+    \class  Joint
     \title Joint
     \page joint.html
-    \previouspage .html
-    \nextpage .html
-    
-    \class Joint
 
     Q_PROPERTY(bool collideConnected READ collideConnected WRITE setCollideConnected NOTIFY collideConnectedChanged)
     Q_PROPERTY(Box2DWorld *world READ box2DWorld WRITE setWorld NOTIFY worldChanged)

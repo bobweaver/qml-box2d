@@ -2,15 +2,49 @@
   \class World
     \page world.html
     \title World
+    \inmodule Box2D
+
+\section1 Overview
+
+    The World Element is used for setting up a world for a window . World is offten used
+    as the over all area of where you may be placing other Elements in. This is offten used
+    on the top level Qml file
 
 
+\section1 Propertys
+    running
+    timeStep
+    velocityIterations
+    positionIterations
+    frameTime
+    gravity
 
-    Q_PROPERTY(bool running READ isRunning WRITE setRunning NOTIFY runningChanged)
-    Q_PROPERTY(float timeStep READ timeStep WRITE setTimeStep)
-    Q_PROPERTY(int velocityIterations READ velocityIterations WRITE setVelocityIterations)
-    Q_PROPERTY(int positionIterations READ positionIterations WRITE setPositionIterations)
-    Q_PROPERTY(int frameTime READ frameTime WRITE setFrameTime)
-    Q_PROPERTY(QPointF gravity READ gravity WRITE setGravity NOTIFY gravityChanged)
 
-\annotatedlist box2d_qml
+\section1  Signals
+    runningChanged
+    gravityChanged
+
+\section1  example of how to use World
+\code
+import QtQuick 2.0
+import Box2D 1.1
+
+Image {
+    id: screen;
+    width: 640;
+    height: 480;
+    source: "background.png"
+
+    World {
+        id: world;
+        anchors.fill: parent
+
+        ......
+        ..............
+        ...................
+
+    }
+}
+\endcode
+
 */

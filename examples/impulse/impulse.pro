@@ -3,7 +3,9 @@ QT += qml quick gui core
 
 OTHER_FILES = impulse.qml \
                     Wall.qml \
-                    Ball.qml
+                    Ball.qml \
+doc/src/*.qdoc
+
 
 EXAMPLE_FILES = impulse.qml \
                     Wall.qml \

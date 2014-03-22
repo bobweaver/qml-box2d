@@ -7,7 +7,8 @@ OTHER_FILES = cannon.qml \
                     images/cannon.png \
                     images/wall.jpg \
                     sounds/gear.wav \
-                    sounds/cannon.wav
+                    sounds/cannon.wav \
+                    doc/src/cannon.qdoc
 
 EXAMPLE_FILES =  cannon.qml \
                     Wall.qml \

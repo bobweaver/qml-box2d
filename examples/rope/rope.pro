@@ -4,7 +4,9 @@ QT += qml quick gui core
 
 OTHER_FILES = rope.qml \
                     Wall.qml \
-                    images/wall.jpg
+                    images/wall.jpg \
+doc/src/*.qdoc
+
 
 EXAMPLE_FILES = rope.qml \
                     Wall.qml \

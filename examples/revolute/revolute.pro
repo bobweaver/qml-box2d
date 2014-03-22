@@ -3,6 +3,8 @@ QT += qml quick gui core
 
 OTHER_FILES = revolute.qml \
                     Wall.qml \
+doc/src/*.qdoc
+
 
 EXAMPLE_FILES = revolute.qml \
                     Wall.qml \
