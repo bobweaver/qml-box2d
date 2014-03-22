@@ -1,7 +1,5 @@
 /*!
-    \qmlclass Box2DBody
     \qmltype Box2DBody
     \instantiates Box2DBody
-    \inherits Item
-    \inqmlmodule Box2D 1
+    \inqmlmodule Box2D 1.1
 */

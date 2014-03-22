@@ -31,6 +31,14 @@
 
 #include <QPainter>
 
+/*!
+ \qmltype DebugDraw
+    \instantiates Box2DDebugDraw
+    \inqmlmodule Box2D 1.1
+    \brief Provids a Debugging Viewer for Box2D.
+
+*/
+
 class DebugDraw : public b2Draw
 {
 public:
@@ -155,7 +163,10 @@ Box2DDebugDraw::Box2DDebugDraw(QQuickItem *parent) :
 {
     setFlag(QQuickItem::ItemHasContents, true);
 }
-
+/*!
+\qmlproperty string DebugDraw::world
+    the world that you want to show in debug mode
+*/
 void Box2DDebugDraw::setWorld(Box2DWorld *world)
 {
     if (mWorld == world)

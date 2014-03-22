@@ -34,6 +34,14 @@
 #include "box2dfixture.h"
 #include "box2dworld.h"
 
+/*!
+    \qmltype Body
+    \instantiates Box2DBody
+    \inqmlmodule Box2D 1.1
+    \brief Provids a Body to wrap fictures in.
+*/
+
+
 Box2DBody::Box2DBody(QQuickItem *parent) :
     QQuickItem(parent),
     mBody(0),
@@ -51,6 +59,8 @@ Box2DBody::~Box2DBody()
 {
     cleanup(mWorld);
 }
+
+
 
 qreal Box2DBody::linearDamping() const
 {
@@ -70,6 +80,11 @@ void Box2DBody::setLinearDamping(qreal _linearDamping)
     emit linearDampingChanged();
 }
 
+/*!
+    \qmlproperty  qreal Body::angularDamping
+     damping for a object
+ */
+
 qreal Box2DBody::angularDamping() const
 {
     if(mBody) return mBody->GetAngularDamping();
@@ -86,6 +101,15 @@ void Box2DBody::setAngularDamping(qreal _angularDamping)
 
     emit angularDampingChanged();
 }
+
+/*!
+ * \qmlproperty enum Body::bodyType
+    A body type that is enumerated from Box2DBody::BodyType
+    static
+    foo
+    ect
+
+ */
 
 Box2DBody::BodyType Box2DBody::bodyType() const
 {
@@ -105,6 +129,11 @@ void Box2DBody::setBodyType(BodyType _bodyType)
     emit bodyTypeChanged();
 }
 
+/*!
+/qmlproperty bool Body::isBullet
+boolean property for the body read more about bullet
+ */
+
 bool Box2DBody::isBullet() const
 {
     if(mBody) mBody->IsBullet();
@@ -122,6 +151,11 @@ void Box2DBody::setBullet(bool _bullet)
 
     emit bulletChanged();
 }
+
+/*!
+  \qmlproperty bool Body::sleepingAllowed
+ boolean property that allows one to put the body to sleep
+ */
 
 bool Box2DBody::sleepingAllowed() const
 {
@@ -141,6 +175,10 @@ void Box2DBody::setSleepingAllowed(bool allowed)
     emit sleepingAllowedChanged();
 }
 
+/*!
+  \qmlproperty bool Body::fixedRotation
+  bollean property that allows one to set fixedRotation to a Body
+ */
 bool Box2DBody::fixedRotation() const
 {
     if(mBody) mBody->IsFixedRotation();
@@ -159,6 +197,10 @@ void Box2DBody::setFixedRotation(bool _fixedRotation)
     emit fixedRotationChanged();
 }
 
+/*!
+  \qmlproperty  bool  Body::active
+  booean property to set the body as active or not
+ */
 bool Box2DBody::active() const
 {
     if(mBody) mBody->IsActive();
@@ -176,6 +218,10 @@ void Box2DBody::setActive(bool _active)
         mBodyDef.active = _active;
 }
 
+/*!
+  \qmlproperty bool Body::awake
+  set the body as awake or not
+ */
 bool Box2DBody::awake() const
 {
     if(mBody) mBody->IsAwake();
@@ -192,6 +238,8 @@ void Box2DBody::setAwake(bool _awake)
     else
         mBodyDef.awake = _awake;
 }
+
+
 
 QPointF Box2DBody::linearVelocity() const
 {
@@ -232,6 +280,23 @@ void Box2DBody::setGravityScale(qreal _gravityScale)
         emit gravityScaleChanged();
     }
 }
+
+/*!
+ \qmlproperty QQmlListProperty Body::fixtures
+ a list of elements that will be attached to the ficture in
+  \code
+  Body{
+  ...
+  ......
+  fixtures{
+  Box{
+        ..
+        ....
+    }
+  }
+}
+ \endcode
+ */
 
 QQmlListProperty<Box2DFixture> Box2DBody::fixtures()
 {
@@ -285,9 +350,11 @@ void Box2DBody::initialize(b2World *world)
     emit bodyCreated();
 }
 
-/**
- * Synchronizes the state of this body with the internal Box2D state.
+/*!
+ \qmlsignal Body::synchronize()
+ Synchronizes the state of this body with the internal Box2D state.
  */
+
 void Box2DBody::synchronize()
 {
     Q_ASSERT(mBody);
@@ -311,6 +378,18 @@ void Box2DBody::synchronize()
     mSynchronizing = false;
 }
 
+/*!
+  \qmlsignal Body::cleanup(b2World *world)
+   clean up the whole internal  Box2D
+   this needs  argument with it for the world
+   example:
+   \code
+   Component.onCompleated{
+   cleanup(myworld);
+   }
+   \endcode
+ */
+
 void Box2DBody::cleanup(b2World *world)
 {
     if(mBody) world->DestroyBody(mBody);
@@ -326,6 +405,7 @@ void Box2DBody::componentComplete()
         initialize(mWorld);
 }
 
+
 b2Body *Box2DBody::body() const
 {
     return mBody;
@@ -336,6 +416,10 @@ b2World *Box2DBody::world() const
     return mWorld;
 }
 
+/*!
+    \qmlproperty Body::geometryChanged(newGeometry,oldGeometry)
+
+*/
 void Box2DBody::geometryChanged(const QRectF &newGeometry,
                                 const QRectF &oldGeometry)
 {
@@ -348,6 +432,10 @@ void Box2DBody::geometryChanged(const QRectF &newGeometry,
     QQuickItem::geometryChanged(newGeometry, oldGeometry);
 }
 
+/*!
+    \qmlmethod  Box2DBody::onRotationChanged
+ */
+
 void Box2DBody::onRotationChanged()
 {
     if (!mSynchronizing && mBody) {
@@ -356,6 +444,10 @@ void Box2DBody::onRotationChanged()
     }
 }
 
+/*!
+ \qmlsignal Body::applyLinearImpulse(QPointF &impulse, QPointF &point)
+applyLinearImpulse
+ */
 void Box2DBody::applyLinearImpulse(const QPointF &impulse,
                                    const QPointF &point)
 {
@@ -367,11 +459,20 @@ void Box2DBody::applyLinearImpulse(const QPointF &impulse,
     }
 }
 
+
+/*!
+     \qmlsignal  Body::applyTorque(qreal torque)
+ */
 void Box2DBody::applyTorque(qreal torque)
 {
     if (mBody)
         mBody->ApplyTorque(torque,true);
 }
+
+/*!
+ * \qmlsignal Body::getWorldCenter()
+ returns the center of your world nherent of QPointF
+ */
 
 QPointF Box2DBody::getWorldCenter() const
 {
@@ -384,6 +485,11 @@ QPointF Box2DBody::getWorldCenter() const
     return worldCenter;
 }
 
+
+/*!
+  \qmlsignal Body::applyForce(QPointF &force,QPointF &point)
+apply force to a body
+ */
 void Box2DBody::applyForce(const QPointF &force, const QPointF &point)
 {
     if (mBody) {
@@ -393,6 +499,8 @@ void Box2DBody::applyForce(const QPointF &force, const QPointF &point)
                                          -point.y() / scaleRatio),true);
     }
 }
+
+
 
 float Box2DBody::getMass() const
 {

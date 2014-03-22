@@ -41,7 +41,7 @@ HELP_DEP_FILES = $$PWD/src/qml-box2d.qdoc \
             $$PWD/src/box2d-example.qdoc \
             $$PWD/src/box2d.qdoc \
             $$PWD/src/box.qdoc \
-            $$PWD/src/body.qdoc \
+#            $$PWD/src/body.qdoc \
             $$PWD/src/circle.qdoc \
             $$PWD/src/debugdraw.qdoc \
             $$PWD/src/edge.qdoc \

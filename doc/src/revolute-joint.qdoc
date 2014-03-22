@@ -1,4 +1,6 @@
 /*!
  \qmlclass Box2DRevoluteJoint
     \inqmlmodule Box2D 1.1
+    \instantiates Box2DRevoluteJoint
+    \inherits Item
 */

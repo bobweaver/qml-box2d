@@ -1,9 +1,10 @@
 /*!
-    \qmltype Box2DWorld
     \qmlclass Box2DWorld
     \instantiates Box2DWorld
+    \qmlmodule Box2D 1.1
     \inqmlmodule Box2D 1.1
     \ingroup qml-box2d
-    \inherits Box2DWorld
+    \inherits Item
     \since 5.2.0
+    \title World
 */

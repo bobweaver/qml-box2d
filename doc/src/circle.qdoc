@@ -1,4 +1,4 @@
 /*!
- \qmlclass Box2DCircle
+    \qmltype Box2DCircle
     \inqmlmodule Box2D 1.1
 */
