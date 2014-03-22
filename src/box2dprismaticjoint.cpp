@@ -28,6 +28,9 @@
 #include "box2dworld.h"
 #include "box2dbody.h"
 
+/*!
+\class Box2DPrismaticJoint
+*/
 Box2DPrismaticJoint::Box2DPrismaticJoint(QObject *parent) :
     Box2DJoint(parent),
     mPrismaticJointDef(),
@@ -35,6 +38,12 @@ Box2DPrismaticJoint::Box2DPrismaticJoint(QObject *parent) :
     anchorsAuto(true)
 {
 }
+/*!
+    \qmltype PrismaticJoint
+    \instantiates Box2DPrismaticJoint
+    \inqmlmodule Box2D 1.1
+    \brief Provids a Box2DPrismaticJoint to  in.
+*/
 
 Box2DPrismaticJoint::~Box2DPrismaticJoint()
 {
@@ -57,6 +66,11 @@ void Box2DPrismaticJoint::setLowerTranslation(float lowerTranslation)
     emit lowerTranslationChanged();
 }
 
+
+/*!
+\qmlproperty float PrismaticJoint::upperTranslation
+DOCME
+*/
 float Box2DPrismaticJoint::upperTranslation() const
 {
     return mPrismaticJointDef.upperTranslation * scaleRatio;
@@ -74,6 +88,10 @@ void Box2DPrismaticJoint::setUpperTranslation(float upperTranslation)
     emit upperTranslationChanged();
 }
 
+/*!
+\qmlproperty float PrismaticJoint::maxMotorForce
+DOCME
+*/
 float Box2DPrismaticJoint::maxMotorForce() const
 {
     return mPrismaticJointDef.maxMotorForce;
@@ -90,6 +108,10 @@ void Box2DPrismaticJoint::setMaxMotorForce(float maxMotorForce)
     emit maxMotorForceChanged();
 }
 
+/*!
+\qmlproperty float PrismaticJoint::motorSpeed
+DOCME
+*/
 float Box2DPrismaticJoint::motorSpeed() const
 {
     return mPrismaticJointDef.motorSpeed * scaleRatio;
@@ -122,6 +144,10 @@ void Box2DPrismaticJoint::setEnableLimit(bool enableLimit)
     emit enableLimitChanged();
 }
 
+/*!
+\qmlproperty bool PrismaticJoint::enableMotor
+DOCME
+*/
 bool Box2DPrismaticJoint::enableMotor() const
 {
     return mPrismaticJointDef.enableMotor;
@@ -138,6 +164,10 @@ void Box2DPrismaticJoint::setEnableMotor(bool enableMotor)
     emit enableMotorChanged();
 }
 
+/*!
+\qmlproperty QPointF PrismaticJoint::axis
+DOCME
+*/
 QPointF Box2DPrismaticJoint::axis() const
 {
     return QPointF(mPrismaticJointDef.localAxisA.x * scaleRatio,
@@ -151,11 +181,19 @@ void Box2DPrismaticJoint::setAxis(const QPointF &axis)
     emit axisChanged();
 }
 
+/*!
+\qmlproperty QPointF PrismaticJoint::localAnchorA
+DOCME
+*/
 QPointF Box2DPrismaticJoint::localAnchorA() const
 {
     return QPointF(mPrismaticJointDef.localAnchorA.x * scaleRatio, mPrismaticJointDef.localAnchorA.y * scaleRatio);
 }
 
+/*!
+\qmlproperty QPointF PrismaticJoint::localAnchorB
+DOCME
+*/
 QPointF Box2DPrismaticJoint::localAnchorB() const
 {
     return QPointF(mPrismaticJointDef.localAnchorB.x * scaleRatio, mPrismaticJointDef.localAnchorB.y * scaleRatio);
@@ -219,12 +257,20 @@ b2Joint *Box2DPrismaticJoint::GetJoint()
     return mPrismaticJoint;
 }
 
+/*!
+\qmlsignal PrismaticJoint::GetJointTranslation()
+DOCME
+*/
 float Box2DPrismaticJoint::GetJointTranslation()
 {
     if(mPrismaticJoint) return mPrismaticJoint->GetJointTranslation() * scaleRatio;
     return 0.0;
 }
 
+/*!
+\qmlsignal PrismaticJoint::GetJointSpeed()
+DOCME
+*/
 float Box2DPrismaticJoint::GetJointSpeed()
 {
     if(mPrismaticJoint) return mPrismaticJoint->GetJointSpeed();

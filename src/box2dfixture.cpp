@@ -30,6 +30,9 @@
 #include <QDebug>
 #include "Common/b2Math.h"
 
+/*!
+\class Box2DFixture
+*/
 Box2DFixture::Box2DFixture(QQuickItem *parent) :
     QQuickItem(parent),
     mFixture(0),
@@ -38,7 +41,19 @@ Box2DFixture::Box2DFixture(QQuickItem *parent) :
     factorHeight(1.0)
 {
 }
+/*!
+    \qmltype Fixture
+    \instantiates Box2DFixture
+    \inqmlmodule Box2D 1.1
+    \brief Provids a Fixture fixtures to hang off of a Body .
+*/
 
+
+
+/*!
+/qmlproperty float Fixture::density
+DOCME
+*/
 float Box2DFixture::density() const
 {
     return mFixtureDef.density;
@@ -55,6 +70,11 @@ void Box2DFixture::setDensity(float density)
     emit densityChanged();
 }
 
+
+/*!
+\qmlproperty float Fixture::friction
+DOCME
+*/
 float Box2DFixture::friction() const
 {
     return mFixtureDef.friction;
@@ -71,6 +91,10 @@ void Box2DFixture::setFriction(float friction)
     emit frictionChanged();
 }
 
+/*!
+\qmlproperty float Fixture::restitution
+DOCME
+*/
 float Box2DFixture::restitution() const
 {
     return mFixtureDef.restitution;
@@ -92,6 +116,10 @@ bool Box2DFixture::isSensor() const
     return mFixtureDef.isSensor;
 }
 
+/*!
+\qmlproperty bool Fixture::sensor
+where is the getter function ?
+*/
 void Box2DFixture::setSensor(bool sensor)
 {
     if (mFixtureDef.isSensor == sensor)
@@ -103,6 +131,10 @@ void Box2DFixture::setSensor(bool sensor)
     emit sensorChanged();
 }
 
+/*!
+\qmlproperty enum Fixture::categories
+DOCME
+*/
 Box2DFixture::CategoryFlags Box2DFixture::categories() const
 {
     return CategoryFlags(mFixtureDef.filter.categoryBits);
@@ -117,6 +149,10 @@ void Box2DFixture::setCategories(CategoryFlags layers)
     emit categoriesChanged();
 }
 
+/*!
+\qmlproperty enum Fixture::collidesWith
+DOCME
+*/
 Box2DFixture::CategoryFlags Box2DFixture::collidesWith() const
 {
     return CategoryFlags(mFixtureDef.filter.maskBits);
@@ -131,6 +167,10 @@ void Box2DFixture::setCollidesWith(CategoryFlags layers)
     emit collidesWithChanged();
 }
 
+/*!
+/qmlproperty int Fixture::groupIndex
+DOCME
+*/
 int Box2DFixture::groupIndex() const
 {
     return mFixtureDef.filter.groupIndex;
@@ -158,6 +198,10 @@ void Box2DFixture::createFixture(b2Body *body)
     delete shape;
 }
 
+/*!
+\qmlsignal Fixture::GetBody()
+DOCME
+*/
 Box2DBody *Box2DFixture::GetBody() const
 {
     return static_cast<Box2DBody *>(mBody->GetUserData());
@@ -221,6 +265,15 @@ b2Vec2 *Box2DVerticesShape::scaleVertices()
 
 //=================== BOX =======================
 
+/*!
+    \qmltype Box
+    \instantiates Box2DBox
+    \inqmlmodule Box2D 1.1
+    \brief Provids a Box to wrap fictures in.
+*/
+/*!
+\class Box2DBox
+*/
 b2Shape *Box2DBox::createShape()
 {
     const qreal _x = x() / scaleRatio;
@@ -261,6 +314,18 @@ void Box2DBox::scale()
 
 //=================== CIRCLE =======================
 
+/*!
+    \qmltype Circle
+    \instantiates Box2DCircle
+    \inqmlmodule Box2D 1.1
+    \brief Provids a Circle.
+*/
+/*!
+\qmlproperty int Circle::radius
+*/
+/*!
+\class Box2DCircle
+*/
 b2Shape *Box2DCircle::createShape()
 {
     b2CircleShape *shape = new b2CircleShape;
@@ -284,6 +349,16 @@ void Box2DCircle::scale()
 
 //=================== POLYGON =======================
 
+/*!
+    \qmltype Polygon
+    \instantiates Box2DPolygon
+    \inqmlmodule Box2D 1.1
+    \brief Provids a Box2DPolygon.
+*/
+
+/*!
+\class Box2DPolygon
+*/
 b2Shape *Box2DPolygon::createShape()
 {
     const int count = mVertices.length();
@@ -327,6 +402,30 @@ void Box2DPolygon::scale()
 
 //=================== CHAIN =======================
 
+
+
+/*!
+    \qmltype Chain
+    \instantiates Box2DChain
+    \inqmlmodule Box2D 1.1
+    \brief Provids a Box2DChain.
+*/
+/*!
+\qmlproperty bool Chain::loop
+DOCME
+*/
+    /*!
+    \qmlproperty QPointF Chain::prevVertex
+    DOCME
+    */
+    /*!
+    \qmlproperty QPointF Chain::nextVertex
+    DOCME
+    */
+
+/*!
+\class  Box2DChain
+*/
 b2Shape *Box2DChain::createShape()
 {
     const int count = mVertices.length();
@@ -372,6 +471,16 @@ void Box2DChain::scale()
 
 //=================== EDGE =======================
 
+
+/*!
+    \qmltype Edge
+    \instantiates Box2DEdge
+    \inqmlmodule Box2D 1.1
+    \brief Provids a Box2DEdge.
+*/
+/*!
+\class  Box2DEdge
+*/
 b2Shape *Box2DEdge::createShape()
 {
     const int count = mVertices.length();

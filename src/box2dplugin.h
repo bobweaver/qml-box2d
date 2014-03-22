@@ -27,20 +27,15 @@
 #define BOX2DPLUGIN_H
 
 #include <QQmlExtensionPlugin>
-
-/**
- * A plugin that exposes Box2D to QML in the form of declarative items.
- */
+#include "qqml.h"
+#include <QtQml>
 class Box2DPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
-#if !defined(STATIC_PLUGIN_BOX2D)
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")
-#endif
 
 public:
     explicit Box2DPlugin(QObject *parent = 0);
-
     void registerTypes(const char *uri);
 };
 

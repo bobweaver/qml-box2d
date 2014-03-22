@@ -1,5 +1,0 @@
-/*!
-    \qmltype Box2DBody
-    \instantiates Box2DBody
-    \inqmlmodule Box2D 1.1
-*/

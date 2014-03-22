@@ -49,6 +49,9 @@ public:
     Box2DFixture *fixtureB;
 };
 
+/*!
+\class ContactListener
+*/
 class ContactListener : public b2ContactListener
 {
 public:
@@ -81,7 +84,44 @@ void ContactListener::EndContact(b2Contact *contact)
     mEvents.append(event);
 }
 
+/*!
+    \qmltype World
+    \instantiates Box2DWorld
+    \inqmlmodule Box2D 1.1
+    \brief Provids a World for all other items to go in.
+*/
+/*!
+  \qmlproperty bool World::running
+  returns true if the World is running.
+*/
 
+/*!
+  \qmlproperty int World::velocityIterations
+The number of velocity iterations used to process one step.
+  10 by default.
+*/
+
+/*!
+  \qmlproperty int World::positionIterations
+The number of position iterations used to process one step.
+ * 10 by default.
+*/
+
+/*!
+  \qmlproperty int World::frameTime
+The amount of time each frame takes in milliseconds.
+  By default it is 1000 / 60.
+*/
+
+/*!
+  \variable QPointF::qpointf
+  \qmlproperty qpointf World::gravity
+  The amount of time each frame takes in milliseconds.
+  By default it is 1000 / 60.
+*/
+/*!
+\class Box2DWorld
+*/
 Box2DWorld::Box2DWorld(QQuickItem *parent) :
     QQuickItem(parent),
     mWorld(0),
@@ -115,6 +155,7 @@ Box2DWorld::~Box2DWorld()
     delete mContactListener;
     delete mDestructionListener;
 }
+
 
 void Box2DWorld::setRunning(bool running)
 {

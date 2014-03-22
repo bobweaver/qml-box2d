@@ -34,12 +34,14 @@
 #include "box2dfixture.h"
 #include "box2dworld.h"
 
+
 /*!
     \qmltype Body
     \instantiates Box2DBody
     \inqmlmodule Box2D 1.1
     \brief Provids a Body to wrap fictures in.
 */
+
 
 
 Box2DBody::Box2DBody(QQuickItem *parent) :
@@ -54,7 +56,9 @@ Box2DBody::Box2DBody(QQuickItem *parent) :
     setTransformOrigin(TopLeft);
     connect(this, SIGNAL(rotationChanged()), SLOT(onRotationChanged()));
 }
-
+/*!
+\class  Box2DBody
+*/
 Box2DBody::~Box2DBody()
 {
     cleanup(mWorld);
@@ -417,8 +421,7 @@ b2World *Box2DBody::world() const
 }
 
 /*!
-    \qmlproperty Body::geometryChanged(newGeometry,oldGeometry)
-
+\qmlsignal Body::geometryChanged(newGeometry,oldGeometry)
 */
 void Box2DBody::geometryChanged(const QRectF &newGeometry,
                                 const QRectF &oldGeometry)

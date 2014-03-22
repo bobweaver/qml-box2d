@@ -13,7 +13,7 @@ INCLUDEPATH += "../Box2D/"
 INCLUDEPATH += ../
 include(../Box2D/box2d.pri)
 
-SOURCES += box2dplugin.cpp \
+SOURCES += \
     box2dworld.cpp \
     box2dbody.cpp \
     box2dfixture.cpp \
@@ -30,8 +30,8 @@ SOURCES += box2dplugin.cpp \
     box2dwheeljoint.cpp \
     box2dmousejoint.cpp \
     box2dgearjoint.cpp \
-    box2dropejoint.cpp
-
+    box2dropejoint.cpp \
+    box2dplugin.cpp
 HEADERS += \
     box2dplugin.h \
     box2dworld.h \

@@ -1,6 +1,0 @@
-/*!
-    \qmlclass Box2DWheelJoint
-    \instantiates Box2DWheelJoint
-    \inherits Item
-    \inqmlmodule Box2D 1.1
-*/

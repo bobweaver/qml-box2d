@@ -66,7 +66,7 @@ public:
     void createJoint();
     void cleanup(b2World *world);
     b2Joint * GetJoint();
-
+//Should doc these
 signals:
     void referenceAngleChanged();
     void frequencyHzChanged();

@@ -29,18 +29,31 @@
 #include "box2dworld.h"
 #include "box2dbody.h"
 
+/*!
+\class Box2DRopeJoint
+*/
 Box2DRopeJoint::Box2DRopeJoint(QObject *parent) :
     Box2DJoint(parent),
     mRopeJointDef(),
     mRopeJoint(0)
 {
 }
+/*!
+    \qmltype RopeJoint
+    \instantiates Box2DRopeJoint
+    \inqmlmodule Box2D 1.1
+    \brief Provids a RopeJoint to wrap fictures in.
+*/
 
 Box2DRopeJoint::~Box2DRopeJoint()
 {
     cleanup(world());
 }
 
+/*!
+\qmlproperty float RopeJoint::maxLength
+set the maxLength of the rope
+*/
 float Box2DRopeJoint::maxLength() const
 {
     if(mRopeJoint) return mRopeJoint->GetMaxLength() * scaleRatio;
@@ -59,6 +72,10 @@ void Box2DRopeJoint::setMaxLength(float _maxLength)
     emit maxLengthChanged();
 }
 
+/*!
+ \qmlproperty QPointF RopeJoint::localAnchorA
+ DOCME
+ */
 QPointF Box2DRopeJoint::localAnchorA() const
 {
     return QPointF(mRopeJointDef.localAnchorA.x * scaleRatio,
@@ -72,6 +89,10 @@ void Box2DRopeJoint::setLocalAnchorA(const QPointF &localAnchorA)
     emit localAnchorAChanged();
 }
 
+/*!
+\qmlproperty QPointF RopeJoint::localAnchorB
+DOCME
+ */
 QPointF Box2DRopeJoint::localAnchorB() const
 {
     return QPointF(mRopeJointDef.localAnchorB.x * scaleRatio,
@@ -120,6 +141,10 @@ b2Joint *Box2DRopeJoint::GetJoint()
     return mRopeJoint;
 }
 
+/*!
+\qmlsignal RopeJoint::GetReactionForce(float32 inv_dt)
+DOCME
+ */
 QPointF Box2DRopeJoint::GetReactionForce(float32 inv_dt) const
 {
     if(mRopeJoint)
@@ -129,6 +154,11 @@ QPointF Box2DRopeJoint::GetReactionForce(float32 inv_dt) const
     }
     return QPointF();
 }
+
+/*!
+\qmlsignal RopeJoint::GetReactionTorque(float32 inv_dt)
+DOCME
+ */
 
 float Box2DRopeJoint::GetReactionTorque(float32 inv_dt) const
 {

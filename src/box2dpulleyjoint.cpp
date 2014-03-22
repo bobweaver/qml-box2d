@@ -28,18 +28,31 @@
 #include "box2dworld.h"
 #include "box2dbody.h"
 
+/*!
+\class Box2DPulleyJoint
+*/
 Box2DPulleyJoint::Box2DPulleyJoint(QObject *parent) :
     Box2DJoint(parent),
     mPulleyJointDef(),
     mPulleyJoint(0)
 {
 }
+/*!
+    \qmltype PulleyJoint
+    \instantiates Box2DPulleyJoint
+    \inqmlmodule Box2D 1.1
+    \brief DOCME Provids a PulleyJoint to wrap  in.
+*/
 
 Box2DPulleyJoint::~Box2DPulleyJoint()
 {
     cleanup(world());
 }
 
+/*!
+\qmlproperty float PulleyJoint::lengthA
+DOCME
+*/
 float Box2DPulleyJoint::lengthA() const
 {
     if(mPulleyJoint) return mPulleyJoint->GetLengthA() * scaleRatio;
@@ -54,6 +67,10 @@ void Box2DPulleyJoint::setLengthA(float lengthA)
     emit lengthAChanged();
 }
 
+/*!
+\qmlproperty float PulleyJoint::lengthB
+DOCME
+*/
 float Box2DPulleyJoint::lengthB() const
 {
     if(mPulleyJoint) return mPulleyJoint->GetLengthB() * scaleRatio;
@@ -68,6 +85,10 @@ void Box2DPulleyJoint::setLengthB(float lengthB)
     emit lengthBChanged();
 }
 
+/*!
+\qmlproperty float PulleyJoint::ratio
+DOCME
+*/
 float Box2DPulleyJoint::ratio() const
 {
     if(mPulleyJoint) return mPulleyJoint->GetRatio();
@@ -82,6 +103,11 @@ void Box2DPulleyJoint::setRatio(float ratio)
     emit ratioChanged();
 }
 
+
+/*!
+\qmlproperty QPointF PulleyJoint::groundAnchorA
+DOCME add var also
+*/
 QPointF Box2DPulleyJoint::groundAnchorA() const
 {
     if(mPulleyJoint) QPointF(mPulleyJoint->GetGroundAnchorA().x * scaleRatio,-mPulleyJoint->GetGroundAnchorA().y * scaleRatio);
@@ -94,6 +120,10 @@ void Box2DPulleyJoint::setGroundAnchorA(const QPointF &groundAnchorA)
     emit groundAnchorAChanged();
 }
 
+/*!
+\qmlproperty QPointF PulleyJoint::groundAnchorB
+DOCME
+ */
 QPointF Box2DPulleyJoint::groundAnchorB() const
 {
     if(mPulleyJoint) QPointF(mPulleyJoint->GetGroundAnchorB().x * scaleRatio,-mPulleyJoint->GetGroundAnchorB().y * scaleRatio);
@@ -106,6 +136,11 @@ void Box2DPulleyJoint::setGroundAnchorB(const QPointF &groundAnchorB)
     emit groundAnchorBChanged();
 }
 
+
+/*!
+\qmlproperty QPointF PulleyJoint::localAnchorA
+DOCME
+*/
 QPointF Box2DPulleyJoint::localAnchorA() const
 {
     if(mPulleyJoint) QPointF(mPulleyJoint->GetAnchorA().x * scaleRatio,-mPulleyJoint->GetAnchorA().y * scaleRatio);
@@ -118,6 +153,10 @@ void Box2DPulleyJoint::setLocalAnchorA(const QPointF &localAnchorA)
     emit localAnchorAChanged();
 }
 
+/*!
+\qmlproperty QPointF Box2DPulleyJoint::localAnchorB
+DOCME
+*/
 QPointF Box2DPulleyJoint::localAnchorB() const
 {
     if(mPulleyJoint) QPointF(mPulleyJoint->GetAnchorB().x * scaleRatio,-mPulleyJoint->GetAnchorB().y * scaleRatio);
@@ -169,18 +208,30 @@ b2Joint *Box2DPulleyJoint::GetJoint()
     return mPulleyJoint;
 }
 
+/*!
+\qmlsignal PulleyJoint::GetCurrentLengthA()
+DOCME
+*/
 float Box2DPulleyJoint::GetCurrentLengthA() const
 {
     if(mPulleyJoint) return mPulleyJoint->GetCurrentLengthA() * scaleRatio;
     return 0.0f;
 }
 
+/*!
+\qmlsignal PulleyJoint::GetCurrentLengthB()
+DOCME
+*/
 float Box2DPulleyJoint::GetCurrentLengthB() const
 {
     if(mPulleyJoint) return mPulleyJoint->GetCurrentLengthB() * scaleRatio;
     return 0.0f;
 }
 
+/*!
+\qmlsignal PulleyJoint::GetReactionForce(float32 inv_dt)
+DOCME
+*/
 QPointF Box2DPulleyJoint::GetReactionForce(float32 inv_dt) const
 {
     if(mPulleyJoint)
@@ -191,6 +242,10 @@ QPointF Box2DPulleyJoint::GetReactionForce(float32 inv_dt) const
     return QPointF();
 }
 
+/*!
+\qmlsignal PulleyJoint::GetReactionTorque(float32 inv_dt)
+DOCME
+*/
 float Box2DPulleyJoint::GetReactionTorque(float32 inv_dt) const
 {
     if(mPulleyJoint) return mPulleyJoint->GetReactionTorque(inv_dt);

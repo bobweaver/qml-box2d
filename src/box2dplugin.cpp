@@ -32,6 +32,7 @@
 #include "box2ddebugdraw.h"
 #include "box2dfixture.h"
 #include "box2djoint.h"
+
 #include "box2ddistancejoint.h"
 #include "box2dprismaticjoint.h"
 #include "box2drevolutejoint.h"
@@ -43,6 +44,7 @@
 #include "box2dmousejoint.h"
 #include "box2dgearjoint.h"
 #include "box2dropejoint.h"
+
 
 Box2DPlugin::Box2DPlugin(QObject *parent) :
     QQmlExtensionPlugin(parent)
@@ -75,5 +77,4 @@ void Box2DPlugin::registerTypes(const char *uri)
     qmlRegisterType<Box2DMouseJoint>(uri, 1, 1, "MouseJoint");
     qmlRegisterType<Box2DGearJoint>(uri, 1, 1, "GearJoint");
     qmlRegisterType<Box2DRopeJoint>(uri, 1, 1, "RopeJoint");
-
 }

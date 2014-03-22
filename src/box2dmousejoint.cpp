@@ -28,18 +28,30 @@
 #include "box2dworld.h"
 #include "box2dbody.h"
 
+/*!
+\class Box2DMouseJoint
+*/
 Box2DMouseJoint::Box2DMouseJoint(QObject *parent) :
     Box2DJoint(parent),
     mMouseJointDef(),
     mMouseJoint(0)
 {
 }
-
+/*!
+    \qmltype MouseJoint
+    \instantiates Box2DMouseJoint
+    \inqmlmodule Box2D 1.1
+    \brief Provids a MouseJoint to wrap fictures in.
+*/
 Box2DMouseJoint::~Box2DMouseJoint()
 {
     cleanup(world());
 }
 
+/*!
+\qmlproperty float MouseJoint::dampingRatio
+DOCME
+*/
 float Box2DMouseJoint::dampingRatio() const
 {
     if(mMouseJoint) return mMouseJoint->GetDampingRatio();
@@ -53,6 +65,10 @@ void Box2DMouseJoint::setDampingRatio(float dampingRatio)
 
 }
 
+/*!
+\qmlproperty float MouseJoint::frequencyHz
+DOCME
+*/
 float Box2DMouseJoint::frequencyHz() const
 {
     if(mMouseJoint) return mMouseJoint->GetFrequency();
@@ -65,6 +81,10 @@ void Box2DMouseJoint::setFrequencyHz(float frequencyHz)
     if(mMouseJoint) mMouseJoint->SetFrequency(frequencyHz);
 }
 
+/*!
+\qmlproperty float MouseJoint::maxForce
+DOCME
+*/
 float Box2DMouseJoint::maxForce() const
 {
     if(mMouseJoint) return mMouseJoint->GetMaxForce();
@@ -77,6 +97,10 @@ void Box2DMouseJoint::setMaxForce(float maxForce)
     if(mMouseJoint) mMouseJoint->SetMaxForce(maxForce);
 }
 
+/*!
+\qmlproperty QPointF MouseJoint::target
+DOCME
+*/
 QPointF Box2DMouseJoint::target() const
 {
     b2Vec2 point;
@@ -127,6 +151,10 @@ b2Joint *Box2DMouseJoint::GetJoint()
     return mMouseJoint;
 }
 
+/*!
+\qmlsignal MouseJoint::GetReactionForce(float32 inv_dt)
+DOCME
+*/
 QPointF Box2DMouseJoint::GetReactionForce(float32 inv_dt) const
 {
     if(mMouseJoint)
@@ -137,6 +165,10 @@ QPointF Box2DMouseJoint::GetReactionForce(float32 inv_dt) const
     return QPointF();
 }
 
+/*!
+\qmlsignal MouseJoint::GetReactionTorque(float32 inv_dt)
+DOCME
+*/
 float Box2DMouseJoint::GetReactionTorque(float32 inv_dt) const
 {
     if(mMouseJoint) return mMouseJoint->GetReactionTorque(inv_dt);

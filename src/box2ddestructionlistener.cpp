@@ -28,7 +28,9 @@
 
 #include "box2djoint.h"
 #include "box2dfixture.h"
-
+/*!
+\class Box2DDestructionListener
+*/
 Box2DDestructionListener::Box2DDestructionListener(QObject *parent) :
     QObject(parent)
 {

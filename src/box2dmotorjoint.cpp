@@ -29,18 +29,32 @@
 #include "box2dworld.h"
 #include "box2dbody.h"
 
+/*!
+\class Box2DMotorJoint
+*/
 Box2DMotorJoint::Box2DMotorJoint(QObject *parent) :
     Box2DJoint(parent),
     mMotorJointDef(),
     mMotorJoint(0)
 {
 }
+/*!
+    \qmltype MotorJoint
+    \instantiates Box2DMotorJoint
+    \inqmlmodule Box2D 1.1
+    \brief Provids a MotorJoint to wrap fictures in.
+*/
 
 Box2DMotorJoint::~Box2DMotorJoint()
 {
     cleanup(world());
 }
 
+
+/*!
+\qmlproperty QPointF MotorJoint::linearOffset
+DOCME
+*/
 QPointF Box2DMotorJoint::linearOffset() const
 {
     return QPointF(mMotorJointDef.linearOffset.x * scaleRatio,mMotorJointDef.linearOffset.y * scaleRatio);
@@ -56,6 +70,11 @@ void Box2DMotorJoint::setLinearOffset(const QPointF &linearOffset)
     emit linearOffsetChanged();
 }
 
+
+/*!
+\qmlproperty float MotorJoint::angularOffset
+DOCME
+*/
 float Box2DMotorJoint::angularOffset() const
 {
     return mMotorJointDef.angularOffset * 180 / b2_pi;
@@ -72,6 +91,10 @@ void Box2DMotorJoint::setAngularOffset(const float angularOffset)
     emit angularOffsetChanged();
 }
 
+/*!
+\qmlproperty float MotorJoint::maxForce
+DOCME
+*/
 float Box2DMotorJoint::maxForce() const
 {
     return mMotorJointDef.maxForce;
@@ -87,6 +110,10 @@ void Box2DMotorJoint::setMaxForce(const float maxForce)
     emit maxForceChanged();
 }
 
+/*!
+\qmlproperty float MotorJoint::maxTorque
+DOCME
+*/
 float Box2DMotorJoint::maxTorque() const
 {
     return mMotorJointDef.maxTorque;
@@ -102,6 +129,10 @@ void Box2DMotorJoint::setMaxTorque(const float maxTorque)
     emit maxTorqueChanged();
 }
 
+/*!
+\qmlproperty float MotorJoint::correctionFactor
+DOCME
+*/
 float Box2DMotorJoint::correctionFactor() const
 {
     return mMotorJointDef.correctionFactor;

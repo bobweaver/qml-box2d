@@ -38,7 +38,6 @@ class Box2DWorld;
 class Box2DJoint : public QObject
 {
     Q_OBJECT
-
     Q_PROPERTY(bool collideConnected READ collideConnected WRITE setCollideConnected NOTIFY collideConnectedChanged)
     Q_PROPERTY(Box2DWorld *world READ box2DWorld WRITE setWorld NOTIFY worldChanged)
     Q_PROPERTY(Box2DBody *bodyA READ bodyA WRITE setBodyA NOTIFY bodyAChanged)
@@ -89,12 +88,8 @@ private:
     bool mCollideConnected;
     Box2DBody *mBodyA;
     Box2DBody *mBodyB;
-};
 
 
-/**
- * Convenience function to get the Box2DJoint wrapping a b2Joint.
- */
 inline Box2DJoint *toBox2DJoint(b2Joint *joint)
 {
     if(!joint) return 0;

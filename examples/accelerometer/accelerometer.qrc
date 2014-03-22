@@ -7,6 +7,5 @@
         <file>Wall.qml</file>
         <file>WoodenBox.qml</file>
         <file>main.cpp</file>
-        <file>tableview.qmlproject</file>
     </qresource>
 </RCC>

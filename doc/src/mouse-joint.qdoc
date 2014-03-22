@@ -1,5 +1,0 @@
-/*!
-    \qmlclass Box2DMouseJoint
-    \inqmlmodule Box2D 1.1
-\instantiates Box2DMouseJoint
-*/

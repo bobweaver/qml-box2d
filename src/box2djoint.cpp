@@ -27,6 +27,10 @@
 #include "box2dbody.h"
 #include "box2dworld.h"
 
+
+/*!
+\class Box2DJoint
+*/
 Box2DJoint::Box2DJoint(QObject *parent) :
     QObject(parent),
     mInitializePending(false),
@@ -37,6 +41,17 @@ Box2DJoint::Box2DJoint(QObject *parent) :
 {
 }
 
+/*!
+    \qmltype Joint
+    \instantiates Box2DJoint
+    \inqmlmodule Box2D 1.1
+    \brief Provids a Joint to connect things.
+*/
+
+/*!
+\qmlproperty bool Joint::collideConnected
+DOCME
+*/
 bool Box2DJoint::collideConnected() const
 {
     return mCollideConnected;
@@ -67,6 +82,10 @@ void Box2DJoint::setWorld(Box2DWorld *world)
     initialize();
 }
 
+/*!
+\qmlproperty string Joint::bodyA
+DOCME
+*/
 Box2DBody *Box2DJoint::bodyA() const
 {
     return mBodyA;
@@ -86,6 +105,10 @@ void Box2DJoint::setBodyA(Box2DBody *bodyA)
         connect(bodyA, SIGNAL(bodyCreated()), this, SLOT(bodyACreated()));
 }
 
+/*!
+\qmlproperty string Joint::bodyB
+DOCME
+*/
 Box2DBody *Box2DJoint::bodyB() const
 {
     return mBodyB;
@@ -120,6 +143,10 @@ void Box2DJoint::initialize()
         createJoint();
 }
 
+/*!
+\qmlproperty string Joint::world
+DOCME THe world in wich you are connecting to. See world
+*/
 b2World *Box2DJoint::world() const
 {
     if(mWorld) return mWorld->world();

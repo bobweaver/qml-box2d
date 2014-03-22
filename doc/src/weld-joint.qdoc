@@ -1,6 +1,0 @@
-/*!
-    \qmltype Box2DWeldJoint
-    \inqmlmodule Box2D 1.1
-    \instantiates Box2DWeldJoint
-    \inherits Item
-*/

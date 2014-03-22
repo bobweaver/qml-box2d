@@ -27,7 +27,15 @@
 
 #include "box2dworld.h"
 #include "box2dbody.h"
-
+/*!
+    \qmltype WeldJoint
+    \instantiates Box2DWeldJoint
+    \inqmlmodule Box2D 1.1
+    \brief Provids a WeldJoint to use on objects.
+*/
+/*!
+\class Box2DWeldJoint
+*/
 Box2DWeldJoint::Box2DWeldJoint(QObject *parent) :
     Box2DJoint(parent),
     mWeldJointDef(),
@@ -41,6 +49,10 @@ Box2DWeldJoint::~Box2DWeldJoint()
     cleanup(world());
 }
 
+/*!
+\qmlproperty float WeldJoint::referenceAngle
+DOCME
+ */
 float Box2DWeldJoint::referenceAngle() const
 {
     return mWeldJointDef.referenceAngle;
@@ -55,6 +67,10 @@ void Box2DWeldJoint::setReferenceAngle(float referenceAngle)
     emit referenceAngleChanged();
 }
 
+/*!
+ \qmlproperty float WeldJoint::frequencyHz
+ DOCME
+ */
 float Box2DWeldJoint::frequencyHz() const
 {
     return mWeldJointDef.frequencyHz;
@@ -70,6 +86,12 @@ void Box2DWeldJoint::setFrequencyHz(float frequencyHz)
         mWeldJoint->SetFrequency(frequencyHz);
     emit frequencyHzChanged();
 }
+
+
+/*!
+ \qmlproperty float WeldJoint::dampingRatio
+ DOCME
+ */
 
 float Box2DWeldJoint::dampingRatio() const
 {
@@ -87,6 +109,11 @@ void Box2DWeldJoint::setDampingRatio(float dampingRatio)
     emit dampingRatioChanged();
 }
 
+/*!
+  \qmlproperty QPointF WeldJoint::localAnchorA
+  DOCME
+ */
+
 QPointF Box2DWeldJoint::localAnchorA() const
 {
     return QPointF(mWeldJointDef.localAnchorA.x * scaleRatio,
@@ -99,6 +126,11 @@ void Box2DWeldJoint::setLocalAnchorA(const QPointF &localAnchorA)
     anchorsAuto = false;
     emit localAnchorAChanged();
 }
+
+/*!
+\qmlproperty QPointF WeldJoint::localAnchorB
+DOCME
+ */
 
 QPointF Box2DWeldJoint::localAnchorB() const
 {

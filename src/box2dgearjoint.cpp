@@ -27,6 +27,9 @@
 #include "box2dworld.h"
 #include "box2dbody.h"
 
+/*!
+\class Box2DGearJoint
+*/
 Box2DGearJoint::Box2DGearJoint(QObject *parent) :
     Box2DJoint(parent),
     mGearJointDef(),
@@ -34,11 +37,21 @@ Box2DGearJoint::Box2DGearJoint(QObject *parent) :
 {
 }
 
+/*!
+    \qmltype GearJoint
+    \instantiates Box2DGearJoint
+    \inqmlmodule Box2D 1.1
+    \brief Provids a GearJoint to wrap things in.
+*/
 Box2DGearJoint::~Box2DGearJoint()
 {
     cleanup(world());
 }
 
+/*!
+\qmlproperty float GearJoint::ratio
+DOCME
+*/
 float Box2DGearJoint::ratio() const
 {
     if(mGearJoint) mGearJoint->GetRatio();
@@ -53,6 +66,10 @@ void Box2DGearJoint::setRatio(float _ratio)
     emit ratioChanged();
 }
 
+/*!
+\qmlproperty string GearJoint::joint1
+DOCME
+*/
 Box2DJoint *Box2DGearJoint::joint1() const
 {
     if(mGearJoint) return toBox2DJoint(mGearJoint->GetJoint1());
@@ -71,6 +88,10 @@ void Box2DGearJoint::setJoint1(Box2DJoint *_joint1)
     else connect(_joint1,SIGNAL(created()),this,SLOT(joint1Created()));
 }
 
+/*!
+\qmlproperty string GearJoint::joint2
+DOCME
+*/
 Box2DJoint *Box2DGearJoint::joint2() const
 {
     if(mGearJoint) return toBox2DJoint(mGearJoint->GetJoint2());

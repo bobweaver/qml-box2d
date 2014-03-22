@@ -1,5 +1,0 @@
-/*!
-    \qmlclass Box2DPulleyJoint
-    \inqmlmodule Box2D 1.1
-     \instantiates Box2DPulleyJoint
-*/

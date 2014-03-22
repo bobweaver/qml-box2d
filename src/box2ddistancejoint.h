@@ -36,7 +36,6 @@ class b2DistanceJointDef;
 class Box2DDistanceJoint : public Box2DJoint
 {
     Q_OBJECT
-
     Q_PROPERTY(float length READ length WRITE setLength NOTIFY lengthChanged)
     Q_PROPERTY(float frequencyHz READ frequencyHz WRITE setFrequencyHz NOTIFY frequencyHzChanged)
     Q_PROPERTY(float dampingRatio READ dampingRatio WRITE setDampingRatio NOTIFY dampingRatioChanged)

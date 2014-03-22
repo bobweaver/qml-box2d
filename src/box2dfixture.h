@@ -147,6 +147,7 @@ protected:
 };
 
 
+
 class Box2DCircle : public Box2DFixture
 {
     Q_OBJECT
@@ -217,7 +218,7 @@ protected:
 
 class Box2DChain : public Box2DVerticesShape
 {
-    Q_OBJECT
+    Q_OBJECT 
     Q_PROPERTY(bool loop READ loop WRITE setLoop NOTIFY loopChanged)
     Q_PROPERTY(QPointF prevVertex READ prevVertex WRITE setPrevVertex NOTIFY prevVertexChanged)
     Q_PROPERTY(QPointF nextVertex READ nextVertex WRITE setNextVertex NOTIFY nextVertexChanged)
@@ -226,6 +227,7 @@ public:
         Box2DVerticesShape(parent),
         mLoop(false)
     { }
+
     void scale();
     bool loop() const { return mLoop; }
     void setLoop(bool loop) {

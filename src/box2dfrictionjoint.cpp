@@ -28,6 +28,9 @@
 #include "box2dworld.h"
 #include "box2dbody.h"
 
+/*!
+\class Box2DFrictionJoint
+*/
 Box2DFrictionJoint::Box2DFrictionJoint(QObject *parent) :
     Box2DJoint(parent),
     mFrictionJointDef(),
@@ -35,12 +38,22 @@ Box2DFrictionJoint::Box2DFrictionJoint(QObject *parent) :
     anchorsAuto(true)
 {
 }
+/*!
+    \qmltype FrictionJoint
+    \instantiates  Box2DFrictionJoint
+    \inqmlmodule Box2D 1.1
+    \brief Provids a FrictionJoint to wrap fictures in.
+*/
 
 Box2DFrictionJoint::~Box2DFrictionJoint()
 {
     cleanup(world());
 }
 
+/*!
+\qmlproperty float FrictionJoint::maxForce
+DOCME
+*/
 float Box2DFrictionJoint::maxForce() const
 {
     if(mFrictionJoint) return mFrictionJoint->GetMaxForce();
@@ -55,6 +68,10 @@ void Box2DFrictionJoint::setMaxForce(float maxForce)
     emit maxForceChanged();
 }
 
+/*!
+\qmlproperty float FrictionJoint::maxTorque
+DOCME
+*/
 float Box2DFrictionJoint::maxTorque() const
 {
     if(mFrictionJoint) return mFrictionJoint->GetMaxTorque();
@@ -69,6 +86,10 @@ void Box2DFrictionJoint::setMaxTorque(float maxTorque)
     emit maxTorqueChanged();
 }
 
+/*!
+\qmlproperty QPointF FrictionJoint::localAnchorA
+DOCME
+*/
 QPointF Box2DFrictionJoint::localAnchorA() const
 {
     if(mFrictionJoint) QPointF(mFrictionJoint->GetAnchorA().x * scaleRatio,
@@ -85,6 +106,10 @@ void Box2DFrictionJoint::setLocalAnchorA(const QPointF &localAnchorA)
     emit localAnchorAChanged();
 }
 
+/*!
+\qmlproperty QPointF FrictionJoint::localAnchorB
+DOCME
+*/
 QPointF Box2DFrictionJoint::localAnchorB() const
 {
     if(mFrictionJoint) QPointF(mFrictionJoint->GetAnchorB().x * scaleRatio,
@@ -142,6 +167,10 @@ b2Joint *Box2DFrictionJoint::GetJoint()
     return mFrictionJoint;
 }
 
+/*!
+\qmlsignal FrictionJoint::GetReactionForce(float32 inv_dt)
+DOCME
+*/
 QPointF Box2DFrictionJoint::GetReactionForce(float32 inv_dt) const
 {
     if(mFrictionJoint)
@@ -152,6 +181,11 @@ QPointF Box2DFrictionJoint::GetReactionForce(float32 inv_dt) const
     return QPointF();
 }
 
+
+/*!
+\qmlsignal FrictionJoint::GetReactionTorque(float32 inv_dt)
+DOCME
+*/
 float Box2DFrictionJoint::GetReactionTorque(float32 inv_dt) const
 {
     if(mFrictionJoint) return mFrictionJoint->GetReactionTorque(inv_dt);

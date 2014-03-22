@@ -29,6 +29,16 @@
 #include "box2dworld.h"
 #include "box2dbody.h"
 
+
+/*!
+    \qmltype WheelJoint
+    \instantiates Box2DWheelJoint
+    \inqmlmodule Box2D 1.1
+    \brief Provids a WheelJoint to use on objects.
+*/
+/*!
+\class Box2DWheelJoint
+*/
 Box2DWheelJoint::Box2DWheelJoint(QObject *parent) :
     Box2DJoint(parent),
     mWheelJointDef(),
@@ -41,6 +51,11 @@ Box2DWheelJoint::~Box2DWheelJoint()
 {
     cleanup(world());
 }
+
+/*!
+ * \qmlproperty float WheelJoint::dampingRatio
+  the dampingRatio of the WheelJoint
+ */
 
 float Box2DWheelJoint::dampingRatio() const
 {
@@ -60,6 +75,10 @@ void Box2DWheelJoint::setDampingRatio(float _dampingRatio)
     emit dampingRatioChanged();
 }
 
+/*!
+ * \qmlproperty float WheelJoint::frequencyHz
+    the frequencyHz of the WheelJoint
+ */
 float Box2DWheelJoint::frequencyHz() const
 {
     if(mWheelJoint) return mWheelJoint->GetSpringFrequencyHz();
@@ -76,6 +95,11 @@ void Box2DWheelJoint::setFrequencyHz(float _frequencyHz)
     mWheelJointDef.frequencyHz = _frequencyHz;
     emit frequencyHzChanged();
 }
+
+/*!
+  \qmlproperty float WheelJoint::maxMotorTorque
+  the maxium ammount of motor torque that can be used set on the WheelJoint
+ */
 
 float Box2DWheelJoint::maxMotorTorque() const
 {
@@ -94,7 +118,10 @@ void Box2DWheelJoint::setMaxMotorTorque(float _maxMotorTorque)
         mWheelJoint->SetMaxMotorTorque(_maxMotorTorque);
     emit maxMotorTorqueChanged();
 }
-
+/*!
+  \qmlproperty float WheelJoint::motorSpeed
+  the inital motor speed for the WheelJoint
+ */
 float Box2DWheelJoint::motorSpeed() const
 {
     if(mWheelJoint)
@@ -113,6 +140,11 @@ void Box2DWheelJoint::setMotorSpeed(float _motorSpeed)
         mWheelJoint->SetMotorSpeed(motorSpeedRad);
     emit motorSpeedChanged();
 }
+/*!
+\qmlproperty bool WheelJoint::enableMotor
+ set this to true is you wish to use the Motor.
+ see also
+ */
 
 bool Box2DWheelJoint::enableMotor() const
 {
@@ -131,6 +163,12 @@ void Box2DWheelJoint::setEnableMotor(bool _enableMotor)
         mWheelJoint->EnableMotor(_enableMotor);
     emit enableMotorChanged();
 }
+/*!
+
+  \qmlproperty  QPointF WheelJoint::localAnchorA
+  DOCME
+ */
+
 
 QPointF Box2DWheelJoint::localAnchorA() const
 {
@@ -146,6 +184,11 @@ void Box2DWheelJoint::setLocalAnchorA(const QPointF &localAnchorA)
     emit localAnchorAChanged();
 }
 
+/*!
+  \qmlproperty QPointF WheelJoint::localAnchorB
+ DOCME
+ */
+
 QPointF Box2DWheelJoint::localAnchorB() const
 {
     return QPointF(mWheelJointDef.localAnchorB.x * scaleRatio,
@@ -159,6 +202,12 @@ void Box2DWheelJoint::setLocalAnchorB(const QPointF &localAnchorB)
     anchorsAuto = false;
     emit localAnchorBChanged();
 }
+
+/*!
+  \qmlproperty QPointF WheelJoint::localAxisA
+    DOCME
+ */
+
 
 QPointF Box2DWheelJoint::localAxisA() const
 {
@@ -217,18 +266,30 @@ b2Joint *Box2DWheelJoint::GetJoint()
     return mWheelJoint;
 }
 
+/*!
+  \qmlsignal WheelJoint::GetJointTranslation()
+DOCME
+ */
 float Box2DWheelJoint::GetJointTranslation() const
 {
     if(mWheelJoint) return mWheelJoint->GetJointTranslation() * scaleRatio;
     return 0;
 }
 
+/*!
+ \qmlsignal WheelJoint::GetJointSpeed()
+DOCME
+ */
 float Box2DWheelJoint::GetJointSpeed() const
 {
     if(mWheelJoint) return mWheelJoint->GetJointSpeed() * scaleRatio;
     return 0;
 }
 
+/*!
+  \qmlsignal WheelJoint::GetReactionForce(float32 inv_dt)
+    DOCME
+*/
 QPointF Box2DWheelJoint::GetReactionForce(float32 inv_dt) const
 {
     if(mWheelJoint)
@@ -239,6 +300,10 @@ QPointF Box2DWheelJoint::GetReactionForce(float32 inv_dt) const
     return QPointF();
 }
 
+/*!
+ \qmlsignal WheelJoint::GetReactionTorque(float32 inv_dt)
+ DOCME
+ */
 float Box2DWheelJoint::GetReactionTorque(float32 inv_dt) const
 {
     if(mWheelJoint) return mWheelJoint->GetReactionTorque(inv_dt);

@@ -39,11 +39,26 @@ Box2DDistanceJoint::Box2DDistanceJoint(QObject *parent) :
 {
 }
 
+/*!
+* \class Box2DDistanceJoint
+*/
+/*!
+    \qmltype DistanceJoint
+    \instantiates Box2DDistanceJoint
+    \inqmlmodule Box2D 1.1
+    \brief Provids a DistanceJoint.
+*/
+
 Box2DDistanceJoint::~Box2DDistanceJoint()
 {
     cleanup(world());
 }
 
+
+/*!
+\qmlproperty float DistanceJoint::length
+ DOCME
+*/
 float Box2DDistanceJoint::length() const
 {
     if(mDistanceJoint) return mDistanceJoint->GetLength();
@@ -60,6 +75,10 @@ void Box2DDistanceJoint::setLength(float _length)
     emit lengthChanged();
 }
 
+/*!
+\qmlproperty float DistanceJoint::frequencyHz
+DOCME
+*/
 float Box2DDistanceJoint::frequencyHz() const
 {
     if(mDistanceJoint) return mDistanceJoint->GetFrequency();
@@ -76,6 +95,10 @@ void Box2DDistanceJoint::setFrequencyHz(float _frequencyHz)
     emit frequencyHzChanged();
 }
 
+/*!
+\qmlproperty float DistanceJoint::dampingRatio
+DOCME
+*/
 float Box2DDistanceJoint::dampingRatio() const
 {
     if(mDistanceJoint) mDistanceJoint->GetDampingRatio();
@@ -93,6 +116,10 @@ void Box2DDistanceJoint::setDampingRatio(float _dampingRatio)
     emit dampingRatioChanged();
 }
 
+/*!
+\qmlproperty QPointF DistanceJoint::localAnchorA
+DOCME
+*/
 QPointF Box2DDistanceJoint::localAnchorA() const
 {
     return QPointF(mDistanceJointDef.localAnchorA.x * scaleRatio,
@@ -107,6 +134,10 @@ void Box2DDistanceJoint::setLocalAnchorA(const QPointF &localAnchorA)
     emit localAnchorBChanged();
 }
 
+/*!
+\qmlproperty QPointF DistanceJoint::localAnchorB
+DOCME
+*/
 QPointF Box2DDistanceJoint::localAnchorB() const
 {
     return QPointF(mDistanceJointDef.localAnchorB.x * scaleRatio,
@@ -163,6 +194,10 @@ b2Joint *Box2DDistanceJoint::GetJoint()
     return mDistanceJoint;
 }
 
+/*!
+\qmlsignal DistanceJoint::GetReactionForce(float32 inv_dt)
+DOCME
+*/
 QPointF Box2DDistanceJoint::GetReactionForce(float32 inv_dt) const
 {
     if(mDistanceJoint)
@@ -173,6 +208,10 @@ QPointF Box2DDistanceJoint::GetReactionForce(float32 inv_dt) const
     return QPointF();
 }
 
+/*!
+\qmlsignal DistanceJoint::GetReactionTorque(float32 inv_dt)
+DOCME
+*/
 float Box2DDistanceJoint::GetReactionTorque(float32 inv_dt) const
 {
     if(mDistanceJoint) return mDistanceJoint->GetReactionTorque(inv_dt);

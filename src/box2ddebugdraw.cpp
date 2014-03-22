@@ -30,10 +30,12 @@
 #include <Box2D.h>
 
 #include <QPainter>
-
+/*!
+\class Box2DDebugDraw
+*/
 /*!
  \qmltype DebugDraw
-    \instantiates Box2DDebugDraw
+    \instantiates DebugDraw
     \inqmlmodule Box2D 1.1
     \brief Provids a Debugging Viewer for Box2D.
 

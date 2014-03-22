@@ -28,7 +28,9 @@
 
 #include "box2dworld.h"
 #include "box2dbody.h"
-
+/*!
+\class Box2DRevoluteJoint
+*/
 Box2DRevoluteJoint::Box2DRevoluteJoint(QObject *parent) :
     Box2DJoint(parent),
     mRevoluteJointDef(),
@@ -36,12 +38,23 @@ Box2DRevoluteJoint::Box2DRevoluteJoint(QObject *parent) :
     anchorsAuto(true)
 {
 }
+/*!
+    \qmltype RevoluteJoint
+    \instantiates Box2DRevoluteJoint
+    \inqmlmodule Box2D 1.1
+    \brief Provids a RevoluteJoint to wrap fictures in.
+*/
+
 
 Box2DRevoluteJoint::~Box2DRevoluteJoint()
 {
     cleanup(world());
 }
 
+/*!
+\qmlproperty float RevoluteJoint::lowerAngle
+DOCME
+ */
 float Box2DRevoluteJoint::lowerAngle() const
 {
     return -mRevoluteJointDef.lowerAngle * 180 / b2_pi;
@@ -59,6 +72,11 @@ void Box2DRevoluteJoint::setLowerAngle(float lowerAngle)
     emit lowerAngleChanged();
 }
 
+
+/*!
+\qmlproperty float RevoluteJoint::upperAngle
+DOCME
+*/
 float Box2DRevoluteJoint::upperAngle() const
 {
     return -mRevoluteJointDef.upperAngle * 180 / b2_pi;
@@ -77,6 +95,10 @@ void Box2DRevoluteJoint::setUpperAngle(float upperAngle)
     emit upperAngleChanged();
 }
 
+/*!
+\qmlproperty float RevoluteJoint::maxMotorTorque
+DOCME
+*/
 float Box2DRevoluteJoint::maxMotorTorque() const
 {
     return mRevoluteJointDef.maxMotorTorque;
@@ -93,6 +115,10 @@ void Box2DRevoluteJoint::setMaxMotorTorque(float maxMotorTorque)
     emit maxMotorTorqueChanged();
 }
 
+/*!
+\qmlproperty float RevoluteJoint::motorSpeed
+the speed of the motor if used ?
+*/
 float Box2DRevoluteJoint::motorSpeed() const
 {
     return -mRevoluteJointDef.motorSpeed * 180 / b2_pi;
@@ -110,6 +136,10 @@ void Box2DRevoluteJoint::setMotorSpeed(float motorSpeed)
     emit motorSpeedChanged();
 }
 
+/*!
+\qmlproperty bool RevoluteJoint::enableLimit
+DOCME
+*/
 bool Box2DRevoluteJoint::enableLimit() const
 {
     return mRevoluteJointDef.enableLimit;
@@ -126,6 +156,10 @@ void Box2DRevoluteJoint::setEnableLimit(bool enableLimit)
     emit enableLimitChanged();
 }
 
+/*!
+\qmlproperty bool RevoluteJoint::enableMotor
+DOCME
+*/
 bool Box2DRevoluteJoint::enableMotor() const
 {
     return mRevoluteJointDef.enableMotor;
@@ -142,11 +176,20 @@ void Box2DRevoluteJoint::setEnableMotor(bool enableMotor)
     emit enableMotorChanged();
 }
 
+
+/*!
+\qmlproperty QPointF RevoluteJoint::localAnchorA
+DOCME
+*/
 QPointF Box2DRevoluteJoint::localAnchorA() const
 {
     return QPointF(mRevoluteJointDef.localAnchorA.x * scaleRatio, mRevoluteJointDef.localAnchorA.y * scaleRatio);
 }
 
+/*!
+\qmlproperty QPointF RevoluteJoint::localAnchorB
+DOCME
+*/
 QPointF Box2DRevoluteJoint::localAnchorB() const
 {
     return QPointF(mRevoluteJointDef.localAnchorB.x * scaleRatio, mRevoluteJointDef.localAnchorB.y * scaleRatio);
@@ -207,12 +250,22 @@ b2Joint *Box2DRevoluteJoint::GetJoint()
     return mRevoluteJoint;
 }
 
+
+/*!
+\qmlsignal RevoluteJoint::getJointAngle()
+DOCME
+*/
 float Box2DRevoluteJoint::getJointAngle()
 {
     if(mRevoluteJoint) return -mRevoluteJoint->GetJointAngle() * 180 / b2_pi;
     return 0.0;
 }
 
+/*!
+\qmlsignal RevoluteJoint::getJointSpeed()
+DOCME
+return the Joint Speed
+*/
 float Box2DRevoluteJoint::getJointSpeed()
 {
     if(mRevoluteJoint) return mRevoluteJoint->GetJointSpeed();
