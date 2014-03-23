@@ -575,7 +575,7 @@ ghost collisions assumes there are no self-intersections of the chain. Also, ver
 problems. Make sure all your edges are longer than b2_linearSlop (5mm).
 
 
-\image chain2.pmg
+\image chain2.png
 
 
 Each edge in the chain is treated as a child shape and can be accessed by index. When a chain shape is

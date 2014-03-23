@@ -1,5 +1,5 @@
 gource \
-    -s .06 \
+    -s .1 \
     -1280x720 \
     --auto-skip-seconds .1 \
     --multi-sampling \
@@ -9,9 +9,9 @@ gource \
     --hide mouse,progress \
     --file-idle-time 0 \
     --max-files 0  \
-    --background-colour 000000 \
-    --font-size 22 \
-    --title "QML Box2d - development"  \
+    --background-colour C4C4C4 \
+    --font-size 24 \
+    --title "QML Box2d - Development"  \
     --output-ppm-stream - \
     --output-framerate 30 \
     | avconv -y -r 30 -f image2pipe -vcodec ppm -i - -b 65536K qml-box2d.mp4
