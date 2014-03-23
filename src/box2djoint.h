@@ -89,7 +89,7 @@ private:
     Box2DBody *mBodyA;
     Box2DBody *mBodyB;
 
-
+};
 inline Box2DJoint *toBox2DJoint(b2Joint *joint)
 {
     if(!joint) return 0;
