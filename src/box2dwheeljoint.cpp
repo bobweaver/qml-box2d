@@ -34,7 +34,9 @@
     \qmltype WheelJoint
     \instantiates Box2DWheelJoint
     \inqmlmodule Box2D 1.1
-    \brief Provids a WheelJoint to use on objects.
+    \brief The wheel joint restricts a point on bodyB to a line on bodyA. The wheel joint also provides a suspension
+spring. See b2WheelJoint.h and Car.h for details.
+\image wheelJoint.png
 */
 /*!
 \class Box2DWheelJoint

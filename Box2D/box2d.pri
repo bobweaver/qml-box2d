@@ -1,4 +1,3 @@
-# Box2D sources
 INCLUDEPATH += .
 SOURCES += \
     $$PWD/Collision/Shapes/b2PolygonShape.cpp \

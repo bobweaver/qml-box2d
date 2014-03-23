@@ -37,7 +37,24 @@
  \qmltype DebugDraw
     \instantiates DebugDraw
     \inqmlmodule Box2D 1.1
-    \brief Provids a Debugging Viewer for Box2D.
+    \brief You can implement the b2DebugDraw class to get detailed drawing of the physics world. Here are the
+available entities:
+\list
+ \li shape outlines
+\li joint connectivity
+\li  broad-phase axis-aligned bounding boxes (AABBs)
+\li  center of mass
+\endlist
+
+\l {cannon}{cannon example} with DebugDraw on
+
+\image cannonExampleDebugDraw.png
+
+This is the preferred method of drawing these physics entities, rather than accessing the data directly.
+The reason is that much of the necessary data is internal and subject to change.
+The testbed draws physics entities using the debug draw facility and the contact listener, so it serves as
+the primary example of how to implement debug drawing as well as how to draw contact points.
+
 
 */
 
@@ -141,8 +158,8 @@ void DebugDraw::DrawSolidCircle(const b2Vec2 &center, float32 radius,
     mP->setPen(Qt::NoPen);
     mP->setBrush(toQColor(color));
     mP->drawEllipse(toQPointF(center),
-                   radius * scaleRatio,
-                   radius * scaleRatio);
+                    radius * scaleRatio,
+                    radius * scaleRatio);
 }
 
 void DebugDraw::DrawSegment(const b2Vec2 &p1, const b2Vec2 &p2,
