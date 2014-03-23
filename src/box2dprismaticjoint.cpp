@@ -42,15 +42,18 @@ Box2DPrismaticJoint::Box2DPrismaticJoint(QObject *parent) :
     \qmltype PrismaticJoint
     \instantiates Box2DPrismaticJoint
     \inqmlmodule Box2D 1.1
-    \brief A prismatic joint allows for relative translation of two bodies along a specified axis. A prismatic joint
+    \brief A PrismaticJoint allows for relative translation of two bodies along a specified axis.
 
+A PrismaticJoint prevents relative rotation. Therefore, a PrismaticJoint has a single degree
+ of freedom.
 
-prevents relative rotation. Therefore, a prismatic joint has a single degree of freedom.
 \image prismaticJoint.png
 
-The prismatic joint definition is similar to the revolute joint description; just substitute translation for
-angle and force for torque. Using this analogy provides an example prismatic joint definition with a joint
-limit and a friction motor:
+The PrismaticJoint definition is similar to the RevoluteJoint description; just substitute
+translation for angle and force for torque. Using this analogy provides an example
+PrismaticJoint  definition with a Joint limit and a friction motor:
+
+\code
 b2PrismaticJointDef jointDef;
 b2Vec2 worldAxis(1.0f, 0.0f);
 jointDef.Initialize(myBodyA, myBodyB, myBodyA->GetWorldCenter(), worldAxis);
@@ -60,17 +63,23 @@ jointDef.enableLimit = true;
 jointDef.maxMotorForce = 1.0f;
 jointDef.motorSpeed = 0.0f;
 jointDef.enableMotor = true;
-The revolute joint has an implicit axis coming out of the screen. The prismatic joint needs an explicit axis
-parallel to the screen. This axis is fixed in the two bodies and follows their motion.
-Like the revolute joint, the prismatic joint translation is zero when the joint is created using Initialize().
-So be sure zero is between your lower and upper translation limits.
-Using a prismatic joint is similar to using a revolute joint. Here are the relevant member functions:
+\endcode
+
+The RevoluteJoint has an implicit axis coming out of the screen. The PrismaticJoint needs
+an explicit axis parallel to the screen. This axis is fixed in the two {Body} {bodies} and follows
+ their motion. Like the RevoluteJoint, the PrismaticJoint translation is zero
+
+when the Joint is created using Initialize(). So be sure zero is between your lowerTranslation
+ and  upperTranslation limits. Using a PrismaticJoint is similar to using a RevoluteJoint.
+ Here are the  relevant member functions:
+
+\code
 float32 GetJointTranslation() const;
 float32 GetJointSpeed() const;
 float32 GetMotorForce() const;
 void SetMotorSpeed(float32 speed);
 void SetMotorForce(float32 force);
-
+\endcode
 */
 
 Box2DPrismaticJoint::~Box2DPrismaticJoint()

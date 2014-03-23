@@ -42,8 +42,11 @@ Box2DFrictionJoint::Box2DFrictionJoint(QObject *parent) :
     \qmltype FrictionJoint
     \instantiates  Box2DFrictionJoint
     \inqmlmodule Box2D 1.1
-    \brief The friction joint is used for top-down friction. The joint provides 2D translational friction and angular
-friction. See b2FrictionJoint.h and ApplyForce.h for details.
+    \brief The friction joint is used for top-down friction. The joint provides 2D
+
+translational friction and angular friction.
+
+See FrictionJoint  for details.
 */
 
 Box2DFrictionJoint::~Box2DFrictionJoint()

@@ -70,3 +70,9 @@ unix {
     INSTALLS += target qmldir
 }
 
+win32 {
+    installPath = $$[QT_INSTALL_QML]/$${uri}
+    qmldir.path = $$installPath
+    target.path = $$installPath
+    INSTALLS += target qmldir
+}

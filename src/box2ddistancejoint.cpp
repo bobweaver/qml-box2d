@@ -46,30 +46,61 @@ Box2DDistanceJoint::Box2DDistanceJoint(QObject *parent) :
     \qmltype DistanceJoint
     \instantiates Box2DDistanceJoint
     \inqmlmodule Box2D 1.1
-    \brief One of the simplest joint is a distance joint which says that the distance between two points on two
-bodies must be constant. When you specify a distance joint the two bodies should already be in place.
-Then you specify the two anchor points in world coordinates. The first anchor point is connected to
-body 1, and the second anchor point is connected to body 2. These points imply the length of the
-distance constraint.
+    \brief One of the simplest joint is a DistanceJoint. Which says that the distance between two  points on two
+{Body} {bodies} must be constant.
+
+When you specify a DistanceJoint the two {Body} {bodies} should already be in place.
+
+Then you specify the two anchor points in World coordinates.
+The first anchor point is connected to body 1,
+and the second anchor point is connected to body 2.
+These points imply the length of the distance constraint.
+
 \image distanceJoint.png
-Here is an example of a distance joint definition. In this case we decide to allow the bodies to collide.
-##notRIGHT FIXME TO BE FOR QML
+
+Here is an example of a distance joint definition.
+
+In this case we decide to allow the {Body} {bodies} to collide.
+
+##FIXME
+
 \code
-Initialize(myBodyA, myBodyB, worldAnchorOnBodyA, worldAnchorOnBodyB);
-collideConnected = true;
+            Body{
+             id: mybodyA
+                ..........
+                ..................
+                }
+            Body{
+                id:mybodyB
+                ...
+                ......
+                .........
+                }
+                DistanceJoint{
+                        localAnchorA: mybodyA
+                        localAchoerB: mybodyB
+                        collideConnected = true;
+                }
 \endcode
-The distance joint can also be made soft, like a spring-damper connection. See the Web example in the
-testbed to see how this behaves.
-Softness is achieved by tuning two constants in the definition: frequency and damping ratio. Think of the
-frequency as the frequency of a harmonic oscillator (like a guitar string). The frequency is specified in
-Hertz. Typically the frequency should be less than a half the frequency of the time step. So if you are
-using a 60Hz time step, the frequency of the distance joint should be less than 30Hz. The reason is
-related to the Nyquist frequency.
-The damping ratio is non-dimensional and is typically between 0 and 1, but can be larger. At 1, the
-damping is critical (all oscillations should vanish).
+
+The DistanceJoint can also be made soft, like a spring-damper connection.
+
+... See the Web example in the testbed to see how this behaves....
+
+Softness is achieved by tuning two constants in the definition: frequencyHz and dampingRatio.
+Think of the frequencyHz as the frequency of a harmonic oscillator (like a guitar string).
+The frequency is specified in Hertz. Typically the frequency should be less than a half
+the frequency of the time step. So if you are using a 60Hz time step, the frequency of the
+DistanceJoint should be less than 30Hz. The reason is related to the Nyquist frequency.
+
+The dampingRatio is non-dimensional and is typically between 0 and 1,
+ but can be larger. At 1, the damping is critical (all oscillations should vanish).
+
 \code
-frequencyHz = 4.0;
-dampingRatio = 0.5;
+                DistanceJoint {
+                            frequencyHz = 0.6;
+                            dampingRatio = 0.5;
+                        }
 \endcode
 */
 
@@ -81,7 +112,7 @@ Box2DDistanceJoint::~Box2DDistanceJoint()
 
 /*!
 \qmlproperty float DistanceJoint::length
- DOCME
+ The length between the two {Body} {bodies}
 */
 float Box2DDistanceJoint::length() const
 {
@@ -101,7 +132,10 @@ void Box2DDistanceJoint::setLength(float _length)
 
 /*!
 \qmlproperty float DistanceJoint::frequencyHz
-DOCME
+Think of the frequencyHz as the frequency of a harmonic oscillator (like a guitar string).
+The frequency is specified in Hertz. Typically the frequency should be less than a half
+the frequency of the time step. So if you are using a 60Hz time step, the frequency of the
+DistanceJoint should be less than 30Hz.
 */
 float Box2DDistanceJoint::frequencyHz() const
 {
@@ -121,7 +155,9 @@ void Box2DDistanceJoint::setFrequencyHz(float _frequencyHz)
 
 /*!
 \qmlproperty float DistanceJoint::dampingRatio
-DOCME
+The dampingRatio is non-dimensional and is typically between 0 and 1,
+ but can be larger. At 1, the damping is critical (all oscillations should vanish).
+
 */
 float Box2DDistanceJoint::dampingRatio() const
 {
@@ -143,6 +179,8 @@ void Box2DDistanceJoint::setDampingRatio(float _dampingRatio)
 /*!
 \qmlproperty QPointF DistanceJoint::localAnchorA
 DOCME
+
+Connection A point ?
 */
 QPointF Box2DDistanceJoint::localAnchorA() const
 {
@@ -161,6 +199,8 @@ void Box2DDistanceJoint::setLocalAnchorA(const QPointF &localAnchorA)
 /*!
 \qmlproperty QPointF DistanceJoint::localAnchorB
 DOCME
+The other Body connection ?
+
 */
 QPointF Box2DDistanceJoint::localAnchorB() const
 {
@@ -221,7 +261,10 @@ b2Joint *Box2DDistanceJoint::GetJoint()
 /*!
 \qmlsignal DistanceJoint::GetReactionForce(float32 inv_dt)
 DOCME
+
 */
+
+//FIXME can this be made camelCase
 QPointF Box2DDistanceJoint::GetReactionForce(float32 inv_dt) const
 {
     if(mDistanceJoint)
@@ -236,6 +279,8 @@ QPointF Box2DDistanceJoint::GetReactionForce(float32 inv_dt) const
 \qmlsignal DistanceJoint::GetReactionTorque(float32 inv_dt)
 DOCME
 */
+
+//FIXME camelCase
 float Box2DDistanceJoint::GetReactionTorque(float32 inv_dt) const
 {
     if(mDistanceJoint) return mDistanceJoint->GetReactionTorque(inv_dt);

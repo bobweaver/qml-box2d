@@ -41,10 +41,13 @@ Box2DMouseJoint::Box2DMouseJoint(QObject *parent) :
     \qmltype MouseJoint
     \instantiates Box2DMouseJoint
     \inqmlmodule Box2D 1.1
-    \brief The mouse joint is used in the testbed to manipulate bodies with the mouse. It attempts to drive a point
-on a body towards the current position of the cursor. There is no restriction on rotation.
-The mouse joint definition has a target point, maximum force, frequency, and damping ratio. The target
-point initially coincides with the body’s anchor point. The maximum force is used to prevent violent
+    \brief The MouseJoint is used in the testbed to manipulate bodies with the mouse.
+
+
+    It attempts to drive a point on a Body towards the current position of the cursor. There is no
+ restriction on rotation.The MouseJoint definition has a target point, maxForce, frequencyHz,
+and dampingRatio. The target point initially coincides with the Body ’s anchor point.
+The maxForce is used to prevent violent outcomes
 */
 Box2DMouseJoint::~Box2DMouseJoint()
 {

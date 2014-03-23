@@ -1,4 +1,5 @@
 ## Bindings
+add suport in the .pro files for win32 and clang maybe android also 
 
 Shape Ray Cast 
 

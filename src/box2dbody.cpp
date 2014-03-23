@@ -39,7 +39,7 @@
     \qmltype Body
     \instantiates Box2DBody
     \inqmlmodule Box2D 1.1
-    \brief Bodies have position and velocity.
+    \brief  {Body} {Bodies} have position and velocity.
  You can apply forces, torques,
 and impulses to bodies. Bodies can be
 static, kinematic, or dynamic.
@@ -92,12 +92,20 @@ void Box2DBody::setLinearDamping(qreal _linearDamping)
 Damping is used to reduce the world velocity of bodies. Damping is different than friction because
 friction only occurs with contact. Damping is not a replacement for friction and the two effects should
 be used together.
-Damping parameters should be between 0 and infinity, with 0 meaning no damping, and infinity
-meaning full damping. Normally you will use a damping value between 0 and 0.1. I generally do not use
+Damping parameters should be between
+#FIXME for QML
+0 and infinity, with 0 meaning no damping, and infinity
+meaning full damping.
+
+Normally you will use a damping value between 0.1 and 1. I generally do not use
 linear damping because it makes bodies look like they are floating.
+
 \code
- angularDamping = 0.1;
+Body{
+angularDamping = 0.1
+}
 \endcode
+
 Damping is approximated for stability and performance. At small damping values the damping effect is
 mostly independent of the time step. At larger damping values, the damping effect will vary with the
 time step. This is not an issue if you use a fixed time step (recommended).
@@ -122,28 +130,38 @@ void Box2DBody::setAngularDamping(qreal _angularDamping)
 
 /*!
  * \qmlproperty enum Body::bodyType
-\section2 staticBody
+There are 3 Differrnt bodytypes. each of them do sperate things.
+\table
+\row
+\li Body.Static
+\endtable
 A static body does not move under simulation and behaves as if it has infinite mass. Internally, Box2D
 stores zero for the mass and the inverse mass. Static bodies can be moved manually by the user. A static
 body has zero velocity. Static bodies do not collide with other static or kinematic bodies.
-\section2 kinematicBody
+
+\table
+\row
+\li Body.Kinematic
+\endtable
+
 A kinematic body moves under simulation according to its velocity. Kinematic bodies do not respond to
 forces. They can be moved manually by the user, but normally a kinematic body is moved by setting its
 velocity. A kinematic body behaves as if it has infinite mass, however, Box2D stores zero for the mass
 and the inverse mass. Kinematic bodies do not collide with other kinematic or static bodies.
-\section2 dynamicBody
+
+\table
+\row
+\li Body.Dynamic
+\endtable
+
 A dynamic body is fully simulated. They can be moved manually by the user, but normally they move
 according to forces. A dynamic body can collide with all body types. A dynamic body always has finite,
 non-zero mass. If you try to set the mass of a dynamic body to zero, it will automatically acquire a mass
 of one kilogram and it won’t rotate.
-Bodies are the backbone for fixtures (shapes). Bodies carry fixtures and move them around in the world.
-Bodies are always rigid bodies in Box2D. That means that two fixtures attached to the same rigid body
+Bodies are the backbone for Fixture (shapes). {Body} {Bodies} carry Fixture and move them around in the World.
+Bodies are always rigid bodies in Box2D. That means that two {Ficture}{fixtures} attached to the same rigid body
 never move relative to each other and fixtures attached to the same body don’t collide.
-Fixtures have collision geometry and density. Normally, bodies acquire their mass properties from the
-fixtures. However, you can override the mass properties after a body is constructed.
-You usually keep pointers to all the bodies you create. This way you can query the body positions to
-update the positions of your graphical entities. You should also keep body pointers so you can destroy
-them when you are done with them.
+
 
  */
 
@@ -166,28 +184,26 @@ void Box2DBody::setBodyType(BodyType _bodyType)
 }
 
 /*!
-/qmlproperty bool Body::isBullet
-boolean property for the body read more about bullet
-\section3 bullet
+/qmlproperty bool Body::bullet
+
 Game simulation usually generates a sequence of images that are played at some frame rate. This is
-called discrete simulation. In discrete simulation, rigid bodies can move by a large amount in one time step. If a physics engine doesn't account for the large motion, you may see some objects incorrectly pass
+called discrete simulation. In discrete simulation, rigid bodies can move by a large amount in one time step.
+If a physics engine doesn't account for the large motion, you may see some objects incorrectly pass
 through each other. This effect is called tunneling.
+
 By default, Box2D uses continuous collision detection (CCD) to prevent dynamic bodies from tunneling
 through static bodies. This is done by sweeping shapes from their old position to their new positions.
 The engine looks for new collisions during the sweep and computes the time of impact (TOI) for these
 collisions. Bodies are moved to their first TOI and then the solver performs a sub-step to complete the
 full time step. There may be additional TOI events within a sub-step.
-By default, Box2D uses continuous collision detection (CCD) to prevent dynamic bodies from tunneling
-through static bodies. This is done by sweeping shapes from their old position to their new positions.
-The engine looks for new collisions during the sweep and computes the time of impact (TOI) for these
-collisions. Bodies are moved to their first TOI and then the solver performs a sub-step to complete the
-full time step. There may be additional TOI events within a sub-step.
+
 Normally CCD is not used between dynamic bodies. This is done to keep performance reasonable. In
 some game scenarios you need dynamic bodies to use CCD. For example, you may want to shoot a high
 speed bullet at a stack of dynamic bricks. Without CCD, the bullet might tunnel through the bricks.
 Fast moving objects in Box2D can be labeled as bullets. Bullets will perform CCD with both static and
 dynamic bodies. You should decide what bodies should be bullets based on your game design. If you
 decide a body should be treated as a bullet, use the following setting.
+
 \code
 bullet = true;
 \endcode
@@ -214,17 +230,27 @@ void Box2DBody::setBullet(bool _bullet)
 
 /*!
   \qmlproperty bool Body::sleepingAllowed
- boolean property that allows one to put the body to sleep read more
-What does sleep mean? Well it is expensive to simulate bodies, so the less we have to simulate the
+
+boolean property that allows one to put the body to sleep.
+
+What does sleep mean?
+
+Well it is expensive to simulate bodies, so the less we have to simulate the
 better. When a body comes to rest we would like to stop simulating it.
-When Box2D determines that a body (or group of bodies) has come to rest, the body enters a sleep
-state which has very little CPU overhead. If a body is awake and collides with a sleeping body, then the
-sleeping body wakes up. Bodies will also wake up if a joint or contact attached to them is destroyed. You
-can also wake a body manually.
-The body definition lets you specify whether a body can sleep and whether a body is created sleeping.
+When Box2D determines that a Body (or group of bodies see Fixture) has come to rest,
+the body enters a sleep state which has very little CPU overhead. If a Body is awake and
+collides with a sleeping Body, then the sleeping body wakes up. Bodies will also wake up
+if a Joint or contact attached to them is destroyed.
+
+You can also wake a body manually. The Body definition lets you specify whether a Body
+can sleep and whether a Body is created sleeping.
+
 
 \code
-sleepingTrue = true;
+Body{
+        id: sleepyBody
+        sleepingTrue = true
+}
 \endcode
 
 */
@@ -249,13 +275,17 @@ void Box2DBody::setSleepingAllowed(bool allowed)
 
 /*!
   \qmlproperty bool Body::fixedRotation
-  bollean property that allows one to set fixedRotation to a Body.
-You may want a rigid body, such as a character, to have a fixed rotation. Such a body should not rotate,
-even under load. You can use the fixed rotation setting to achieve this:
+You may want a rigid Body, such as a character, to have a fixed rotation.
+ Such a Body should not rotate, even under load.
+
+You can use the fixedRotation setting to achieve this:
 \code
-fixedRotation = true;
+        Body{
+                id:fixedBody
+                fixedRotation = true
+         }
 \endcode
-The fixed rotation flag causes the rotational inertia and its inverse to be set to zero.
+
 
  */
 bool Box2DBody::fixedRotation() const
@@ -278,19 +308,34 @@ void Box2DBody::setFixedRotation(bool _fixedRotation)
 
 /*!
   \qmlproperty  bool  Body::active
-  booean property to set the body as active or not active  You may wish a body to be created but not participate
-in collision or dynamics. This state is similar to
-sleeping except the body will not be woken by other bodies and the body's fixtures will not be placed in
-the broad-phase. This means the body will not participate in collisions, ray casts, etc.
-You can create a body in an inactive state and later re-activate it.
+You may wish a body to be created but not participate in collision or dynamics.
+This state is similar to {sleepingAllowed} {sleeping} except the body will not be woken
+by other bodies and the body's {Fixture}{fixtures} will not be placed in the broad-phase.
+This means the body will not participate in collisions,  etc. You can create a Body in an
+inactive state and later re-activate it.
+
 \code
-active = true;
+            Body{
+                id: naBody
+                active = true
+                fixture:
+                ...
+                ........
+                .............
+                }
+
+                Button{
+                        anchor.fill: parent
+                        onClicked{ na.active = false}
+            }
 \endcode
-Joints may be connected to inactive bodies. These joints will not be simulated. You should be careful
-when you activate a body that its joints are not distorted.
-Note that activating a body is almost as expensive as creating the body from scratch. So you should not
-use activation for streaming worlds. Use creation/destruction for streaming worlds to save memory.
+
+{Joint} {Joints} may be connected to inactive bodies. These {Joint} {joints} will not be simulated.
+You should be careful when you activate a Body that its {Joint} {joints} are not distorted.
+Note that activating a body is almost as expensive as creating the body from scratch.
+
 */
+
 bool Box2DBody::active() const
 {
     if(mBody) mBody->IsActive();
@@ -310,7 +355,7 @@ void Box2DBody::setActive(bool _active)
 
 /*!
   \qmlproperty bool Body::awake
-  see sleep
+  see sleepAllowed
  */
 bool Box2DBody::awake() const
 {
@@ -373,18 +418,19 @@ void Box2DBody::setGravityScale(qreal _gravityScale)
 
 /*!
  \qmlproperty QQmlListProperty Body::fixtures
- a list of elements that will be attached to the ficture in
-  \code
-  Body{
-  ...
-  ......
-  fixtures{
-  Box{
-        ..
-        ....
-    }
-  }
-}
+ a list of elements that will be attached to the Body. This can be a single element or many.
+
+\code
+                Body{
+                        ...
+                        ......
+                        fixtures{
+                            Box{
+                                  ..
+                                    ....
+                            }
+                        }
+                    }
  \endcode
  */
 
@@ -442,7 +488,7 @@ void Box2DBody::initialize(b2World *world)
 
 /*!
  \qmlsignal Body::synchronize()
- Synchronizes the state of this body with the internal Box2D state.
+ Synchronizes the state of the Body with the internal Box2D state.
  */
 
 void Box2DBody::synchronize()
@@ -474,9 +520,18 @@ void Box2DBody::synchronize()
    this needs  argument with it for the world
    example:
    \code
-   Component.onCompleated{
-   cleanup(myworld);
-   }
+                World{
+                    id: myWorld
+                    ............
+                    .....................
+                    .........................
+
+                    Button{
+                            ...
+                            ........
+                            onClicked: cleanup(myworld);
+                            }
+                     }
    \endcode
  */
 
@@ -508,6 +563,8 @@ b2World *Box2DBody::world() const
 
 /*!
 \qmlsignal Body::geometryChanged(newGeometry,oldGeometry)
+A signal that can be used to gather geometry info.
+
 */
 void Box2DBody::geometryChanged(const QRectF &newGeometry,
                                 const QRectF &oldGeometry)
@@ -523,7 +580,8 @@ void Box2DBody::geometryChanged(const QRectF &newGeometry,
 
 /*!
     \qmlmethod  Box2DBody::onRotationChanged
- */
+A signal that can be used to tell if the rotation has changed
+*/
 
 void Box2DBody::onRotationChanged()
 {
@@ -534,7 +592,7 @@ void Box2DBody::onRotationChanged()
 }
 
 /*!
- \qmlsignal Body::applyLinearImpulse(QPointF &impulse, QPointF &point)
+ \qmlsignal Body::applyLinearImpulse(impulse, point)
 applyLinearImpulse
  */
 void Box2DBody::applyLinearImpulse(const QPointF &impulse,
@@ -550,7 +608,7 @@ void Box2DBody::applyLinearImpulse(const QPointF &impulse,
 
 
 /*!
-     \qmlsignal  Body::applyTorque(qreal torque)
+     \qmlsignal  Body::applyTorque(torque)
  */
 void Box2DBody::applyTorque(qreal torque)
 {
@@ -560,7 +618,7 @@ void Box2DBody::applyTorque(qreal torque)
 
 /*!
  * \qmlsignal Body::getWorldCenter()
- returns the center of your world nherent of QPointF
+    returns the center of your world.
  */
 
 QPointF Box2DBody::getWorldCenter() const
@@ -576,8 +634,8 @@ QPointF Box2DBody::getWorldCenter() const
 
 
 /*!
-  \qmlsignal Body::applyForce(QPointF &force,QPointF &point)
-apply force to a body
+  \qmlsignal Body::applyForce(force,point)
+        apply force to a point of a Body
  */
 void Box2DBody::applyForce(const QPointF &force, const QPointF &point)
 {

@@ -42,41 +42,56 @@ Box2DRevoluteJoint::Box2DRevoluteJoint(QObject *parent) :
     \qmltype RevoluteJoint
     \instantiates Box2DRevoluteJoint
     \inqmlmodule Box2D 1.1
-    \brief A revolute joint forces two bodies to share a common anchor point, often called a hinge point. The
-revolute joint has a single degree of freedom: the relative rotation of the two bodies. This is called the
-joint angle.
+    \brief A RevoluteJoint forces two {Body} {bodies} to share a common anchor point, often
+ called a hinge point.
+
+The revolute joint has a single degree of freedom: the relative rotation of the two bodies.
+This is called the jointAngle.
 
 \image revoluteJoint.png
 
 ##FIXME
+\code
 b2RevoluteJointDef jointDef;
 jointDef.Initialize(myBodyA, myBodyB, myBodyA->GetWorldCenter());
+\endcode
 
-To specify a revolute you need to provide two bodies and a single anchor point in world space. The
-initialization function assumes that the bodies are already in the correct position.
-In this example, two bodies are connected by a revolute joint at the first body's center of mass.
+To specify a revolute you need to provide two {Body} {bodies} and a single anchor point
+ in World space. The initialization function assumes that the bodies are already in the
+correct position. In this example, two bodies are connected by a RevoluteJoint at  the first
+ body's center of mass.
 
-The revolute joint angle is positive when bodyB rotates CCW about the angle point. Like all angles in
-Box2D, the revolute angle is measured in radians. By convention the revolute joint angle is zero when
-the joint is created using Initialize(), regardless of the current rotation of the two bodies.
-In some cases you might wish to control the joint angle. For this, the revolute joint can optionally
-simulate a joint limit and/or a motor.
-A joint limit forces the joint angle to remain between a lower and upper bound. The limit will apply as
-much torque as needed to make this happen. The limit range should include zero, otherwise the joint
-will lurch when the simulation begins.
-A joint motor allows you to specify the joint speed (the time derivative of the angle). The speed can be
-negative or positive. A motor can have infinite force, but this is usually not desirable. Recall the eternal
+The RevoluteJoint angle is positive when
+bodyB rotates CCW about the angle point.
+ Like all angles in Box2D, the revolute angle is measured in radians. By convention the
+RevoluteJoint angle is zero when the joint is created using Initialize(), regardless of the
+ current rotation of the two bodies.
+
+In some cases you might wish to control the Joint angle. For this, the RevoluteJoint can
+ optionally simulate a Joint limit and/or a motor.
+A joint limit forces the joint angle to remain between a lower and upper bound. The limit will
+ apply as much torque as needed to make this happen. The limit range should include zero,
+ otherwise the joint will lurch when the simulation begins.
+
+A joint motor allows you to specify the joint speed (the time derivative of the angle).
+The speed can be negative or positive. A motor can have infinite force, but this is usually
+not desirable. Recall the eternal
+
 question:
-"What happens when an irresistible force meets an immovable object?"
-I can tell you it's not pretty. So you can provide a maximum torque for the joint motor. The joint motor
-will maintain the specified speed unless the required torque exceeds the specified maximum. When the
-maximum torque is exceeded, the joint will slow down and can even reverse.
 
-You can use a joint motor to simulate joint friction. Just set the joint speed to zero, and set the
-maximum torque to some small, but significant value. The motor will try to prevent the joint from
+"What happens when an irresistible force meets an immovable object?"
+
+I can tell you it's not pretty. So you can provide a maxTorque for the joint motor. The joint
+motor will maintain the specified speed unless the required torque exceeds the specified
+ maximum. When the maxTorque is exceeded, the Joint will slow down and can even reverse.
+
+You can use a JointMotor to simulate Joint friction. Just set the joint speed to zero, and set the
+maxTorque to some small, but significant value. The motor will try to prevent the joint from
 rotating, but will yield to a significant load.
+
 Here's a revision of the revolute joint definition above; this time the joint has a limit and a motor
 enabled. The motor is setup to simulate joint friction.
+\code
 b2RevoluteJointDef jointDef;
 jointDef.Initialize(bodyA, bodyB, myBodyA->GetWorldCenter());
 jointDef.lowerAngle = -0.5f * b2_pi; // -90 degrees
@@ -85,16 +100,21 @@ jointDef.enableLimit = true;
 jointDef.maxMotorTorque = 10.0f;
 jointDef.motorSpeed = 0.0f;
 jointDef.enableMotor = true;
-You can access a revolute joint's angle, speed, and motor torque.
+// You can access a revolute joint's angle, speed, and motor torque.
 float32 GetJointAngle() const;
 float32 GetJointSpeed() const;
 float32 GetMotorTorque() const;
 You also update the motor parameters each step.
 void SetMotorSpeed(float32 speed);
 void SetMaxMotorTorque(float32 torque);
-Joint motors have some interesting abilities. You can update the joint speed every time step so you can
-make the joint move back-and-forth like a sine-wave or according to whatever function you want.
+\endcode
+
+Joint motors have some interesting abilities. You can update the joint speed every time step
+so you can make the joint move back-and-forth like a sine-wave or according to whatever
+ function you want.
+\code
 ... Game Loop Begin ...
+
 myJoint->SetMotorSpeed(cosf(0.5f * time));
 ... Game Loop End ...
 You can also use joint motors to track a desired joint angle. For example:
@@ -103,7 +123,11 @@ float32 angleError = myJoint->GetJointAngle() - angleTarget;
 float32 gain = 0.1f;
 myJoint->SetMotorSpeed(-gain * angleError);
 ... Game Loop End ...
-Generally your gain parameter should not be too large. Otherwise your joint may become unstable.
+\endcode
+
+Generally your gain parameter should not be too large. Otherwise your joint may become
+ unstable.
+
 */
 
 Box2DRevoluteJoint::~Box2DRevoluteJoint()

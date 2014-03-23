@@ -42,10 +42,14 @@ Box2DMotorJoint::Box2DMotorJoint(QObject *parent) :
     \qmltype MotorJoint
     \instantiates Box2DMotorJoint
     \inqmlmodule Box2D 1.1
-    \brief A motor joint lets you control the motion of a body by specifying target position and rotation offsets.
-You can set the maximum motor force and torque that will be applied to reach the target position and
-rotation. If the body is blocked, it will stop and the contact forces will be proportional the maximum
-motor force and torque. See Box2DMotorJoint for details.
+    \brief A MotorJoint lets you control the motion of a Body by specifying target position
+and rotation offsets.
+
+You can set the maxForce and maxTorque that will be applied to reach the target
+position and rotation. If the Body is blocked, it will stop and the contact forces will be
+proportional the maxForce and maxTorque.
+
+See Box2DMotorJoint for more details.
 */
 
 Box2DMotorJoint::~Box2DMotorJoint()

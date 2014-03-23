@@ -45,67 +45,51 @@ Box2DFixture::Box2DFixture(QQuickItem *parent) :
     \qmltype Fixture
     \instantiates Box2DFixture
     \inqmlmodule Box2D 1.1
-    \brief Recall that shapes don’t know about bodies and may be used independently of the physics simulation.
-Therefore Box2D provides the b2Fixture class to attach shapes to bodies. A body may have zero or more
-fixtures.
+    \brief Recall that shapes don’t know about {Body}{bodies} and may be used independently
+
+of the physics simulation.
+Therefore Box2D provides the Fixture  to attach shapes to {Body}{bodies}. A Body may have
+zero or more {Body::fixtures}  {fixtures}.
 
 A body with multiple fixtures is sometimes called a compound body.
 Fixtures hold the following:
- a single shape
- broad-phase proxies
- density, friction, and restitution
- collision filtering flags
- back pointer to the parent body
- user data
- sensor flag
+
+\list
+\li  a single shape
+\li  broad-phase proxies
+\li density, friction, and restitution
+\li collision filtering flags
+\li back pointer to the parent body
+\li user data
+\li sensor flag
+\endlist
+
 These are described in the following sections.
-7.2 Fixture Creation
-Fixtures are created by initializing a fixture definition and then passing the definition to the parent body.
-b2FixtureDef fixtureDef;
-fixtureDef.shape = &myShape;
-fixtureDef.density = 1.0f;
-b2Fixture* myFixture = myBody->CreateFixture(&fixtureDef);
-This creates the fixture and attaches it to the body. You do not need to store the fixture pointer since
-the fixture will automatically be destroyed when the parent body is destroyed. You can create multiple
-fixtures on a single body.
-You can destroy a fixture on the parent body. You may do this to model a breakable object. Otherwise
-you can just leave the fixture alone and let the body destruction take care of destroying the attached
-fixtures. myBody->DestroyFixture(myFixture);
-Density
-The fixture density is used to compute the mass properties of the parent body. The density can be zero
-or positive. You should generally use similar densities for all your fixtures. This will improve stacking
-stability.
-The mass of a body is not adjusted when you set the density. You must call ResetMassData for this to
-occur.
-fixture->SetDensity(5.0f);
-body->ResetMassData();
-Friction
-Friction is used to make objects slide along each other realistically. Box2D supports static and dynamic
-friction, but uses the same parameter for both. Friction is simulated accurately in Box2D and the friction
-strength is proportional to the normal force (this is called Coulomb friction). The friction parameter is
-usually set between 0 and 1, but can be any non-negative value. A friction value of 0 turns off friction
-and a value of 1 makes the friction strong. When the friction force is computed between two shapes,
-Box2D must combine the friction parameters of the two parent fixtures. This is done with the geometric
-mean:
-float32 friction;
-friction = sqrtf(fixtureA->friction * fixtureB->friction);
-So if one fixture has zero friction then the contact will have zero friction.
-You can override the default mixed friction using b2Contact::SetFriction. This is usually done in the
-b2ContactListener callback.
-Restitution
-Restitution is used to make objects bounce. The restitution value is usually set to be between 0 and 1.
-Consider dropping a ball on a table. A value of zero means the ball won't bounce. This is called an
-inelastic collision. A value of one means the ball's velocity will be exactly reflected. This is called a
-perfectly elastic collision. Restitution is combined using the following formula.
-float32 restitution;
-restitution = b2Max(fixtureA->restitution, fixtureB->restitution);
-Restitution is combined this way so that you can have a bouncy super ball without having a bouncy
-floor.
-You can override the default mixed restitution using b2Contact::SetRestitution. This is usually done in
-the b2ContactListener callback. When a shape develops multiple contacts, restitution is simulated approximately. This is because Box2D
-uses an iterative solver. Box2D also uses inelastic collisions when the collision velocity is small. This is
-done to prevent jitter. See b2_velocityThreshold in b2Settings.h.
-Filtering
+
+
+\section1 Fixture Creation
+Fixtures are created by initializing a fixture definition and then passing the definition to the
+parent Body.
+
+\code
+add example
+
+\endcode
+
+This creates the fixture and attaches it to the Body. You can create multiple
+fixtures on a single body. You can destroy a fixture on the parent Body.
+You may do this to model a breakable object. Otherwise you can just leave the fixture alone
+and let the body destruction take care of destroying the attached
+
+\code
+add destory example
+ixtures. myBody->DestroyFixture(myFixture);
+\endcode
+
+
+\section1 Filtering
+
+#FIXME
 Collision filtering allows you to prevent collision between fixtures. For example, say you make a
 character that rides a bicycle. You want the bicycle to collide with the terrain and the character to
 collide with the terrain, but you don't want the character to collide with the bicycle (because they must
@@ -147,7 +131,7 @@ get and set the b2Filter structure on an existing fixture using b2Fixture::GetFi
 b2Fixture::SetFilterData. Note that changing the filter data will not add or remove contacts until the next
 time step (see the World class).
 
-
+see {filtering}{Filtering Example}
 
     */
 
@@ -156,6 +140,19 @@ time step (see the World class).
 /*!
 /qmlproperty float Fixture::density
 DOCME
+
+Density
+The fixture density is used to compute the mass properties of the parent body. The density can be zero
+or positive. You should generally use similar densities for all your fixtures. This will improve stacking
+stability.
+
+The mass of a body is not adjusted when you set the density. You must call ResetMassData for this to
+occur.
+\code
+fixture->SetDensity(5.0f);
+body->ResetMassData();
+\endcode
+
 */
 float Box2DFixture::density() const
 {
@@ -177,6 +174,31 @@ void Box2DFixture::setDensity(float density)
 /*!
 \qmlproperty float Fixture::friction
 DOCME
+friction is used to make objects slide along each other realistically. Box2D supports
+
+\list
+\li Body.Static
+\li Body.Dynamic
+\endlist
+
+friction, but uses the same parameter for both. Friction is simulated accurately in Box2D and
+ the friction strength is proportional to the normal force (this is called Coulomb friction).
+The friction parameter is usually set between 0 and 1, but can be any non-negative value.
+ A friction value of 0 turns off friction and a value of 1 makes the friction strong.
+When the friction force is computed between two shapes, Box2D must combine the friction
+parameters of the two parent fixtures. This is done with the geometric mean:
+
+\code
+float32 friction;
+friction = sqrtf(fixtureA->friction * fixtureB->friction);
+\endcode
+
+So if one fixture has zero friction then the contact will have zero friction.
+You can override the default mixed friction using b2Contact::SetFriction. This is usually done in the
+b2ContactListener callback.
+
+
+
 */
 float Box2DFixture::friction() const
 {
@@ -197,6 +219,30 @@ void Box2DFixture::setFriction(float friction)
 /*!
 \qmlproperty float Fixture::restitution
 DOCME
+
+restitution is used to make objects bounce. The restitution value is usually set to be
+ between 0 and 1.
+
+Consider dropping a ball on a table. A value of zero means the ball won't bounce.
+This is called an inelastic collision. A value of one means the ball's velocity will be exactly
+ reflected. This is called a perfectly elastic collision. Restitution is combined using the following
+ formula.
+
+#FIXME
+\code
+float32 restitution;
+restitution = b2Max(fixtureA->restitution, fixtureB->restitution);
+\endcode
+
+restitution is combined this way so that you can have a bouncy super ball without having a
+bouncy floor.
+
+You can override the default mixed restitution using b2Contact::SetRestitution. This is usually
+done in the b2ContactListener callback. When a shape develops multiple contacts, restitution is
+ simulated approximately. This is because Box2D uses an iterative solver. Box2D also uses
+ inelastic collisions when the collision velocity is small. This is done to prevent jitter.
+
+See b2_velocityThreshold in b2Settings.h.
 */
 float Box2DFixture::restitution() const
 {
@@ -368,15 +414,18 @@ b2Vec2 *Box2DVerticesShape::scaleVertices()
 
 //=================== BOX =======================
 
+//QMLDOCS
 /*!
     \qmltype Box
     \instantiates Box2DBox
     \inqmlmodule Box2D 1.1
     \brief Provids a Box to wrap fictures in.
 */
+//C++ DOCS
 /*!
 \class Box2DBox
 */
+
 b2Shape *Box2DBox::createShape()
 {
     const qreal _x = x() / scaleRatio;
@@ -422,16 +471,27 @@ void Box2DBox::scale()
     \instantiates Box2DCircle
     \inqmlmodule Box2D 1.1
     \brief Circle Shapes
-Circle shapes have a position and radius. Circles are solid. You cannot make a hollow circle using the
+    Circle shapes have a position and radius. Circles are solid. You cannot make a hollow circle
+    using the
 \code
-circle{
-radius: 180;
-}
+        Body{
+        fixture{
+        Circle{
+            radius: 180;
+            ...
+            .......
+            ............
+        }
 \endcode
+
 */
+
 /*!
 \qmlproperty int Circle::radius
+    The over all radius of the Circle that is attached to the Fixture
+     See also Rectangle::radius
 */
+
 /*!
 \class Box2DCircle
 */
@@ -464,31 +524,34 @@ void Box2DCircle::scale()
     \inqmlmodule Box2D 1.1
     \brief Polygon shapes are solid convex polygons.
 
-A polygon is convex when all line segments connecting two
-points in the interior do not cross any edge of the polygon. Polygons are solid and never hollow. A
-polygon must have 3 or more vertices
+        A polygon is convex when all line segments connecting two points in the interior do
+not cross any edge of the polygon. Polygons are solid and never hollow. A polygon must have
+ 3 or more vertices
+
 \image polygonConvertConcave.png
-Polygons vertices are stored with a counter clockwise winding (CCW). We must be careful because the
-notion of CCW is with respect to a right-handed coordinate system with the z-axis pointing out of the
-plane. This might turn out to be clockwise on your screen, depending on your coordinate system
-conventions.
+
+Polygons vertices are stored with a counter clockwise winding (CCW). We must be careful
+ because the notion of CCW is with respect to a right-handed coordinate system with the
+ z-axis pointing out of the plane. This might turn out to be clockwise on your screen,
+depending on your coordinate system conventions.
 
 \image CCWwinding.png
 
-The polygon members are public, but you should use initialization functions to create a polygon. The
-initialization functions create normal vectors and perform validation.
-You can create a polygon shape by passing in a vertex array. The maximal size of the array is controlled
-by b2_maxPolygonVertices which has a default value of 8. This is sufficient to describe most convex
-polygons.
-The b2PolygonShape::Set function automatically computes the convex hull and establishes the proper
+##FIXME TO BE MORE QML
+You can create a polygon shape by passing in a vertex array.
+The maximal size of the array is controlled by maxPolygonVertices which has a default
+value of 8. This is sufficient to describe most convex polygons.
+PolygonShape Set function automatically computes the convex hull and establishes the proper
 winding order. This function is fast when the number of vertices is low. If you increase
 
 
 
 \image polygonSkin.png
 
-The polygon skin helps prevent tunneling by keeping the polygons separated. This results in small gaps
-between the shapes. Your visual representation can be larger than the polygon to hide any gaps.
+The polygon skin helps prevent tunneling by keeping the polygons separated.
+This results in small gaps between the shapes.
+
+Your visual representation can be larger than the polygon to hide any gaps.
 
 \image polygonColideSkin.png
 
@@ -547,39 +610,50 @@ void Box2DPolygon::scale()
     \qmltype Chain
     \instantiates Box2DChain
     \inqmlmodule Box2D 1.1
-    \brief The chain shape provides an efficient way to connect many edges together to construct your static game
-worlds. Chain shapes automatically eliminate ghost collisions and provide two-sided collision.
+    \brief The chain shape provides an efficient way to connect many edges together
+to construct your static game worlds. Chain shapes automatically eliminate ghost collisions
+ and provide two-sided collision.
 
 \image chain1.png
 
 
+##FIXME
 // This a chain shape with isolated vertices
+\code
 b2Vec2 vs[4];
 vs[0].Set(1.7f, 0.0f);
 vs[1].Set(1.0f, 0.25f);
 vs[2].Set(0.0f, 0.0f);
 vs[3].Set(-1.7f, 0.4f);
-
-b2ChainShape chain;
+ChainShape chain;
 chain.CreateChain(vs, 4);
-You may have a scrolling game world and would like to connect several chains together. You can
-connect chains together using ghost vertices, like we did with b2EdgeShape. // Install ghost vertices
+\endcode
+
+You may have a scrolling game world and would like to connect several chains together.
+ You can connect chains together using ghost vertices, like we did with EdgeShape.
+\code
+// Install ghost vertices
 chain.SetPrevVertex(b2Vec2(3.0f, 1.0f));
 chain.SetNextVertex(b2Vec2(-2.0f, 0.0f));
+\endcode
 You may also create loops automatically.
+\code
 // Create a loop. The first and last vertices are connected.
 b2ChainShape chain;
 chain.CreateLoop(vs, 4);
-Self-intersection of chain shapes is not supported. It might work, it might not. The code that prevents
-ghost collisions assumes there are no self-intersections of the chain. Also, very close vertices can cause
-problems. Make sure all your edges are longer than b2_linearSlop (5mm).
+\endcode
 
+Self-intersection of chain shapes is not supported. It might work, it might not.
+ The code that prevents ghost collisions assumes there are no self-intersections of the chain.
+ Also, very close vertices can cause problems. Make sure all your edges are longer than
+linearSlop (5mm).
 
 \image chain2.png
 
-
-Each edge in the chain is treated as a child shape and can be accessed by index. When a chain shape is
-connected to a body, each edge gets its own bounding box in the broad-phase collision tree.
+Each Edge in the chain is treated as a child shape and can be accessed by index.
+ When a chain shape is connected to a Body, each Edge gets its own bounding box in the
+ broad-phase collision tree.
+\code
 // Visit each child edge.
 for (int32 i = 0; i < chain.GetChildCount(); ++i)
 {
@@ -587,7 +661,7 @@ b2EdgeShape edge;
 chain.GetChildEdge(&edge, i);
 …
 }
-
+\endcode
 
 */
 /*!
@@ -658,31 +732,38 @@ void Box2DChain::scale()
     \inqmlmodule Box2D 1.1
     \brief Edge shapes are line segments.
 
-These are provided to assist in making a free-form static environment
-for your game. A major limitation of edge shapes is that they can collide with circles and polygons but
-not with themselves. The collision algorithms used by Box2D require that at least one of two colliding
-shapes have volume. Edge shapes have no volume, so edge-edge collision is not possible.
+These are provided to assist in making a free-form static environment for your game.
+ A major limitation of edge shapes is that they can collide with circles and polygons but
+not with themselves. The collision algorithms used by Box2D require that at least one
+of two colliding shapes have volume. Edge shapes have no volume, so edge-edge collision
+ is not possible.
+\code
 // This an edge shape.
 b2Vec2 v1(0.0f, 0.0f);
 b2Vec2 v2(1.0f, 0.0f);
 
 b2EdgeShape edge;
 edge.Set(v1, v2);
-In many cases a game environment is constructed by connecting several edge shapes end-to-end. This
-can give rise to an unexpected artifact when a polygon slides along the chain of edges. In the figure
-below we see a box colliding with an internal vertex. These ghost collisions are caused when the polygon
-collides with an internal vertex generating an internal collision normal.
-//woops forgot 0
+\endcode
+
+In many cases a game environment is constructed by connecting several Edge shapes
+ end-to-end. This can give rise to an unexpected artifact when a Polygon slides along the Chain
+ of Edges. In the figure below we see a Box colliding with an internal vertex. These ghost
+ collisions are caused when the Polygon collides with an internal vertex generating an
+internal collision normal.
+
+
 \image edge1.png
 
-If edge1 did not exist this collision would seem fine. With edge1 present, the internal collision seems like
-a bug. But normally when Box2D collides two shapes, it views them in isolation.
-Fortunately, the edge shape provides a mechanism for eliminating ghost collisions by storing the
-adjacent ghost vertices. Box2D uses these ghost vertices to prevent internal collisions.
+If edge1 did not exist this collision would seem fine. With edge1 present, the internal
+ collision seems like a bug. But normally when Box2D collides two shapes (bodies), it views
+ them in isolation. Fortunately, the Edge shape provides a mechanism for eliminating ghost
+collisions by storing the adjacent ghost vertices. Box2D uses these ghost vertices to prevent
+ internal collisions.
 
 \image edge2.png
 
-
+\code
 // This is an edge shape with ghost vertices.
 b2Vec2 v0(1.7f, 0.0f);
 b2Vec2 v1(1.0f, 0.25f);
@@ -695,7 +776,10 @@ edge.m_hasVertex0 = true;
 edge.m_hasVertex3 = true;
 edge.m_vertex0 = v0;
 edge.m_vertex3 = v3;
-In general stitching edges together this way is a bit wasteful and tedious. This brings us to chain shapes.
+\endcode
+
+In general stitching edges together this way is a bit wasteful and tedious.
+see {Chain} {chain shapes}.
 
 
 */

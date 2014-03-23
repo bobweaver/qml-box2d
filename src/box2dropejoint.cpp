@@ -42,8 +42,10 @@ Box2DRopeJoint::Box2DRopeJoint(QObject *parent) :
     \qmltype RopeJoint
     \instantiates Box2DRopeJoint
     \inqmlmodule Box2D 1.1
-    \brief The rope joint restricts the maximum distance between two points. This can be useful to prevent chains
-of bodies from stretching, even under high load. See b2RopeJoint.h and RopeJoint.h for details.
+    \brief The RopeJoint restricts the maximum distance between two points.
+
+This can be useful to prevent chains of bodies from stretching, even under high load.
+See Box2DRopeJoint  for details.
 */
 
 Box2DRopeJoint::~Box2DRopeJoint()
