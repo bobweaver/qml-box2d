@@ -1,7 +1,6 @@
 TEMPLATE = app
 QT += qml quick gui core
 
-
 OTHER_FILES = \
                     monera.qml \
                     Wall.qml \
