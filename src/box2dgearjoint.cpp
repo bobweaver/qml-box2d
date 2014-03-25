@@ -41,10 +41,12 @@ Box2DGearJoint::Box2DGearJoint(QObject *parent) :
     \qmltype GearJoint
     \instantiates Box2DGearJoint
     \inqmlmodule Box2D 1.1
-    \briefIf you want to create a sophisticated mechanical contraption you might want to use
+    \inherits Joint
+
+  \brief If you want to create a sophisticated mechanical contraption you might want to use
  gears.
 
-In principle you can create  gears in Box2D by using compound shapes to model gear
+In principle you can create  gears in Box2D by using compound \l{Body}{bodies} to model gear
 teeth. This is not very efficient and might be tedious to author. You also have to be careful to
  line up the gears so the teeth mesh smoothly. Box2D has a simpler method of creating gears:
  the GearJoint.
@@ -52,35 +54,30 @@ teeth. This is not very efficient and might be tedious to author. You also have 
 \image gearJoint.png
 
 The gear joint can only connect RevoluteJoint and/or PrismaticJoint.
-Like the Pulley ratio, you can specify a gear ratio.
+Like the PulleyJoints property \l{ PulleyJoints::ratio}{ratio}, you can specify a gear ratio.
 
-However, in this case the gear ratio can be negative.
 
 Also keep in mind that when one Joint is a RevoluteJoint (angular) and the other Joint is
  PrismaticJoint (translation), and then the gear ratio will have units of length or one over length.
-\code
-coordinate1 + ratio * coordinate2 == constant
-\endcode
 
-Here is an example gear joint. The bodies myBodyA and myBodyB are any bodies from
+
+Here is an example gear joint. The bodies bodyA and bodyB are any bodies from
 the two joints, as long as they are not the same bodies.
 \code
-b2GearJointDef jointDef;
-jointDef.bodyA = myBodyA;
-jointDef.bodyB = myBodyB;
-jointDef.joint1 = myRevoluteJoint;
-jointDef.joint2 = myPrismaticJoint;
-jointDef.ratio = 2.0f * b2_pi / myLength;
+        GearJoint {
+            id: gearJoint
+            world: world
+            bodyA: lever
+            bodyB: damper
+            joint1: revoluteJoint
+            joint2: prismaticJoint
+            ratio: 0.05
+        }
 \endcode
 
-Note that the gear joint depends on two other joints. This creates a fragile situation.
- What happens if those joints are deleted?
+\section2 Examples
 
-\section2 Caution
-Always delete GearJoints before the RevoluteJoint / PrismaticJoint on the gears.
-Otherwise your code will crash in a bad way due to the orphaned Joint pointers in
-the GearJoint. You should also delete the GearJoint before you delete any of the
-{Body} {bodies} involved.
+\l{box2d-gear-example}{GearJoint Example}
 
 */
 Box2DGearJoint::~Box2DGearJoint()
@@ -90,7 +87,7 @@ Box2DGearJoint::~Box2DGearJoint()
 
 /*!
 \qmlproperty float GearJoint::ratio
-DOCME
+see \{PulleyJoint::ratio}{pulley ratio}
 */
 float Box2DGearJoint::ratio() const
 {

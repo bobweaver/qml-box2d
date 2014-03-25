@@ -1,17 +1,140 @@
 /*!
     \group qml-box2d
-    \title QML Box2D Plugin
+    \title QML Box2D Type
     \page qml-box2d.html
     \previouspage overview.html
     \nextpage box2d-example.html
 
-    \title Box2D QML API
+    \title Box2D QML Bindings
+   Qml Overview
 
-    \brief A QML API for the Box2D Libary.
+There are several qml elements that use Box2D. It is kinda broken down into a couple of groups.
+    these groups include.
 
-    QML Support for the Box2D API.
+    \list
+    \li \l {Basic Elements}
+    \li \l {Fixtures}
+    \li \l {Joints}
+    \li \l {Extras}
+    \endlist
 
-    \section1 Qml Overview
-    There are several qml elements that use Box2D Here is a list of them.  \l {World}{World}
-    \annotatedlist box2d_qml
+\section1 Basic Elements
+    Here is a list of Basic Elements.
+\table
+\header
+\li Element \li description
+\row
+\li \l {World}{World}
+\li The overall world of you game
+
+\row
+\li \l {Body}{Body}
+\li a body is used to wrap items in for collision and mush more
+
+
+\endtable
+
+
+\section1 Fixtures
+Here is a list of fixtures.
+
+\table
+\header
+\li Element \li description
+\row
+\li \l {Fixture}{fixtures}
+\li A overall of what fixtures are.  This element is uncreatable
+
+\row
+\li \l {Box}{Box}
+\li a square box that is used in fixtures
+
+\row
+\li \l {Circle}{Circle}
+\li Like a box but one can add a radius.
+
+\row
+\li \l {Polygon}{Polygon}
+\li like a box but a polygon
+
+
+\endtable
+
+\section1 Joints
+Here is a list of Joint elements
+\table
+\header
+\li Element \li description
+\row
+\li \l {Joint}{Joints}
+\li The overall picture of what Joints are. This is a uncreatable element
+
+\row
+\li \l {Chain}{Chain}
+\li Joints that are combined to make a chain and more.
+
+\row
+\li \l {Edge}{edge}
+\li a edge of a body that can be used many different ways.
+
+
+\row
+\li \l {DistanceJoint}{DistanceJoint}
+\li like a box but a polygon
+
+\row
+\li \l {PrismaticJoint}{PrismaticJoint}
+\li like a box but a polygon
+
+\row
+\li \l {RevoluteJoint}{RevoluteJoint}
+\li like a box but a polygon
+
+\row
+\li \l {MotorJoint}{MotorJoint}
+\li like a box but a polygon
+
+
+\row
+\li \l {WeldJoint}{WeldJoint}
+\li like a box but a polygon
+
+\row
+\li \l {PulleyJoint}{PulleyJoint}
+\li like a box but a polygon
+
+\row
+\li \l {FrictionJoint}{FrictionJoint}
+\li like a box but a polygon
+
+
+\row
+\li \l {WheelJoint}{WheelJoint}
+\li like a box but a polygon
+
+\row
+\li \l {MouseJoint}{MouseJoint}
+\li like a box but a polygon
+
+
+\row
+\li \l {GearJoint}{GearJoint}
+\li like a box but a polygon
+
+\row
+\li \l {RopeJoint}{RopeJoint}
+\li like a box but a polygon
+
+
+\endtable
+
+\section1 Extras
+
+\table
+\header
+\li Element \li description
+\row
+\li \l {DebugDraw}{DebugDraw}
+\li display\s a debug view for a World.
+\endtable
 */

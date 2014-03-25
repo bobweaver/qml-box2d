@@ -19,4 +19,5 @@ SUBDIRS +=  accelerometer \
         fixtures \
         monera \
         polygons \
-        rope
+        rope \
+        tutorial

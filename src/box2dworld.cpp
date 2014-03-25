@@ -88,28 +88,32 @@ void ContactListener::EndContact(b2Contact *contact)
     \qmltype World
     \instantiates Box2DWorld
     \inqmlmodule Box2D 1.1
-    \brief The b2World class contains the bodies and joints.
+    \brief The World  contains the \l{Body}{bodies ,fixtures} and \l{Joint}{joints}.
 
 
 It manages all aspects of the simulation and allows for asynchronous queries
-(like AABB queries and ray-casts).
  Much of your interactions with Box2D will be with a World object.
 
 \section1 Creating and Destroying a World
 
 Creating a world is fairly simple. You just need to provide a gravity vector and a
-Boolean indicating if {Body}{bodies} can sleep (see also sleepingAllowed).
- Usually you will create and destroy a world using new and delete.
+Boolean indicating if \l {Body}{bodies} can sleep (see also sleepingAllowed).
+ Usually you will create and destroy a World using new and delete.
 
 \code
-b2World* myWorld = new b2World(gravity, doSleep);
-... do stuff ...
-delete myWorld;
-\code
+Rectangle {
+width: 300
+height 150
+World {
+        id:world
+        anchors.fill: parent
+
+}
+\endcode
 
 \section1 Using a World
 
-The World element contains factories for creating and destroying {Body}{bodies} and Joint.
+The World element contains factories for creating and destroying \l {Body}{bodies} and \l{Joint}{Joints}.
 here are some interactions
 
 \section2 Simulation
@@ -123,9 +127,9 @@ float32 timeStep = 1.0f / 60.f;
 int32 velocityIterations = 10;
 int32 positionIterations = 8;
 myWorld->Step(timeStep, velocityIterations, positionIterations);
-\code
+\endcode
 
-After the time step you can examine your {Body} {bodies} and {Joint} {joints} for information.
+After the time step you can examine your \l {Body} {bodies} and \l {Joint} {joints} for information.
  Most likely you will grab the position off the {Body}{bodies} so that you can update your actors
  and render them. You can perform the time step anywhere in your game loop, but you
  should be aware of the order of things. For example, you must create {Body} {bodies}
@@ -146,7 +150,7 @@ Box2dWorld::ClearForces .
 This lets you take multiple sub-steps with the same force field.
 \code
 myWorld->ClearForces();
-\code
+\endcode
 
 \section1 Exploring the World
 The World is a container for bodies, contacts, and joints. You can grab the body, contact,
@@ -191,7 +195,7 @@ while (node)
  myWorld->DestroyBody(b);
  }
 }
-\code
+\endcode
 
 This safely destroys the current body. However, you may want to call a game function that
  may destroy multiple bodies. In this case you need to be very careful. The solution is

@@ -42,7 +42,9 @@ Box2DRevoluteJoint::Box2DRevoluteJoint(QObject *parent) :
     \qmltype RevoluteJoint
     \instantiates Box2DRevoluteJoint
     \inqmlmodule Box2D 1.1
-    \brief A RevoluteJoint forces two {Body} {bodies} to share a common anchor point, often
+    \inherits Joint
+
+\brief A RevoluteJoint forces two \l {Body} {bodies} to share a common anchor point, often
  called a hinge point.
 
 The revolute joint has a single degree of freedom: the relative rotation of the two bodies.
@@ -50,85 +52,86 @@ This is called the jointAngle.
 
 \image revoluteJoint.png
 
-##FIXME
-\code
-b2RevoluteJointDef jointDef;
-jointDef.Initialize(myBodyA, myBodyB, myBodyA->GetWorldCenter());
-\endcode
 
-To specify a revolute you need to provide two {Body} {bodies} and a single anchor point
- in World space. The initialization function assumes that the bodies are already in the
-correct position. In this example, two bodies are connected by a RevoluteJoint at  the first
- body's center of mass.
+To specify a RevoluteJoint you need to provide two \l {Body} {bodies} and two anchor points
+\list
+\li  \l {RevoluteJoint::localAnchorA}{localAnchorA }
+\li \l {RevoluteJoint::localAnchorB}{localAnchorB }
+\endlist
+ one also has to provide the \l {World}{ world space}. The initialization function assumes that
+the bodies are already in the
+correct position.
 
-The RevoluteJoint angle is positive when
-bodyB rotates CCW about the angle point.
- Like all angles in Box2D, the revolute angle is measured in radians. By convention the
-RevoluteJoint angle is zero when the joint is created using Initialize(), regardless of the
- current rotation of the two bodies.
+In this \l {box2d-revolute-example.html}{example}, two bodies are connected via a RevoluteJoint
 
-In some cases you might wish to control the Joint angle. For this, the RevoluteJoint can
- optionally simulate a Joint limit and/or a motor.
-A joint limit forces the joint angle to remain between a lower and upper bound. The limit will
- apply as much torque as needed to make this happen. The limit range should include zero,
- otherwise the joint will lurch when the simulation begins.
-
-A joint motor allows you to specify the joint speed (the time derivative of the angle).
+A RevoluteJoint can have a
+\l{RevoluteJoint::motorEnabled} {motor}
+ which can  allow you to specify the
+\list
+\li \l {RevoluteJoint::motorSpeed}{motorSpeed}
+\li \l {RevoluteJoint::maxMotorTorque}{maxMotorTorque}
+\endlist
 The speed can be negative or positive. A motor can have infinite force, but this is usually
-not desirable. Recall the eternal
+not desirable.
 
-question:
 
-"What happens when an irresistible force meets an immovable object?"
-
-I can tell you it's not pretty. So you can provide a maxTorque for the joint motor. The joint
-motor will maintain the specified speed unless the required torque exceeds the specified
- maximum. When the maxTorque is exceeded, the Joint will slow down and can even reverse.
-
-You can use a JointMotor to simulate Joint friction. Just set the joint speed to zero, and set the
-maxTorque to some small, but significant value. The motor will try to prevent the joint from
-rotating, but will yield to a significant load.
-
-Here's a revision of the revolute joint definition above; this time the joint has a limit and a motor
-enabled. The motor is setup to simulate joint friction.
 \code
-b2RevoluteJointDef jointDef;
-jointDef.Initialize(bodyA, bodyB, myBodyA->GetWorldCenter());
-jointDef.lowerAngle = -0.5f * b2_pi; // -90 degrees
-jointDef.upperAngle = 0.25f * b2_pi; // 45 degrees
-jointDef.enableLimit = true;
-jointDef.maxMotorTorque = 10.0f;
-jointDef.motorSpeed = 0.0f;
-jointDef.enableMotor = true;
-// You can access a revolute joint's angle, speed, and motor torque.
-float32 GetJointAngle() const;
-float32 GetJointSpeed() const;
-float32 GetMotorTorque() const;
-You also update the motor parameters each step.
-void SetMotorSpeed(float32 speed);
-void SetMaxMotorTorque(float32 torque);
+        RevoluteJoint {
+            id: revolute
+            maxMotorTorque: 1000
+            motorSpeed: 40
+            enableMotor: false
+            bodyA: middle
+            bodyB: rod
+            world: world
+            localAnchorA: Qt.point(20,20)
+            localAnchorB: Qt.point(40,20)
+        }
 \endcode
 
-Joint motors have some interesting abilities. You can update the joint speed every time step
-so you can make the joint move back-and-forth like a sine-wave or according to whatever
- function you want.
-\code
-... Game Loop Begin ...
 
-myJoint->SetMotorSpeed(cosf(0.5f * time));
-... Game Loop End ...
-You can also use joint motors to track a desired joint angle. For example:
-... Game Loop Begin ...
-float32 angleError = myJoint->GetJointAngle() - angleTarget;
-float32 gain = 0.1f;
-myJoint->SetMotorSpeed(-gain * angleError);
-... Game Loop End ...
-\endcode
 
-Generally your gain parameter should not be too large. Otherwise your joint may become
- unstable.
 
 */
+/*!
+\qmlproperty  string   RevoulteJoint::bodyA
+     the first body that is connected to Revolute system.
+     \code
+    World{
+        id: world
+        anchor.fill:parent
+        Body{
+            id: bodyA
+            ...
+            ......
+        RevoluteJoint {
+            world: world
+            bodyA: bodyA
+            ....
+            ........
+            }
+\endcode
+*/
+/*!
+\qmlproperty  string   RevoluteJoint::bodyB
+     the first body that is connected to Revolute system.
+     \code
+    World{
+        id: world
+        anchor.fill:parent
+        Body{
+            id: bodyB
+            ...
+            ......
+        RevoluteJoint {
+            world: world
+            bodyB: bodyB
+            ....
+            ........
+            }
+\endcode
+*/
+
 
 Box2DRevoluteJoint::~Box2DRevoluteJoint()
 {
@@ -181,7 +184,7 @@ void Box2DRevoluteJoint::setUpperAngle(float upperAngle)
 
 /*!
 \qmlproperty float RevoluteJoint::maxMotorTorque
-DOCME
+The maxium ammount of motor torque that can be applied to motor
 */
 float Box2DRevoluteJoint::maxMotorTorque() const
 {
@@ -201,7 +204,7 @@ void Box2DRevoluteJoint::setMaxMotorTorque(float maxMotorTorque)
 
 /*!
 \qmlproperty float RevoluteJoint::motorSpeed
-the speed of the motor if used ?
+If the motor is enabled . One can use this for the speed in which the motor runs at.
 */
 float Box2DRevoluteJoint::motorSpeed() const
 {
@@ -222,7 +225,7 @@ void Box2DRevoluteJoint::setMotorSpeed(float motorSpeed)
 
 /*!
 \qmlproperty bool RevoluteJoint::enableLimit
-DOCME
+if set to true it will enable limits on the RevoluteJoint
 */
 bool Box2DRevoluteJoint::enableLimit() const
 {
@@ -242,7 +245,7 @@ void Box2DRevoluteJoint::setEnableLimit(bool enableLimit)
 
 /*!
 \qmlproperty bool RevoluteJoint::enableMotor
-DOCME
+  by making this true one can enable a motor on there RevoluteJoint
 */
 bool Box2DRevoluteJoint::enableMotor() const
 {
@@ -262,8 +265,8 @@ void Box2DRevoluteJoint::setEnableMotor(bool enableMotor)
 
 
 /*!
-\qmlproperty QPointF RevoluteJoint::localAnchorA
-DOCME
+\qmlproperty Qt.point() RevoluteJoint::localAnchorA
+The local anchor points that are associated with  \l{RevoluteJoint::bodyA}{bodyA}
 */
 QPointF Box2DRevoluteJoint::localAnchorA() const
 {
@@ -271,8 +274,8 @@ QPointF Box2DRevoluteJoint::localAnchorA() const
 }
 
 /*!
-\qmlproperty QPointF RevoluteJoint::localAnchorB
-DOCME
+\qmlproperty Qt.point() RevoluteJoint::localAnchorB
+The local anchor points that are associated with  \l{RevoluteJoint::bodyB}{bodyB}
 */
 QPointF Box2DRevoluteJoint::localAnchorB() const
 {
@@ -337,7 +340,7 @@ b2Joint *Box2DRevoluteJoint::GetJoint()
 
 /*!
 \qmlsignal RevoluteJoint::getJointAngle()
-DOCME
+returns the current RevoluteJoint  anglle
 */
 float Box2DRevoluteJoint::getJointAngle()
 {
@@ -347,7 +350,7 @@ float Box2DRevoluteJoint::getJointAngle()
 
 /*!
 \qmlsignal RevoluteJoint::getJointSpeed()
-DOCME
+returns the joints speed
 return the Joint Speed
 */
 float Box2DRevoluteJoint::getJointSpeed()

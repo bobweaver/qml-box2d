@@ -45,7 +45,9 @@ Box2DFixture::Box2DFixture(QQuickItem *parent) :
     \qmltype Fixture
     \instantiates Box2DFixture
     \inqmlmodule Box2D 1.1
-    \brief Recall that shapes don’t know about {Body}{bodies} and may be used independently
+    \brief This element is uncreatable to connect to this element use a Box , Circle , Edge, Polygon
+
+Recall that shapes don’t know about {Body}{bodies} and may be used independently
 
 of the physics simulation.
 Therefore Box2D provides the Fixture  to attach shapes to {Body}{bodies}. A Body may have
@@ -218,8 +220,6 @@ void Box2DFixture::setFriction(float friction)
 
 /*!
 \qmlproperty float Fixture::restitution
-DOCME
-
 restitution is used to make objects bounce. The restitution value is usually set to be
  between 0 and 1.
 
@@ -237,8 +237,8 @@ restitution = b2Max(fixtureA->restitution, fixtureB->restitution);
 restitution is combined this way so that you can have a bouncy super ball without having a
 bouncy floor.
 
-You can override the default mixed restitution using b2Contact::SetRestitution. This is usually
-done in the b2ContactListener callback. When a shape develops multiple contacts, restitution is
+You can override the default mixed restitution using Contact::SetRestitution. This is usually
+done in the ContactListener callback. When a shape develops multiple contacts, restitution is
  simulated approximately. This is because Box2D uses an iterative solver. Box2D also uses
  inelastic collisions when the collision velocity is small. This is done to prevent jitter.
 
@@ -419,7 +419,27 @@ b2Vec2 *Box2DVerticesShape::scaleVertices()
     \qmltype Box
     \instantiates Box2DBox
     \inqmlmodule Box2D 1.1
-    \brief Provids a Box to wrap fictures in.
+    \inherits Fixture
+
+\brief Provids a Box to hang off of a Body::fixture
+
+A Box is often used of a Body::fixture .
+Say that one would like to create a wall that other things can collide with.
+One can acive this by making a Qml file called Wall.qml.
+\b Wall.qml \b
+\code
+import QtQuick 2.0
+import Box2D 1.1
+
+Body {
+    bodyType: Body.Static
+    fixtures: Box { anchors.fill: parent }
+}
+\endcode
+
+another example would be the
+\l {box2d-boxes-example.html} {boxes example}
+
 */
 //C++ DOCS
 /*!
@@ -470,6 +490,7 @@ void Box2DBox::scale()
     \qmltype Circle
     \instantiates Box2DCircle
     \inqmlmodule Box2D 1.1
+    \inherits Fixture
     \brief Circle Shapes
     Circle shapes have a position and radius. Circles are solid. You cannot make a hollow circle
     using the
@@ -522,6 +543,7 @@ void Box2DCircle::scale()
     \qmltype Polygon
     \instantiates Box2DPolygon
     \inqmlmodule Box2D 1.1
+    \inherits Fixture
     \brief Polygon shapes are solid convex polygons.
 
         A polygon is convex when all line segments connecting two points in the interior do
@@ -610,7 +632,9 @@ void Box2DPolygon::scale()
     \qmltype Chain
     \instantiates Box2DChain
     \inqmlmodule Box2D 1.1
-    \brief The chain shape provides an efficient way to connect many edges together
+    \inherits Fixture
+
+\brief The chain shape provides an efficient way to connect many edges together
 to construct your static game worlds. Chain shapes automatically eliminate ghost collisions
  and provide two-sided collision.
 
@@ -730,7 +754,9 @@ void Box2DChain::scale()
     \qmltype Edge
     \instantiates Box2DEdge
     \inqmlmodule Box2D 1.1
-    \brief Edge shapes are line segments.
+    \inherits Fixture
+
+\brief Edge shapes are line segments.
 
 These are provided to assist in making a free-form static environment for your game.
  A major limitation of edge shapes is that they can collide with circles and polygons but

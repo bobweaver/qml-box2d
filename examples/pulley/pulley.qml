@@ -256,7 +256,8 @@ Rectangle {
             localAnchorB: Qt.point(100,0)
             lengthA: 150
             lengthB: 150
-            ratio: 1
+            ratio: 0.2
+
         }
 
         Body {

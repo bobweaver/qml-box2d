@@ -42,9 +42,16 @@ Box2DFrictionJoint::Box2DFrictionJoint(QObject *parent) :
     \qmltype FrictionJoint
     \instantiates  Box2DFrictionJoint
     \inqmlmodule Box2D 1.1
-    \brief The friction joint is used for top-down friction. The joint provides 2D
+    \inherits Joint
+
+\brief The friction joint is used for top-down friction. The joint provides 2D
 
 translational friction and angular friction.
+
+\section2 Example
+
+\l {box2d-friction-example}{The Offical Friction Example}
+
 
 See FrictionJoint  for details.
 */
@@ -56,7 +63,7 @@ Box2DFrictionJoint::~Box2DFrictionJoint()
 
 /*!
 \qmlproperty float FrictionJoint::maxForce
-DOCME
+the maxium force that is allowed to the joint
 */
 float Box2DFrictionJoint::maxForce() const
 {
@@ -74,7 +81,7 @@ void Box2DFrictionJoint::setMaxForce(float maxForce)
 
 /*!
 \qmlproperty float FrictionJoint::maxTorque
-DOCME
+the maxium ammount of torque that is allowed to the joint
 */
 float Box2DFrictionJoint::maxTorque() const
 {
@@ -91,8 +98,8 @@ void Box2DFrictionJoint::setMaxTorque(float maxTorque)
 }
 
 /*!
-\qmlproperty QPointF FrictionJoint::localAnchorA
-DOCME
+\qmlproperty Qt.point() FrictionJoint::localAnchorA
+The local anchor point associated with \l{Joint::bodyA}{bodyA}
 */
 QPointF Box2DFrictionJoint::localAnchorA() const
 {
@@ -111,8 +118,9 @@ void Box2DFrictionJoint::setLocalAnchorA(const QPointF &localAnchorA)
 }
 
 /*!
-\qmlproperty QPointF FrictionJoint::localAnchorB
-DOCME
+\qmlproperty Qt.point() FrictionJoint::localAnchorB
+The local anchor point associated with \l{Joint::bodyB}{bodyB}
+
 */
 QPointF Box2DFrictionJoint::localAnchorB() const
 {
@@ -173,7 +181,7 @@ b2Joint *Box2DFrictionJoint::GetJoint()
 
 /*!
 \qmlsignal FrictionJoint::GetReactionForce(float32 inv_dt)
-DOCME
+returns the current force used on the joint
 */
 QPointF Box2DFrictionJoint::GetReactionForce(float32 inv_dt) const
 {
@@ -188,7 +196,7 @@ QPointF Box2DFrictionJoint::GetReactionForce(float32 inv_dt) const
 
 /*!
 \qmlsignal FrictionJoint::GetReactionTorque(float32 inv_dt)
-DOCME
+returns the current torque on the joint
 */
 float Box2DFrictionJoint::GetReactionTorque(float32 inv_dt) const
 {

@@ -41,7 +41,9 @@ Box2DMouseJoint::Box2DMouseJoint(QObject *parent) :
     \qmltype MouseJoint
     \instantiates Box2DMouseJoint
     \inqmlmodule Box2D 1.1
-    \brief The MouseJoint is used in the testbed to manipulate bodies with the mouse.
+    \inherits Joint
+
+\brief The MouseJoint is used to manipulate bodies with the mouse.
 
 
     It attempts to drive a point on a Body towards the current position of the cursor. There is no
@@ -56,7 +58,7 @@ Box2DMouseJoint::~Box2DMouseJoint()
 
 /*!
 \qmlproperty float MouseJoint::dampingRatio
-DOCME
+the damping ratio that is allowed to the element.
 */
 float Box2DMouseJoint::dampingRatio() const
 {
@@ -73,7 +75,7 @@ void Box2DMouseJoint::setDampingRatio(float dampingRatio)
 
 /*!
 \qmlproperty float MouseJoint::frequencyHz
-DOCME
+the frequency that one would like to use on the MouseJoint
 */
 float Box2DMouseJoint::frequencyHz() const
 {
@@ -89,7 +91,7 @@ void Box2DMouseJoint::setFrequencyHz(float frequencyHz)
 
 /*!
 \qmlproperty float MouseJoint::maxForce
-DOCME
+the maxium ammount of force that is allowed to the MouseJoint
 */
 float Box2DMouseJoint::maxForce() const
 {
@@ -105,7 +107,7 @@ void Box2DMouseJoint::setMaxForce(float maxForce)
 
 /*!
 \qmlproperty QPointF MouseJoint::target
-DOCME
+the item in which you want to target, for the MouseJoint
 */
 QPointF Box2DMouseJoint::target() const
 {
@@ -159,7 +161,7 @@ b2Joint *Box2DMouseJoint::GetJoint()
 
 /*!
 \qmlsignal MouseJoint::GetReactionForce(float32 inv_dt)
-DOCME
+returns the current force.
 */
 QPointF Box2DMouseJoint::GetReactionForce(float32 inv_dt) const
 {
@@ -173,7 +175,7 @@ QPointF Box2DMouseJoint::GetReactionForce(float32 inv_dt) const
 
 /*!
 \qmlsignal MouseJoint::GetReactionTorque(float32 inv_dt)
-DOCME
+returns the current torque
 */
 float Box2DMouseJoint::GetReactionTorque(float32 inv_dt) const
 {

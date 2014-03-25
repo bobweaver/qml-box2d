@@ -42,12 +42,18 @@ Box2DMotorJoint::Box2DMotorJoint(QObject *parent) :
     \qmltype MotorJoint
     \instantiates Box2DMotorJoint
     \inqmlmodule Box2D 1.1
-    \brief A MotorJoint lets you control the motion of a Body by specifying target position
+    \inherits Joint
+
+  \brief A MotorJoint lets you control the motion of a Body by specifying target position
 and rotation offsets.
 
-You can set the maxForce and maxTorque that will be applied to reach the target
-position and rotation. If the Body is blocked, it will stop and the contact forces will be
-proportional the maxForce and maxTorque.
+You can set the \l {maxForce} and \l{maxTorque} that will be applied to reach the \l{target}
+position and \l{rotation}. If the Body is blocked, it will stop and the contact forces will be
+proportional the \l{maxForce} and \l{maxTorque}.
+
+\section2 Examples
+
+\l {box2d-motorjoint-example.html}{Offical Motor Joint Example}
 
 See Box2DMotorJoint for more details.
 */
@@ -59,8 +65,8 @@ Box2DMotorJoint::~Box2DMotorJoint()
 
 
 /*!
-\qmlproperty QPointF MotorJoint::linearOffset
-DOCME
+\qmlproperty Qt.point() MotorJoint::linearOffset
+the offset of the MotorJoint
 */
 QPointF Box2DMotorJoint::linearOffset() const
 {
@@ -80,7 +86,7 @@ void Box2DMotorJoint::setLinearOffset(const QPointF &linearOffset)
 
 /*!
 \qmlproperty float MotorJoint::angularOffset
-DOCME
+The angual offset allowed to the MotorJoint
 */
 float Box2DMotorJoint::angularOffset() const
 {
@@ -100,7 +106,7 @@ void Box2DMotorJoint::setAngularOffset(const float angularOffset)
 
 /*!
 \qmlproperty float MotorJoint::maxForce
-DOCME
+the maxium ammount of force that can be used on the motor joint
 */
 float Box2DMotorJoint::maxForce() const
 {
@@ -119,7 +125,7 @@ void Box2DMotorJoint::setMaxForce(const float maxForce)
 
 /*!
 \qmlproperty float MotorJoint::maxTorque
-DOCME
+the maxium ammount of torque that is allowed to the MotorJoint.
 */
 float Box2DMotorJoint::maxTorque() const
 {

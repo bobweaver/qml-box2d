@@ -46,14 +46,16 @@ Box2DDistanceJoint::Box2DDistanceJoint(QObject *parent) :
     \qmltype DistanceJoint
     \instantiates Box2DDistanceJoint
     \inqmlmodule Box2D 1.1
-    \brief One of the simplest joint is a DistanceJoint. Which says that the distance between two  points on two
-{Body} {bodies} must be constant.
+    \brief One of the simplest joint is a DistanceJoint.
 
-When you specify a DistanceJoint the two {Body} {bodies} should already be in place.
+Which says that the distance between two points on two
+\l {Body} {bodies} must be constant.
 
-Then you specify the two anchor points in World coordinates.
-The first anchor point is connected to body 1,
-and the second anchor point is connected to body 2.
+When you specify a DistanceJoint the two \l {Body} {bodies} should already be in place.
+
+Then you specify the two anchor points in \l{World} coordinates.
+The first anchor point is connected to \l{Joint::bodyA}{bodyA},
+and the second anchor point is connected to \l {Joint::bodyB}{bodyB}.
 These points imply the length of the distance constraint.
 
 \image distanceJoint.png
@@ -112,7 +114,7 @@ Box2DDistanceJoint::~Box2DDistanceJoint()
 
 /*!
 \qmlproperty float DistanceJoint::length
- The length between the two {Body} {bodies}
+ The length between the two \l {Body} {bodies}
 */
 float Box2DDistanceJoint::length() const
 {
@@ -177,10 +179,8 @@ void Box2DDistanceJoint::setDampingRatio(float _dampingRatio)
 }
 
 /*!
-\qmlproperty QPointF DistanceJoint::localAnchorA
-DOCME
-
-Connection A point ?
+\qmlproperty Qt.point() DistanceJoint::localAnchorA
+the local anchor point associeated with \l{Joint::bodyA}{bodyA}
 */
 QPointF Box2DDistanceJoint::localAnchorA() const
 {
@@ -198,9 +198,7 @@ void Box2DDistanceJoint::setLocalAnchorA(const QPointF &localAnchorA)
 
 /*!
 \qmlproperty QPointF DistanceJoint::localAnchorB
-DOCME
-The other Body connection ?
-
+the local anchor point associeated with \l{Joint::bodyB}{bodyB}
 */
 QPointF Box2DDistanceJoint::localAnchorB() const
 {
@@ -260,8 +258,7 @@ b2Joint *Box2DDistanceJoint::GetJoint()
 
 /*!
 \qmlsignal DistanceJoint::GetReactionForce(float32 inv_dt)
-DOCME
-
+returns the current force used on the distance joint
 */
 
 //FIXME can this be made camelCase
@@ -277,7 +274,7 @@ QPointF Box2DDistanceJoint::GetReactionForce(float32 inv_dt) const
 
 /*!
 \qmlsignal DistanceJoint::GetReactionTorque(float32 inv_dt)
-DOCME
+returns the current torque from the distance joint.
 */
 
 //FIXME camelCase

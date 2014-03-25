@@ -66,10 +66,27 @@ Qt/Qml Bindings
 
 \section1 Qml Documentation
 
-\section2 QML Types
-The QML types are accessed by using:
+The QML types are accessed by.
+
 \code
 import Box2D 1.1
 \endcode
-\annotatedlist box2d_qml
+
+There are many different elements for the Box2D bindings.
+\l {qml-box2d.html} {Read More .... }
+
+\section1 Examples
+
+bindings for Box2D come's with many different examples on how to use Box2D.
+\l {box2d-example.html} {Here is a list of all of them}
+
+\section1 Tutorials
+
+FIX me
+
+\section1 Non Qt documentation
+
+\l {box2d-manual.html} {Here is the manual for Box2D and not its bindings.}
+
+
 */

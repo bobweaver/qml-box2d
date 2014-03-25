@@ -31,15 +31,23 @@
     \qmltype WeldJoint
     \instantiates Box2DWeldJoint
     \inqmlmodule Box2D 1.1
-    \brief The WeldJoint attempts to constrain all relative motion between two bodies.
+    \inherits Joint
 
-See the Cantilever.h in the testbed to see how the WeldJoint behaves. It is tempting to use
-the WeldJoint to define breakable structures. However, the Box2D solver is iterative so the
- joints are a bit soft. So chains of bodies connected by weld joints will flex. Instead it is better
- to create breakable bodies starting with a single body with multiple fixtures. When the body
- breaks, you can destroy a fixture and recreate it on a new body.
 
-also see the {weld} {Weld Example}
+\brief The WeldJoint attempts to constrain all relative motion between two bodies.
+
+It is tempting to use the WeldJoint to define breakable structures. However, the Box2D
+ solver is iterative so the joints are a bit soft. So chains of bodies connected by WeldJoints
+will flex. Instead it is better to create breakable bodies starting with a single body with
+multiple fixtures. When the body  breaks, you can destroy a fixture and recreate it on a
+new body.
+ Here is a great
+\l { box2d-weld-example } { Example of using a weld joint in QML}.
+
+\endcode
+
+
+
 
 */
 /*!
@@ -60,7 +68,7 @@ Box2DWeldJoint::~Box2DWeldJoint()
 
 /*!
 \qmlproperty float WeldJoint::referenceAngle
-DOCME
+the angle in which the WeldJoint
  */
 float Box2DWeldJoint::referenceAngle() const
 {
@@ -78,7 +86,7 @@ void Box2DWeldJoint::setReferenceAngle(float referenceAngle)
 
 /*!
  \qmlproperty float WeldJoint::frequencyHz
- DOCME
+ allows one to set the frequency of the WeldJoint
  */
 float Box2DWeldJoint::frequencyHz() const
 {
@@ -99,7 +107,7 @@ void Box2DWeldJoint::setFrequencyHz(float frequencyHz)
 
 /*!
  \qmlproperty float WeldJoint::dampingRatio
- DOCME
+ allows one to set the dampingRatio of the WeldJoint
  */
 
 float Box2DWeldJoint::dampingRatio() const
@@ -119,8 +127,8 @@ void Box2DWeldJoint::setDampingRatio(float dampingRatio)
 }
 
 /*!
-  \qmlproperty QPointF WeldJoint::localAnchorA
-  DOCME
+  \qmlproperty Qt.point() WeldJoint::localAnchorA
+ The local anchor point associated with \l {Joint::bodyA}{bodyA}
  */
 
 QPointF Box2DWeldJoint::localAnchorA() const
@@ -137,8 +145,9 @@ void Box2DWeldJoint::setLocalAnchorA(const QPointF &localAnchorA)
 }
 
 /*!
-\qmlproperty QPointF WeldJoint::localAnchorB
-DOCME
+\qmlproperty Qt.point() WeldJoint::localAnchorB
+ The local anchor point associated with \l {Joint::bodyB}{bodyB}
+
  */
 
 QPointF Box2DWeldJoint::localAnchorB() const

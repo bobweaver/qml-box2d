@@ -42,10 +42,12 @@ Box2DRopeJoint::Box2DRopeJoint(QObject *parent) :
     \qmltype RopeJoint
     \instantiates Box2DRopeJoint
     \inqmlmodule Box2D 1.1
-    \brief The RopeJoint restricts the maximum distance between two points.
+    \inherits Joint
+
+\brief The RopeJoint restricts the maximum distance between two bodies.
 
 This can be useful to prevent chains of bodies from stretching, even under high load.
-See Box2DRopeJoint  for details.
+See or \{box2d-rope-example.html}{Rope Example} Or Box2DRopeJoint  for more detials.
 */
 
 Box2DRopeJoint::~Box2DRopeJoint()
@@ -55,7 +57,7 @@ Box2DRopeJoint::~Box2DRopeJoint()
 
 /*!
 \qmlproperty float RopeJoint::maxLength
-set the maxLength of the rope
+The maxium length of the the rope joint
 */
 float Box2DRopeJoint::maxLength() const
 {
@@ -76,8 +78,8 @@ void Box2DRopeJoint::setMaxLength(float _maxLength)
 }
 
 /*!
- \qmlproperty QPointF RopeJoint::localAnchorA
- DOCME
+ \qmlproperty Qt.point() RopeJoint::localAnchorA
+ The local anchor point associated with \l {Joint::bodyA}{bodyA}
  */
 QPointF Box2DRopeJoint::localAnchorA() const
 {
@@ -93,8 +95,9 @@ void Box2DRopeJoint::setLocalAnchorA(const QPointF &localAnchorA)
 }
 
 /*!
-\qmlproperty QPointF RopeJoint::localAnchorB
-DOCME
+\qmlproperty Qt.point() RopeJoint::localAnchorB
+ The local anchor point associated with \l {Joint::bodyA}{bodyA}
+
  */
 QPointF Box2DRopeJoint::localAnchorB() const
 {
@@ -146,7 +149,7 @@ b2Joint *Box2DRopeJoint::GetJoint()
 
 /*!
 \qmlsignal RopeJoint::GetReactionForce(float32 inv_dt)
-DOCME
+returns the reaction force for the rope joint.
  */
 QPointF Box2DRopeJoint::GetReactionForce(float32 inv_dt) const
 {
@@ -160,7 +163,7 @@ QPointF Box2DRopeJoint::GetReactionForce(float32 inv_dt) const
 
 /*!
 \qmlsignal RopeJoint::GetReactionTorque(float32 inv_dt)
-DOCME
+returns the current torque of the RopeJoint.
  */
 
 float Box2DRopeJoint::GetReactionTorque(float32 inv_dt) const

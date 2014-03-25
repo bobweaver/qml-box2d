@@ -47,7 +47,7 @@ sourcedirs += . \
 
 excludedirs += ../../
 
-sources.fileextensions = "*.cpp *.qml"
+sources.fileextensions = "*.cpp *.qml *.qdoc"
 headers.fileextensions = "*.h *.h++"
 examples.fileextensions = "*.cpp *.h *.js *.xq *.svg *.xml *.ui *.qhp *.qhcp *.qml"
 examples.imageextensions = "*.png *.jpeg *.jpg *.gif *.mng"
@@ -56,6 +56,6 @@ examples.imageextensions = "*.png *.jpeg *.jpg *.gif *.mng"
 outputdir = $OUTDIR
 
 depends                 += qtcore \
-                                        qtdoc \
-                                        qtquick \
-                                        qtqml
+                           qtdoc \
+                           qtquick \
+                           qtqml

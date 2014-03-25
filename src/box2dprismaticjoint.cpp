@@ -42,7 +42,10 @@ Box2DPrismaticJoint::Box2DPrismaticJoint(QObject *parent) :
     \qmltype PrismaticJoint
     \instantiates Box2DPrismaticJoint
     \inqmlmodule Box2D 1.1
-    \brief A PrismaticJoint allows for relative translation of two bodies along a specified axis.
+    \inherits Joint
+
+
+\brief A PrismaticJoint allows for relative translation of two bodies along a specified axis.
 
 A PrismaticJoint prevents relative rotation. Therefore, a PrismaticJoint has a single degree
  of freedom.
@@ -50,36 +53,32 @@ A PrismaticJoint prevents relative rotation. Therefore, a PrismaticJoint has a s
 \image prismaticJoint.png
 
 The PrismaticJoint definition is similar to the RevoluteJoint description; just substitute
-translation for angle and force for torque. Using this analogy provides an example
+translation for axis and maxMotorForce for maxMotorTorque. Using this analogy provides
+an example
+
 PrismaticJoint  definition with a Joint limit and a friction motor:
 
 \code
-b2PrismaticJointDef jointDef;
-b2Vec2 worldAxis(1.0f, 0.0f);
-jointDef.Initialize(myBodyA, myBodyB, myBodyA->GetWorldCenter(), worldAxis);
-jointDef.lowerTranslation = -5.0f;
-jointDef.upperTranslation = 2.5f;
-jointDef.enableLimit = true;
-jointDef.maxMotorForce = 1.0f;
-jointDef.motorSpeed = 0.0f;
-jointDef.enableMotor = true;
+        PrismaticJoint {
+            id: prismatic
+            lowerTranslation: -250
+            upperTranslation: 150
+            enableLimit: true
+            maxMotorForce: 3000
+            motorSpeed: -100
+            enableMotor: true
+            bodyB: square
+            bodyA: middle
+            axis: Qt.point(100, 40)
+            world: world
+        }
 \endcode
 
 The RevoluteJoint has an implicit axis coming out of the screen. The PrismaticJoint needs
-an explicit axis parallel to the screen. This axis is fixed in the two {Body} {bodies} and follows
+an explicit axis parallel to the screen. This axis is fixed in the two \l {Body} {bodies} and follows
  their motion. Like the RevoluteJoint, the PrismaticJoint translation is zero
 
-when the Joint is created using Initialize(). So be sure zero is between your lowerTranslation
- and  upperTranslation limits. Using a PrismaticJoint is similar to using a RevoluteJoint.
- Here are the  relevant member functions:
-
-\code
-float32 GetJointTranslation() const;
-float32 GetJointSpeed() const;
-float32 GetMotorForce() const;
-void SetMotorSpeed(float32 speed);
-void SetMotorForce(float32 force);
-\endcode
+ also see the \l {box2d-prismatic-example.html} {Prismatic Example }
 */
 
 Box2DPrismaticJoint::~Box2DPrismaticJoint()
@@ -106,7 +105,7 @@ void Box2DPrismaticJoint::setLowerTranslation(float lowerTranslation)
 
 /*!
 \qmlproperty float PrismaticJoint::upperTranslation
-DOCME
+The upper translation between the two joints
 */
 float Box2DPrismaticJoint::upperTranslation() const
 {
@@ -127,7 +126,7 @@ void Box2DPrismaticJoint::setUpperTranslation(float upperTranslation)
 
 /*!
 \qmlproperty float PrismaticJoint::maxMotorForce
-DOCME
+The maxium allowed motor force that you PrismaticJoint will use.
 */
 float Box2DPrismaticJoint::maxMotorForce() const
 {
@@ -147,7 +146,7 @@ void Box2DPrismaticJoint::setMaxMotorForce(float maxMotorForce)
 
 /*!
 \qmlproperty float PrismaticJoint::motorSpeed
-DOCME
+the maxium ammount of motor sprred that will be used.
 */
 float Box2DPrismaticJoint::motorSpeed() const
 {
@@ -183,7 +182,7 @@ void Box2DPrismaticJoint::setEnableLimit(bool enableLimit)
 
 /*!
 \qmlproperty bool PrismaticJoint::enableMotor
-DOCME
+set to true to enable a motor on the joints .
 */
 bool Box2DPrismaticJoint::enableMotor() const
 {
@@ -203,7 +202,7 @@ void Box2DPrismaticJoint::setEnableMotor(bool enableMotor)
 
 /*!
 \qmlproperty QPointF PrismaticJoint::axis
-DOCME
+The axis of the current Prismatic two joints
 */
 QPointF Box2DPrismaticJoint::axis() const
 {
@@ -219,8 +218,8 @@ void Box2DPrismaticJoint::setAxis(const QPointF &axis)
 }
 
 /*!
-\qmlproperty QPointF PrismaticJoint::localAnchorA
-DOCME
+\qmlproperty Qt.point() PrismaticJoint::localAnchorA
+the local anchor point associated with \l {Joint::bodyA}{bodyA}
 */
 QPointF Box2DPrismaticJoint::localAnchorA() const
 {
@@ -229,7 +228,8 @@ QPointF Box2DPrismaticJoint::localAnchorA() const
 
 /*!
 \qmlproperty QPointF PrismaticJoint::localAnchorB
-DOCME
+the local anchor point associated with \l {Joint::bodyB}{bodyB}
+
 */
 QPointF Box2DPrismaticJoint::localAnchorB() const
 {
@@ -296,7 +296,7 @@ b2Joint *Box2DPrismaticJoint::GetJoint()
 
 /*!
 \qmlsignal PrismaticJoint::GetJointTranslation()
-DOCME
+returnd the current translation for the prismatic joint
 */
 float Box2DPrismaticJoint::GetJointTranslation()
 {
@@ -306,7 +306,7 @@ float Box2DPrismaticJoint::GetJointTranslation()
 
 /*!
 \qmlsignal PrismaticJoint::GetJointSpeed()
-DOCME
+returns the current speed of the prismatic joint.
 */
 float Box2DPrismaticJoint::GetJointSpeed()
 {

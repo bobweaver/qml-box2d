@@ -39,7 +39,7 @@
     \qmltype Body
     \instantiates Box2DBody
     \inqmlmodule Box2D 1.1
-    \brief  {Body} {Bodies} have position and velocity.
+    \brief  Bodies have position and velocity.
  You can apply forces, torques,
 and impulses to bodies. Bodies can be
 static, kinematic, or dynamic.

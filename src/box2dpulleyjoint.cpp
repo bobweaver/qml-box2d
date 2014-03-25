@@ -41,25 +41,33 @@ Box2DPulleyJoint::Box2DPulleyJoint(QObject *parent) :
     \qmltype PulleyJoint
     \instantiates Box2DPulleyJoint
     \inqmlmodule Box2D 1.1
+    \inherits Joint
     \brief A PulleyJoint is used to create an idealized pulley.
 
-The pulley connects two {Body} {bodies} to ground and to each other. As one Body goes up,
+The pulley connects two \l {Body} {bodies} to the ground and also to each other. As one
+\l {Body}{body}
+ goes up,
 the other goes down. The total length of the pulley rope is conserved according to the initial
  configuration.
 
 \code
-length1 + length2 == constant
+            localAnchorA: Qt.point(100,0)
+            localAnchorB: Qt.point(100,0)
 \endcode
 
-You can supply a ratio that simulates a block and tackle. This causes one side of the pulley to
- extend faster than the other. At the same time the constraint force is smaller on one side than
- the other. You can use this to create mechanical leverage.
+You can supply a \l {Pulley::ratio}{ratio} that simulates a block and tackle. This causes one side
+of the pulley to extend faster than the other. At the same time the constraint force is smaller
+on one side than  the other. You can use this to create mechanical leverage.
+
 \code
-length1 + ratio * length2 == constant
+            localAnchorA: Qt.point(100,0)
+            localAnchorB: Qt.point(100,0)
+            ratio: 2
 \endcode
 
-For example, if the ratio is 2, then length1 will vary at twice the rate of length2. Also the force
-in the rope attached to body1 will have half the constraint force as the rope attached to body2.
+For example, if the \l {PulleyJoint::ratio} {ratio} is 2, then \l{PulleyJoint::lengthA}{length1} will vary at twice the rate of
+ \l {PulleyJoint::lengthB}{length2}. Also the force in the rope attached to body1 will have half the constraint force as
+the rope attached to body2.
 
 \image pulleyJoint.png
 
@@ -69,19 +77,61 @@ Pulleys can be troublesome when one side is fully extended. The rope on the othe
 
 Here is an example pulley definition:
 \code
-b2Vec2 anchor1 = myBody1->GetWorldCenter();
-// = myBody2->GetWorldCenter();
- groundAnchor1(p1.x, p1.y + 10.0f);
-groundAnchor2(p2.x, p2.y + 12.0f);
-float32 ratio = 1.0f;
-b2PulleyJointDef jointDef;
-jointDef.Initialize(myBody1, myBody2, groundAnchor1, groundAnchor2, anchor1,
-anchor2, ratio);
-Pulley joints provide the current lengths.
-float32 GetLengthA() const;
-float32 GetLengthB() const;
+        PulleyJoint {
+            world: world
+            bodyA: bodyA
+            bodyB: bodyB
+            groundAnchorA: Qt.point(225,100)
+            groundAnchorB: Qt.point(575,100)
+            localAnchorA: Qt.point(100,0)
+            localAnchorB: Qt.point(100,0)
+            lengthA: 150
+            lengthB: 150
+            ratio: 0.2
+        }
 \endcode
 */
+/*!
+\qmlproperty  string   PulleyJoint::bodyA
+     the first body that is connected to Pulley system.
+     \code
+    World{
+        id: world
+        anchor.fill:parent
+        Body{
+            id: bodyA
+            ...
+            ......
+        PulleyJoint {
+            world: world
+            bodyA: bodyA
+            ....
+            ........
+            }
+\endcode
+*/
+/*!
+\qmlproperty  string   PulleyJoint::bodyB
+     the first body that is connected to Pulley system.
+     \code
+    World{
+        id: world
+        anchor.fill:parent
+        Body{
+            id: bodyB
+            ...
+            ......
+        PulleyJoint {
+            world: world
+            bodyB: bodyB
+            ....
+            ........
+            }
+\endcode
+*/
+
+
+
 
 Box2DPulleyJoint::~Box2DPulleyJoint()
 {
@@ -90,7 +140,7 @@ Box2DPulleyJoint::~Box2DPulleyJoint()
 
 /*!
 \qmlproperty float PulleyJoint::lengthA
-DOCME
+ The total amount of length for the attaches to \l {PulleyJoint::bodyA} {bodyA}
 */
 float Box2DPulleyJoint::lengthA() const
 {
@@ -108,7 +158,7 @@ void Box2DPulleyJoint::setLengthA(float lengthA)
 
 /*!
 \qmlproperty float PulleyJoint::lengthB
-DOCME
+The total ammount of length on the rope attached to \l {PulleyJoint::bodyB}{bodyB}
 */
 float Box2DPulleyJoint::lengthB() const
 {
@@ -126,7 +176,32 @@ void Box2DPulleyJoint::setLengthB(float lengthB)
 
 /*!
 \qmlproperty float PulleyJoint::ratio
-DOCME
+The ammount of gravity that will be used by the PulleyJoint.
+to pull it one way or the other. In the first image below we can see that the
+left side of the \l {box2d-pulley-example.html} { example } has been pulled down.  This was acived
+by setting the ratio to greater then 1.
+
+\code
+        PulleyJoint {
+            ...
+            ......
+            ratio: 1.5
+        }
+\endcode
+\image pullyjoint_ratio1.png
+
+But as you can see in the second image that if we set the the ratio to less then 1 it sets the
+gravity to pull the other way on the "string"
+
+\code
+        PulleyJoint {
+            ...
+            ......
+            ratio: .5
+        }
+\endcode
+
+\image pullyjoint_ratio2.png
 */
 float Box2DPulleyJoint::ratio() const
 {
@@ -144,8 +219,8 @@ void Box2DPulleyJoint::setRatio(float ratio)
 
 
 /*!
-\qmlproperty QPointF PulleyJoint::groundAnchorA
-DOCME add var also
+\qmlproperty Qt.Point() PulleyJoint::groundAnchorA
+ The ground anchor point for rope that is attached to \{PulleyJoint::bodyA}{bodyA}
 */
 QPointF Box2DPulleyJoint::groundAnchorA() const
 {
@@ -160,8 +235,9 @@ void Box2DPulleyJoint::setGroundAnchorA(const QPointF &groundAnchorA)
 }
 
 /*!
-\qmlproperty QPointF PulleyJoint::groundAnchorB
-DOCME
+\qmlproperty Qt.point() PulleyJoint::groundAnchorB
+ The ground anchor point for rope that is attached to \{PulleyJoint::bodyB}{bodyB}
+
  */
 QPointF Box2DPulleyJoint::groundAnchorB() const
 {
@@ -177,8 +253,8 @@ void Box2DPulleyJoint::setGroundAnchorB(const QPointF &groundAnchorB)
 
 
 /*!
-\qmlproperty QPointF PulleyJoint::localAnchorA
-DOCME
+\qmlproperty Qt.point() PulleyJoint::localAnchorA
+the local anchor point aassociated with \{PulleyJoint::bodyA}{bodyA}
 */
 QPointF Box2DPulleyJoint::localAnchorA() const
 {
@@ -193,8 +269,8 @@ void Box2DPulleyJoint::setLocalAnchorA(const QPointF &localAnchorA)
 }
 
 /*!
-\qmlproperty QPointF Box2DPulleyJoint::localAnchorB
-DOCME
+\qmlproperty Qt.point() Box2DPulleyJoint::localAnchorB
+the local anchor point aassociated with \{PulleyJoint::bodyB}{bodyB}
 */
 QPointF Box2DPulleyJoint::localAnchorB() const
 {
@@ -249,8 +325,9 @@ b2Joint *Box2DPulleyJoint::GetJoint()
 
 /*!
 \qmlsignal PulleyJoint::GetCurrentLengthA()
-DOCME
+returns the value of \l {PulleyJoint::lengthA}{lengthA}
 */
+
 float Box2DPulleyJoint::GetCurrentLengthA() const
 {
     if(mPulleyJoint) return mPulleyJoint->GetCurrentLengthA() * scaleRatio;
@@ -259,7 +336,7 @@ float Box2DPulleyJoint::GetCurrentLengthA() const
 
 /*!
 \qmlsignal PulleyJoint::GetCurrentLengthB()
-DOCME
+returns the value of \l {PulleyJoint::lengthB}{lengthB}
 */
 float Box2DPulleyJoint::GetCurrentLengthB() const
 {
@@ -269,7 +346,7 @@ float Box2DPulleyJoint::GetCurrentLengthB() const
 
 /*!
 \qmlsignal PulleyJoint::GetReactionForce(float32 inv_dt)
-DOCME
+Returns a Qt.point of the current \l {PulleyJoint::ratio}{ratio}
 */
 QPointF Box2DPulleyJoint::GetReactionForce(float32 inv_dt) const
 {
@@ -283,7 +360,7 @@ QPointF Box2DPulleyJoint::GetReactionForce(float32 inv_dt) const
 
 /*!
 \qmlsignal PulleyJoint::GetReactionTorque(float32 inv_dt)
-DOCME
+Returns the current torque applied to the PulleyJoint.
 */
 float Box2DPulleyJoint::GetReactionTorque(float32 inv_dt) const
 {
